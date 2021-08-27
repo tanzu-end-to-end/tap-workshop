@@ -1,7 +1,7 @@
 apiVersion: training.eduk8s.io/v1alpha1
 kind: TrainingPortal
 metadata:
-  name: tap-labs
+  name: tap-demos
 spec:
   portal:
     title: Tanzu Application Platform Demos
