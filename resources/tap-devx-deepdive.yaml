@@ -3,15 +3,15 @@ kind: Workshop
 metadata:
   name: tap-devx-deepdive
 spec:
-  title: Markdown Sample
-  description: A sample workshop using Markdown
+  title: TAP DevX DeepDive
+  description: Tanzu Application PLatform DevX Workflow
   vendor: eduk8s.io
   difficulty: beginner
   duration: 15m
   url: https://github.com/eduk8s/lab-markdown-sample
   content:
     image: quay.io/eduk8s/lab-markdown-sample:master
-    #files: github.com/eduk8s/lab-markdown-sample
+    files: github.com/eduk8s/lab-markdown-sample
   session:
     namespaces:
       budget: small
