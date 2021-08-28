@@ -2,14 +2,17 @@ apiVersion: training.eduk8s.io/v1alpha1
 kind: TrainingPortal
 metadata:
   name: tap-demos
+  annotations:
+    kapp.k14s.io/update-strategy: always-replace
 spec:
   portal:
     title: Tanzu Application Platform Demos
     password: tanzu
-    ingress:
-      hostname: tap-demos
+#    ingress:
+#      hostname: tap-demos
     registration:
-      type: anonymous
+      type: one-step
+      enabled: false
     updates:
       workshop: true
     sessions:
@@ -19,7 +22,7 @@ spec:
       expires: 240m
       orphaned: 45m
       capacity: 5
-      reserved: 0
+      reserved: 2
       initial: 0
       env:
       - name: DATASTORE_USERNAME
