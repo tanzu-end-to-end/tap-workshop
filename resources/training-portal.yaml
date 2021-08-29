@@ -20,7 +20,7 @@ spec:
       expires: 240m
       orphaned: 45m
       capacity: 5
-      reserved: 2
+      reserved: 1
       initial: 0
       env:
       - name: DATASTORE_USERNAME
