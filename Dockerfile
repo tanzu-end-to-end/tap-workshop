@@ -28,6 +28,9 @@ RUN curl -o /usr/local/bin/tanzu https://storage.googleapis.com/tanzu-cli/artifa
 COPY artifacts /tmp/artifacts
 COPY artifacts /tmp/artifacts/
 RUN tanzu plugin install apps --local /tmp/artifacts --version dev
+# Knative
+RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/download/v0.25.0/kn-linux-amd64 && \
+    chmod 755 /usr/local/bin/kn
 # ArgoCD
 RUN ARGOCD_VERSION=$(curl --silent "https://api.github.com/repos/argoproj/argo-cd/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/') && \
   curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/$ARGOCD_VERSION/argocd-linux-amd64 && \

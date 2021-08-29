@@ -6,14 +6,14 @@ metadata:
   name: tap-overview
 spec:
   title: TAP Overview
-  description: An introduction to the Tanzu Applicaation Platform
+  description: An introduction to the Tanzu Application Platform
   vendor: eduk8s.io
   difficulty: beginner
   duration: 15m
   url: https://github.com/eduk8s/lab-markdown-sample
   content:
     image: #@ "harbor.{}/tanzu-e2e/eduk8s-tap-workshop:latest".format(data.values.ingress.domain)
-    files: github.com/eduk8s/lab-markdown-sample
+    files: github.com/tanzu-end-to-end/tap-workshop?ref=main
   session:
     namespaces:
       budget: small
