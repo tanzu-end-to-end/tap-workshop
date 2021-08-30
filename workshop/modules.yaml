@@ -2,13 +2,13 @@ modules:
     workshop-overview:
         name: Workshop Overview
         exit_sign: Onboarding 
-    exercises/01-App-Accelerator
+    exercises/01-App-Accelerator:
         name: Onboarding
         exit_sign: Build and Package
-    exercises/02-GitOps-and-TBS
+    exercises/02-GitOps-and-TBS:
         name: Build and Package
         exit_sign: Deploy and Run
-    exercises/03-Harbor-and-Tilt
+    exercises/03-Harbor-and-Tilt:
         name: Deploy and Run
         exit_sign: Summary 
     workshop-summary:
