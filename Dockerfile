@@ -1,4 +1,4 @@
-FROM quay.io/eduk8s/base-environment:201203.020609.1ab533d
+FROM quay.io/eduk8s/base-environment:210521.063634.0d440d2
 #conftest 
 COPY --from=harbor-repo.vmware.com/dockerhub-proxy-cache/instrumenta/conftest /conftest /usr/local/bin/conftest
 # All the direct Downloads need to run as root as  they are going to /usr/local/bin

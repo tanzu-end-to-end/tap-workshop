@@ -13,7 +13,7 @@ spec:
   url: https://github.com/eduk8s/lab-markdown-sample
   content:
     image: #@ "harbor.{}/tanzu-e2e/eduk8s-tap-workshop:latest".format(data.values.ingress.domain)
-    files: github.com/tanzu-end-to-end/tap-workshop?ref=main
+    files: #@ "https://{}}:x-oauth-basic@github.com/{}}/tap-workshop/tarball/{}}?path=--anchored --wildcards tanzu-end-to-end-tap-workshop-*".format(data.values.git.githubToken,data.values.git.account,data.values.git.branch)
   session:
     namespaces:
       budget: small
