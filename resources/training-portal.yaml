@@ -14,16 +14,11 @@ spec:
     updates:
       workshop: true
     sessions:
-      maximum: 5
+      maximum: 10
   workshops:
     - name: tap-overview
-      expires: 240m
-      orphaned: 45m
-      capacity: 5
-      reserved: 1
+      expires: 60m
+      orphaned: 20m
+      capacity: 10
+      reserved: 0
       initial: 0
-      env:
-      - name: DATASTORE_USERNAME
-        value: admin
-      - name: DATASTORE_PASSWORD
-        value: admin123!

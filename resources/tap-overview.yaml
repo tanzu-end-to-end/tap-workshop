@@ -13,7 +13,7 @@ spec:
   url: https://github.com/eduk8s/lab-markdown-sample
   content:
     image: #@ "harbor.{}/tanzu-e2e/eduk8s-tap-workshop:latest".format(data.values.ingress.domain)
-    files: #@ "https://{}}:x-oauth-basic@github.com/{}}/tap-workshop/tarball/{}}?path=--anchored --wildcards tanzu-end-to-end-tap-workshop-*".format(data.values.git.githubToken,data.values.git.account,data.values.git.branch)
+    files: #@ "https://{}:x-oauth-basic@github.com/{}/tap-workshop/tarball/{}?path=--anchored --wildcards tanzu-end-to-end-tap-workshop-*".format(data.values.git.gitHubToken,data.values.git.account,data.values.git.branch)
   session:
     namespaces:
       budget: small
@@ -25,3 +25,93 @@ spec:
         enabled: true
       editor:
         enabled: true
+    objects:
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: Role
+        metadata:
+          name: kontinue-access
+        rules:
+          - apiGroups:
+              - bindings.labs.vmware.com
+              - kontinue.io
+              - kappctrl.k14s.io
+              - kpack.io
+              - opinions.local
+              - service.binding
+              - serving.knative.dev
+              - source.toolkit.fluxcd.io
+            resources: ['*']
+            verbs: ['*']
+          - apiGroups: [ "" ]
+            resources: ['workloads', 'deliverables', 'configmaps', 'secrets']
+            verbs: ['*']
+
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: RoleBinding
+        metadata:
+          name: kontinue-access
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: Role
+          name: kontinue-access
+        subjects:
+          - kind: ServiceAccount
+            namespace: $(workshop_namespace)
+            name: $(service_account)
+
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRole
+        metadata:
+          name: $(session_namespace)-kontinue-cluster-access
+        rules:
+          - apiGroups:
+              - kpack.io
+            resources:
+              - clusterbuilders
+              - clusterstacks
+              - clusterstores
+            verbs:
+              - get
+              - list
+              - watch
+          - apiGroups:
+              - kontinue.io
+            resources:
+              - clusterconfigtemplates
+              - clusterimagetemplates
+              - clustersourcetemplates
+              - clustersupplychains
+              - clustertemplates
+            verbs:
+              - get
+              - list
+              - watch
+          - apiGroups:
+              - opinions.local
+            resources:
+              - clusteropinionsources
+            verbs:
+              - get
+              - list
+              - watch
+
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRoleBinding
+        metadata:
+          name: $(session_namespace)-kontinue-cluster-access
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: $(session_namespace)-kontinue-cluster-access
+        subjects:
+          - kind: ServiceAccount
+            namespace: $(workshop_namespace)
+            name: $(service_account)
+      - apiVersion: e2e.tanzu.vmware.com/v1beta1
+        kind: HarborProject
+        metadata:
+          name: $(session_namespace)
+          annotations:
+            training.eduk8s.io/objects.crd.scope: Namespaced
+        spec:
+          name: $(session_namespace)
