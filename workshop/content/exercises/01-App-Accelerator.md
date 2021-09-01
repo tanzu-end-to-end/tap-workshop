@@ -17,6 +17,11 @@ url: https://accelerator.amer.end2end.link
 url: https://accelerator.amer.end2end.link
 ```
 
+```dashboard:create-dashboard
+name: Harbor
+url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}/repositories
+```
+
 When the page loads, you should see a layout similar to the following:
 
 [[[App Accelerator Picture]]]
