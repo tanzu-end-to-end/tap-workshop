@@ -44,16 +44,23 @@ Two tags are important here:
 We are not going to change any of this data for the demo, so let's use the command line to download the supply chain accelerator.
 
 ```terminal:execute
-curl acc-ui-server.accelerator-system/api/accelerators/zip?name=spring-sensors -H 'Content-Type: application/json' -d '{"options":{"projectName":"spring-sensors","bannerText":"Tanzu Sensor Database","bannerColor":"Salmon"}}' -o spring-sensors.zip
+command: curl acc-ui-server.accelerator-system/api/accelerators/zip?name=spring-sensors -H 'Content-Type: application/json' -d '{"options":{"projectName":"spring-sensors","bannerText":"Tanzu Sensor Database","bannerColor":"Salmon"}}' -o spring-sensors.zip
+session: 1
 ```
 
 Unzip the repo into your local file system:
 
 ```terminal:execute
-unzip spring-sensors.zip
+command: unzip -o spring-sensors.zip
+session: 1
 ```
 
 Commit the configured application to Git, where it can be picked up by the Supply Chain Choreographer:
+
+```terminal:execute
+command: git -C ~/spring-sensors add ~/spring-sensors/
+session: 1
+```
 
 ```terminal:execute
 command: git -C ~/spring-sensors commit -a -m "Initial Commit of Spring Sensors"
