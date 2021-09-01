@@ -8,7 +8,14 @@
 
 If you are familiar with the Spring Boot starter [[[<- right term?]]] experience, Application Accelerator is very similar. Let's open the Application Accelerator home page for our enterprise.
 
-[```https://accelerator.amer.end2end.link/dashboard/```](https://accelerator.amer.end2end.link/dashboard/)
+```dashboard:create-dashboard
+name: Accelerator
+url: https://accelerator.amer.end2end.link
+```
+
+```dashboard:open-url
+url: https://accelerator.amer.end2end.link
+```
 
 When the page loads, you should see a layout similar to the following:
 
