@@ -15,6 +15,11 @@ spec:
     image: #@ "harbor.{}/tanzu-e2e/eduk8s-tap-workshop:latest".format(data.values.ingress.domain)
     files: #@ "https://{}:x-oauth-basic@github.com/{}/tap-workshop/tarball/{}?path=--anchored --wildcards tanzu-end-to-end-tap-workshop-*".format(data.values.git.gitHubToken,data.values.git.account,data.values.git.branch)
   session:
+    env:
+      - name: GITEA_PASSWORD
+        value: #@ data.values.gitea.adminPassword
+      - name: HARBOR_PASSWORD
+        value: #@ data.values.harbor.adminPassword
     namespaces:
       budget: small
     applications:
