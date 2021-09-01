@@ -43,33 +43,28 @@ Two tags are important here:
 
 We are not going to change any of this data for the demo, so let's use the command line to download the supply chain accelerator.
 
-```terminal:execute
-command: curl acc-ui-server.accelerator-system/api/accelerators/zip?name=spring-sensors -H 'Content-Type: application/json' -d '{"options":{"projectName":"spring-sensors","bannerText":"Tanzu Sensor Database","bannerColor":"Salmon"}}' -o spring-sensors.zip
-session: 1
+```execute
+curl acc-ui-server.accelerator-system/api/accelerators/zip?name=spring-sensors -H 'Content-Type: application/json' -d '{"options":{"projectName":"spring-sensors","bannerText":"Tanzu Sensor Database","bannerColor":"Salmon"}}' -o spring-sensors.zip
 ```
 
 Unzip the repo into your local file system:
 
-```terminal:execute
-command: unzip -o spring-sensors.zip
-session: 1
+```execute
+unzip -o spring-sensors.zip
 ```
 
 Commit the configured application to Git, where it can be picked up by the Supply Chain Choreographer:
 
-```terminal:execute
-command: git -C ~/spring-sensors add ~/spring-sensors/
-session: 1
+```execute
+git -C ~/spring-sensors add ~/spring-sensors/
 ```
 
-```terminal:execute
-command: git -C ~/spring-sensors commit -a -m "Initial Commit of Spring Sensors"
-session: 1
+```execute
+git -C ~/spring-sensors commit -a -m "Initial Commit of Spring Sensors"
 ```
 
-```terminal:execute
-command: git -C ~/spring-sensors push -u origin main
-session: 1
+```execute
+git -C ~/spring-sensors push -u origin main
 ```
 
 Now let's add the workload to the TAP supply chain automation.
