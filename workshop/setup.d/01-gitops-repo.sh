@@ -9,7 +9,7 @@ mkdir spring-sensors
 cd spring-sensors
 git init
 git checkout -b main
-git config
+git config user.name gitea_admin
 git config user.email "gitea_admin@example.com"
 git add .
 git commit -a -m "Initial Commit"
