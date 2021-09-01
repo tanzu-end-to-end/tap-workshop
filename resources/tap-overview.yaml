@@ -107,3 +107,11 @@ spec:
           - kind: ServiceAccount
             namespace: $(workshop_namespace)
             name: $(service_account)
+      - apiVersion: e2e.tanzu.vmware.com/v1beta1
+        kind: HarborProject
+        metadata:
+          name: $(session_namespace)
+          annotations:
+            training.eduk8s.io/objects.crd.scope: Namespaced
+        spec:
+          name: $(session_namespace)
