@@ -7,6 +7,7 @@ echo $REPO_NAME > repo.txt
 
 mkdir spring-sensors
 cd spring-sensors
+echo "# Spring Sensors Application" >> README.MD
 git init
 git checkout -b main
 git config user.name gitea_admin
