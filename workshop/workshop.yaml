@@ -7,3 +7,6 @@ modules:
     - exercises/02-GitOps-and-TBS
     - exercises/03-Harbor-and-Tilt
     - workshop-summary
+    vars:
+    - name: harbor_project_id
+      value: "9999"
