@@ -13,15 +13,6 @@ name: Accelerator
 url: https://accelerator.amer.end2end.link
 ```
 
-```dashboard:open-url
-url: https://accelerator.amer.end2end.link
-```
-
-```dashboard:create-dashboard
-name: Harbor
-url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}/repositories
-```
-
 When the page loads, you should see a layout similar to the following:
 
 [[[App Accelerator Picture]]]
@@ -52,8 +43,26 @@ Two tags are important here:
 
 We are not going to change any of this data for the demo, so let's use the command line to download the supply chain accelerator.
 
-```execute
-curl acc-ui-server.accelerator-system/api/accelerators/zip?name=spring-sensors -H 'Content-Type: application/json' -d '{"options":{"projectName":"spring-sensors","bannerText":"Tanzu Sensor Database","bannerColor":"Salmon"}}' -o sensors.zip
+```terminal:execute
+curl acc-ui-server.accelerator-system/api/accelerators/zip?name=spring-sensors -H 'Content-Type: application/json' -d '{"options":{"projectName":"spring-sensors","bannerText":"Tanzu Sensor Database","bannerColor":"Salmon"}}' -o spring-sensors.zip
+```
+
+Unzip the repo into your local file system:
+
+```terminal:execute
+unzip spring-sensors.zip
+```
+
+Commit the configured application to Git, where it can be picked up by the Supply Chain Choreographer:
+
+```terminal:execute
+command: git -C ~/spring-sensors commit -a -m "Initial Commit of Spring Sensors"
+session: 1
+```
+
+```terminal:execute
+command: git -C ~/spring-sensors push -u origin main
+session: 1
 ```
 
 Now let's add the workload to the TAP supply chain automation.
