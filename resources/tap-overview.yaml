@@ -55,7 +55,7 @@ spec:
         kind: ServiceAccount
         metadata:
           name: service-account
-          namespace: ${session_namespace}
+          namespace: $(session_namespace)
         secrets:
           - name: regcred
         imagePullSecrets:
@@ -65,7 +65,7 @@ spec:
         kind: Role
         metadata:
           name: service-account
-          namespace: ${session_namespace}
+          namespace: $(session_namespace)
         rules:
         - apiGroups: ["*"]
           resources: ["*"]
