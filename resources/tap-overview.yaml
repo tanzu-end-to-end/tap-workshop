@@ -16,7 +16,7 @@ spec:
     files: #@ "https://{}}:x-oauth-basic@github.com/{}}/tap-workshop/tarball/{}}?path=--anchored --wildcards tanzu-end-to-end-tap-workshop-*".format(data.values.git.githubToken,data.values.git.account,data.values.git.branch)
   session:
     namespaces:
-      budget: small
+      budget: custom
     applications:
       terminal:
         enabled: true
@@ -26,6 +26,46 @@ spec:
       editor:
         enabled: true
     objects:
+      - apiVersion: v1
+        kind: LimitRange
+        metadata:
+          name: resource-limits
+        spec:
+          limits:
+            - type: PersistentVolumeClaim
+              max:
+                storage: 5Gi
+
+      # credentials for kontinuedemo
+      #
+      - apiVersion: v1
+        kind: Secret
+        metadata:
+          name: regcred
+        type: kubernetes.io/dockerconfigjson
+        data:
+          .dockerconfigjson: "ewoJImF1dGhzIjogewoJCSJoYXJib3IuYW1lci5lbmQyZW5kLmxpbmsiOiB7CgkJCSJhdXRoIjogIllXUnRhVzQ2VWpSNk4ySkhTWEY0VFdaR1JIcFVlQT09IgoJCX0KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOC4wOS43IChsaW51eCkiCgl9Cn0="
+
+      - apiVersion: v1
+        kind: ServiceAccount
+        metadata:
+          name: service-account
+          namespace: ${session_namespace}
+        secrets:
+          - name: regcred
+        imagePullSecrets:
+          - name: regcred
+
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: Role
+        metadata:
+          name: service-account
+          namespace: ${session_namespace}
+        rules:
+        - apiGroups: ["*"]
+          resources: ["*"]
+          verbs: ["*"]
+
       - apiVersion: rbac.authorization.k8s.io/v1
         kind: Role
         metadata:
