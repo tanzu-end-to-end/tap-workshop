@@ -13,8 +13,13 @@ spec:
   url: https://github.com/eduk8s/lab-markdown-sample
   content:
     image: #@ "harbor.{}/tanzu-e2e/eduk8s-tap-workshop:latest".format(data.values.ingress.domain)
-    files: #@ "https://{}}:x-oauth-basic@github.com/{}}/tap-workshop/tarball/{}}?path=--anchored --wildcards tanzu-end-to-end-tap-workshop-*".format(data.values.git.githubToken,data.values.git.account,data.values.git.branch)
+    files: #@ "https://{}:x-oauth-basic@github.com/{}/tap-workshop/tarball/{}?path=--anchored --wildcards tanzu-end-to-end-tap-workshop-*".format(data.values.git.gitHubToken,data.values.git.account,data.values.git.branch)
   session:
+    env:
+      - name: GITEA_PASSWORD
+        value: #@ data.values.gitea.adminPassword
+      - name: HARBOR_PASSWORD
+        value: #@ data.values.harbor.adminPassword
     namespaces:
       budget: custom
     applications:
@@ -147,3 +152,11 @@ spec:
           - kind: ServiceAccount
             namespace: $(workshop_namespace)
             name: $(service_account)
+      - apiVersion: e2e.tanzu.vmware.com/v1beta1
+        kind: HarborProject
+        metadata:
+          name: $(session_namespace)
+          annotations:
+            training.eduk8s.io/objects.crd.scope: Namespaced
+        spec:
+          name: $(session_namespace)
