@@ -29,6 +29,11 @@ Now that the application operator has the supplychain definition, all they need 
 ```execute
 kubectl apply -f supplychain/
 ```
-This will trigger our workload to begin working its way through the supply chain. We can watch that happen by [[[how will we monitor the supply chain?]]]
+This will trigger our workload to begin working its way through the supply chain. We can watch the build process here:
+
+```execute-2
+kp build logs spring-sensors-image
+```
+
 
 When the build is complete, the container images are stored in a Harbor registry, from which deployment operations will pull those images. Let's now look at how TAP automates the deployment and execution of our application.

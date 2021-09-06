@@ -70,14 +70,12 @@ git -C ~/spring-sensors push -u origin main
 Now let's add the workload to the TAP supply chain automation.
 
 ```execute
-tanzu workload create [[[app name]] -f [[[path\to\workload.yaml]]]
+tanzu workload create spring-sensors -f spring-sensors/config/workload.yaml
 ```
 
 We can now see our workload among the workloads that TAP is monitoring.
 
-```execute
-tanzu apps workload list
-```
+
 
 Notice, however, that nothing actually runs or happens - the workload gets stuck in an unknown state! The reason is that our App Operator hasn't yet applied a supply chain, or the steps that our application must undergo to the cluster yet.
 
