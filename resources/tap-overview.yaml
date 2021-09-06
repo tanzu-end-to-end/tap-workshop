@@ -85,6 +85,8 @@ spec:
               - service.binding
               - serving.knative.dev
               - source.toolkit.fluxcd.io
+              - e2e.tanzu.vmware.com
+              - projectcontour.io
             resources: ['*']
             verbs: ['*']
           - apiGroups: [ "" ]
