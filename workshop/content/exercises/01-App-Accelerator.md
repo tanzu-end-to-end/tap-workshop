@@ -50,7 +50,7 @@ curl acc-ui-server.accelerator-system/api/accelerators/zip?name=spring-sensors -
 Unzip the repo into your local file system:
 
 ```execute
-unzip -o spring-sensors.zip
+unzip -o spring-sensors.zip && envsubst < spring-sensors/config/workload.yaml > spring-sensors/config/tmp.yaml && mv spring-sensors/config/tmp.yaml spring-sensors/config/workload.yaml
 ```
 
 Commit the configured application to Git, where it can be picked up by the Supply Chain Choreographer:
