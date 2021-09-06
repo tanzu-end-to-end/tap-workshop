@@ -1,0 +1,3 @@
+echo 'Initializing environment'
+
+export GITREPO=https://gitea.amer.end2end.link/gitea_admin/$(cat repo.txt).git
