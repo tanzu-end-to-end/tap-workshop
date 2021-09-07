@@ -58,6 +58,12 @@ spec:
       name: $(workload.metadata.name)$-service
     spec:
       template:
+        metadata:
+          labels:
+            tanzu.app.live.view: "true"
+            tanzu.app.live.view.application.name: "$(workload.metadata.name)$"
+          annotations:
+            autoscaling.knative.dev/minScale: "1"
         spec:
           containers:
           - image: $(images[0].image)$
