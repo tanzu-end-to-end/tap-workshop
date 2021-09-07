@@ -70,7 +70,7 @@ git -C ~/spring-sensors push -u origin main
 Now let's add the workload to the TAP supply chain automation.
 
 ```execute
-tanzu workload create spring-sensors -f spring-sensors/config/workload.yaml
+tanzu apps workload create spring-sensors -f spring-sensors/config/workload.yaml
 ```
 
 We can now see our workload among the workloads that TAP is monitoring.
