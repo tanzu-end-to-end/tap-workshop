@@ -27,3 +27,10 @@ kubectl get ksvc -o=jsonpath='{.items[0].status.url}{"\n"}'
 ```
 
 This command generates the URL for our running the application. If we click on the URL in the terminal, we can begin using it.
+
+Access the App Live view here:
+
+```dashboard:create-dashboard
+name: Live
+url: https://appview.{{ ingress_domain }}
+```

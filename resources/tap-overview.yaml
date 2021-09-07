@@ -30,11 +30,6 @@ spec:
         enabled: true
       editor:
         enabled: true
-    dashboards:
-      - name: Accelerator
-        url: "https://accelerator.$(ingress_domain)"
-      - name: Live
-        url: "https://appview.$(ingress_domain)"
     objects:
       - apiVersion: v1
         kind: LimitRange
