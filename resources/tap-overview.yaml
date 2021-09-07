@@ -162,3 +162,29 @@ spec:
             training.eduk8s.io/objects.crd.scope: Namespaced
         spec:
           name: $(session_namespace)
+
+      - apiVersion: v1
+        kind: ServiceAccount
+        metadata:
+          name: app-live-view-connector-service-account
+          namespace: $(session_namespace)
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRole
+        metadata:
+          name: $(session_namespace)-app-live-view-connector-service-account-cluster-role
+          rules:
+          - apiGroups: ["*"]
+            resources: ["pods"]
+            verbs: ["watch"]
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: RoleBinding
+        metadata:
+          name: $(session_namespace)-app-live-view-connector-role-binding
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: $(session_namespace)-app-live-view-connector-service-account-cluster-role
+        subjects:
+          - kind: ServiceAccount
+            name: app-live-view-connector-service-account
+            namespace: $(session_namespace)
