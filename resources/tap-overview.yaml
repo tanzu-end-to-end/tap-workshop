@@ -31,9 +31,9 @@ spec:
       editor:
         enabled: true
     dashboards:
-      - name: App Accelerator
+      - name: Accelerator
         url: "https://accelerator.$(ingress_domain)"
-      - name: App Live View
+      - name: Live
         url: "https://appview.$(ingress_domain)"
     objects:
       - apiVersion: v1
