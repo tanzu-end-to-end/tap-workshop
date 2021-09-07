@@ -1,3 +1,4 @@
+
 ---
 apiVersion: kontinue.io/v1alpha1
 kind: ClusterSourceTemplate
@@ -34,7 +35,7 @@ spec:
     metadata:
       name: $(workload.metadata.name)$-image
     spec:
-      tag: harbor.amer.end2end.link/kontinuedemo/$(workload.metadata.name)$
+      tag: harbor.amer.end2end.link/$(workload.metadata.namespace)$/$(workload.metadata.name)$
       serviceAccount: service-account
       builder:
         kind: ClusterBuilder
@@ -50,7 +51,7 @@ metadata:
   name: knative-service-battery
 spec:
   configPath: .status.template
-  template:
+  template: 
     apiVersion: serving.knative.dev/v1
     kind: Service
     metadata:
@@ -59,7 +60,7 @@ spec:
       template:
         spec:
           containers:
-            - image: $(images[0].image)$
-              env:
-                - name: TARGET
-                  value: "this is a test environment variable"
+          - image: $(images[0].image)$
+            env:
+            - name: TARGET
+              value: "this is a test environment variable"
