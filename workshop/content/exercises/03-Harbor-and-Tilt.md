@@ -24,7 +24,7 @@ url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}
 ```
 You should see a page that looks something like:
 
-[[[Harbor screen shot]]]
+![Harbor Workload Screen](Harbor.png)
 
 #Verify Deployment
 
@@ -39,9 +39,6 @@ Now let's look at the how to access our application.
 ```execute
 kubectl get ksvc -o=jsonpath='{.items[0].status.url}{"\n"}'
 ```
-You should see something like this:
-
-[[[Screen shot of service detail output with URL circled]]]
 
 This command generates the URL for our running the application. If we click on the URL in the terminal (as circled in red in the picture above), we can begin using it.
 
