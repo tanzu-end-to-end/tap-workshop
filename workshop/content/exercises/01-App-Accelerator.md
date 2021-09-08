@@ -78,7 +78,6 @@ tanzu apps workload create spring-sensors -f spring-sensors/config/workload.yaml
 We can now see our workload among the workloads that TAP is monitoring.
 
 
-
 Notice, however, that nothing actually runs or happens - the workload gets stuck in an unknown state! The reason is that our App Operator hasn't yet applied a supply chain, or the steps that our application must undergo to the cluster yet.
 
 So, let's move to adding a TAP supply chain, and building and packaging our application.
