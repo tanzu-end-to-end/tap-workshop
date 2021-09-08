@@ -6,7 +6,7 @@ The supply chain is managed by the **Supply Chain Choreographer (SCC)** componen
 
 Supply chains are simply a set of working components composed into an ordered set of operations. Supply chains monitor the work of each components, and handle forwarding work from one component (say, Jenkins) to the next (say, TBS).
 
-To explore our supply chain, let's take a look at the supply chain definition we are using for "web" applications.
+To explore our supply chain, let's take a look at the supply chain definition we are using for "web" applications:
 
 ```editor:open-file
 file: ~/exercises/supplychain.yaml
