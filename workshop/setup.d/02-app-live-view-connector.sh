@@ -1,4 +1,6 @@
 #!/bin/bash
+set -x
+
 cat <<EOF >> connector.yaml
     apiVersion: apps/v1
     kind: Deployment
@@ -46,6 +48,6 @@ cat <<EOF >> connector.yaml
                   value: namespace-scoped
 EOF
 
-kubectl get secret alv-secret-values --namespace=app-live-view --export -o yaml | kubectl apply --namespace=$SESSION_NAMESPACE -f -
+kubectl get secret alv-secret-values --namespace=app-live-view -o yaml | kubectl apply --namespace=$SESSION_NAMESPACE -f -
 
 kubectl apply -f connector.yaml -n $SESSION_NAMESPACE
