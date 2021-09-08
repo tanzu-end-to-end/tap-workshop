@@ -172,7 +172,7 @@ spec:
         kind: ClusterRole
         metadata:
           name: $(session_namespace)-app-live-view-connector-service-account-cluster-role
-          rules:
+        rules:
           - apiGroups: ["*"]
             resources: ["pods"]
             verbs: ["watch"]
