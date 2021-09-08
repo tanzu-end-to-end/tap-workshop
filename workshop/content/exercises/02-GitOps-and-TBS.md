@@ -19,7 +19,7 @@ There are a few things to highlight in this file.
 To understand what each component does, you can take a look at the supplychain-tempates.yaml file:
 
 ```editor:open-file
-file: supplychain/supplychain-template.yaml
+file: supplychain/supplychain-templates.yaml
 ```
 
 This file contains the definition of each supply chain resource. For example, the first resource is named ```git-repository-battery``` and leverages Flux to monitor and act on changes to our git repository. Similarly, ```kpack-battery``` utilizes kpack in conjunction with TBS to build and package the image.
