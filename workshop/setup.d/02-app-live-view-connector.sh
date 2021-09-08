@@ -18,11 +18,11 @@ cat <<EOF >> connector.yaml
             name: app-live-view-connector
         spec:
           serviceAccountName: app-live-view-connector-service-account
-          imagePullSecrets:
-            - name: alv-secret-values
+#          imagePullSecrets:
+#            - name: alv-secret-values
           containers:
             - name: app-live-view-connector
-              image: registry.pivotal.io/app-live-view/application-live-view-connector@sha256:0ac86e77440402089651d21d10c51d90001d833ef7e56f35560e31100e0d4fd1 
+              image: harbor.amer.end2end.link/tap-demo/application-live-view-connector
               imagePullPolicy: Always
               livenessProbe:
                 httpGet:
@@ -48,6 +48,6 @@ cat <<EOF >> connector.yaml
                   value: namespace-scoped
 EOF
 
-kubectl get secret alv-secret-values --namespace=app-live-view -o yaml | kubectl apply --namespace=$SESSION_NAMESPACE -f -
+#kubectl get secret alv-secret-values --namespace=app-live-view -o yaml | kubectl apply --namespace=$SESSION_NAMESPACE -f -
 
 kubectl apply -f connector.yaml -n $SESSION_NAMESPACE
