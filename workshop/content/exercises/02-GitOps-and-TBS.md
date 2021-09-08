@@ -6,10 +6,10 @@ The supply chain is managed by the **Supply Chain Choreographer (SCC)** componen
 
 Supply chains are simply a set of working components composed into an ordered set of operations. Supply chains monitor the work of each components, and handle forwarding work from one component (say, Jenkins) to the next (say, TBS).
 
-To explore our supply chain, let's take a look at the supply chain definition we are using for "web" applications.
+To explore our supply chain, let's take a look at the supply chain definition we are using for "web" applications:
 
-```editor: open-file
-file: ~/supplychain/supplychain.yaml
+```editor:open-file
+file: ~/exercises/supplychain.yaml
 ```
 There are a few things to highlight in this file.
 
@@ -18,8 +18,8 @@ There are a few things to highlight in this file.
 
 To understand what each component does, you can take a look at the supplychain-tempates.yaml file:
 
-```editor: open-file
-file: ~/supplychain/supplychain-template.yaml
+```editor:open-file
+file: ~/exercises/supplychain-template.yaml
 ```
 
 This file contains the definition of each supply chain resource. For example, the first resource is named ```git-repository-battery``` and leverages Flux to monitor and act on changes to our git repository. Similarly, ```kpack-battery``` utilizes kpack in conjunction with TBS to build and package the image.
