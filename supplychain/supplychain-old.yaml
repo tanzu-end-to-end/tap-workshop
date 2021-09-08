@@ -1,10 +1,10 @@
 apiVersion: kontinue.io/v1alpha1
 kind: ClusterSupplyChain
 metadata:
-  name: tap-supply-chain
+  name: tap-supply-chain-old
 spec:
   selector:
-    app.tanzu.vmware.com/workload-type: web
+    app.tanzu.vmware.com/workload-type: web-old
 
   components:
     - name: source-provider
@@ -20,10 +20,10 @@ spec:
         - component: source-provider
           name: solo-source-provider
 
-    - name: deployer
+    - name: knative-service-provider
       templateRef:
-        kind: ClusterTemplate
-        name: app-deploy
+        kind: ClusterConfigTemplate
+        name: knative-service-battery
       images:
         - component: built-image-provider
-          name: image
+          name: solo-image-provider

@@ -43,7 +43,6 @@ spec:
       source:
         blob:
           url: $(sources[0].url)$
-
 ---
 apiVersion: kontinue.io/v1alpha1
 kind: ClusterConfigTemplate
@@ -70,3 +69,65 @@ spec:
             env:
             - name: TARGET
               value: "this is a test environment variable"
+---
+apiVersion: kontinue.io/v1alpha1
+kind: ClusterTemplate
+metadata:
+  name: app-deploy
+spec:
+  template:
+    apiVersion: kappctrl.k14s.io/v1alpha1
+    kind: App
+    metadata:
+      name: $(workload.metadata.name)$
+    spec:
+      serviceAccountName: service-account
+      fetch:
+        - inline:
+            paths:
+              manifest.yml: |
+                ---
+                apiVersion: kapp.k14s.io/v1alpha1
+                kind: Config
+                rebaseRules:
+                  - path:
+                      - metadata
+                      - annotations
+                      - serving.knative.dev/creator
+                    type: copy
+                    sources: [new, existing]
+                    resourceMatchers: &matchers
+                      - apiVersionKindMatcher:
+                          apiVersion: serving.knative.dev/v1
+                          kind: Service
+                  - path:
+                      - metadata
+                      - annotations
+                      - serving.knative.dev/lastModifier
+                    type: copy
+                    sources: [new, existing]
+                    resourceMatchers: *matchers
+                ---
+                apiVersion: serving.knative.dev/v1
+                kind: Service
+                metadata:
+                  name: $(workload.metadata.name)$-service
+                spec:
+                  template:
+                    metadata:
+                      labels:
+                        tanzu.app.live.view: "true"
+                        tanzu.app.live.view.application.name: "$(workload.metadata.name)$"
+                      annotations:
+                        autoscaling.knative.dev/minScale: "1"
+                    spec:
+                      containers:
+                        - image: $(images[0].image)$
+                          name: workload
+                          env:
+                          - name: TARGET
+                            value: "this is a test environment variable"
+      template:
+        - ytt: {}
+      deploy:
+        - kapp: {}
