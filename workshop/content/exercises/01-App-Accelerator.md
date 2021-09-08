@@ -6,7 +6,9 @@
 
 * Operators use Application Accelerator to create and manage platform and supply chain configurations.
 
-If you are familiar with the Spring Boot starter [[[<- right term?]]] experience, Application Accelerator is very similar. Let's open the Application Accelerator home page for our enterprise.
+If you are familiar with the [Spring Boot Initializr](https://start.spring.io/) experience, Application Accelerator is very similar.
+
+Let's open the Application Accelerator home page for our enterprise.
 
 ```dashboard:create-dashboard
 name: Accelerator
@@ -15,19 +17,19 @@ url: https://accelerator.amer.end2end.link
 
 When the page loads, you should see a layout similar to the following:
 
-[[[App Accelerator Picture]]]
+![App Accelerator Dashboard](accelerator-dashboard.png)
 
 As you can see, this enterprise has a variety of accelerators available for project ranging from Spring Cloud Functions to Node.js to templates to generate new accelerators. A developer that was building a new go application may select the Go accelerator. 
 
-App Accelerator allows the developer to customize and then download all of the necessary files. For this demo, because we'll be using [[[app name]]], we want to select the [[[app name]]] card from the user interface. We should have a similar screen displayed:
+App Accelerator allows the developer to customize and then download all of the necessary files. For this demo, because we'll be deploying the Spring Sensors app, we want to select the **Spring Sensors** card from the user interface. We should have a similar screen displayed:
 
-[[[App Accelerator Project Detail Picture]]]
+![SpringSensor Acclerator Setup Screen](accelerator-detail-1.png)
 
 Application Accelerator provides powerful features for finding, exploring, and customizing project templates. Users can explore a project's structure, open any of the text files in that project, and even edit configuration values before downloading the project. This is enabled by the ```Explore Files``` feature.
 
 ```Click on the Explore Workspaces button towards the bottom of the page```
 
-Let's now view the workspace.yaml file in the [[[app name]]] project.
+Let's now view the workspace.yaml file in the Spring Sensors project.
 
 ```Double click on arrow to the left of the 'config' folder and open the Workspaces.yaml file found there```
 
