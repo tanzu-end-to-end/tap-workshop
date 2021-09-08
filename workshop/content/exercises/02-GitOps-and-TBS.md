@@ -24,11 +24,6 @@ Note the ```components:``` tag towards the bottom of the file. The list that tag
 file: [[[supplychain-templates.yaml]]]
 ```
 
-Now that the application operator has the supplychain definition, all they need to do is activate it in TAP.
-
-```execute
-kubectl apply -f supplychain/
-```
 This will trigger our workload to begin working its way through the supply chain. We can watch the build process here:
 
 ```execute-2
