@@ -33,7 +33,7 @@ cat <<EOF >> connector.yaml
                 timeoutSeconds:  3
               env:
                 - name: app.live.view.client.host
-                  value: app-live-view-7000
+                  value: application-live-view-7000.app-live-view.svc.cluster.local
                 - name: app.live.view.client.port
                   value: "7000"
                 - name: NODE_NAME
