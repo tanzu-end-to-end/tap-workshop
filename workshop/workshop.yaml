@@ -7,6 +7,7 @@ modules:
     - exercises/02-Workload
     - exercises/03-Supply-Chain
     - exercises/04-Deployment
+    - exercises/05-Iteration
     - workshop-summary
     vars:
     - name: harbor_project_id

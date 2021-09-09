@@ -22,9 +22,6 @@ Let's navigate to the repo where the supply chain published the image:
 name: Harbor
 url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}/repositories
 ```
-You should see a page that looks something like:
-
-![Harbor Workload Screen](Harbor.png)
 
 #Verify Deployment
 
