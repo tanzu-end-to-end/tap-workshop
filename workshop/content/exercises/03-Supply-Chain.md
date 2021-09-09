@@ -24,6 +24,12 @@ file: supplychain/supplychain-templates.yaml
 
 This file contains the definition of each supply chain resource. For example, the first resource is named ```git-repository-battery``` and leverages Flux to monitor and act on changes to our git repository. Similarly, ```kpack-battery``` utilizes kpack in conjunction with TBS to build and package the image.
 
+Now let's add the workload to the TAP supply chain automation.
+
+```execute
+tanzu apps workload create spring-sensors -f spring-sensors/config/workload.yaml -y
+```
+
 #Monitoring the build
 
 For our demonstration, we are simply going to use the Tanzu command line to watch the logs:
