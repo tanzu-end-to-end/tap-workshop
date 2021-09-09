@@ -4,8 +4,9 @@ modules:
     activate:
     - workshop-overview
     - exercises/01-App-Accelerator
-    - exercises/02-GitOps-and-TBS
-    - exercises/03-Harbor-and-Tilt
+    - exercises/02-Workload
+    - exercises/03-Supply-Chain
+    - exercises/04-Deployment
     - workshop-summary
     vars:
     - name: harbor_project_id

@@ -1,15 +1,18 @@
 modules:
     workshop-overview:
         name: Workshop Overview
-        exit_sign: Onboarding 
+        exit_sign: Getting Started
     exercises/01-App-Accelerator:
-        name: Onboarding
-        exit_sign: Build and Package
-    exercises/02-GitOps-and-TBS:
-        name: Build and Package
-        exit_sign: Deploy and Run
-    exercises/03-Harbor-and-Tilt:
-        name: Deploy and Run
+        name: Getting Started
+        exit_sign: Workloads
+    exercises/02-Workload:
+        name: Workloads
+        exit_sign: Supply Chain
+    exercises/03-Supply-Chain:
+        name: Supply Chain
+        exit_sign: Deployment
+    exercises/04-Deployment:
+        name: Deployment
         exit_sign: Summary 
     workshop-summary:
         name: Workshop Summary
