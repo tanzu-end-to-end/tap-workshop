@@ -13,7 +13,10 @@ modules:
         exit_sign: Deployment
     exercises/04-Deployment:
         name: Deployment
-        exit_sign: Summary 
+        exit_sign: Iteration
+    exercises/05-Iteration:
+        name: Iteration
+        exit_sign: Conclusion
     workshop-summary:
         name: Workshop Summary
         exit_sign: Finish Workshop
