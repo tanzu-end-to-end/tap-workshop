@@ -45,32 +45,6 @@ spec:
           url: $(sources[0].url)$
 ---
 apiVersion: kontinue.io/v1alpha1
-kind: ClusterConfigTemplate
-metadata:
-  name: knative-service-battery
-spec:
-  configPath: .status.template
-  template: 
-    apiVersion: serving.knative.dev/v1
-    kind: Service
-    metadata:
-      name: $(workload.metadata.name)$-service
-    spec:
-      template:
-        metadata:
-          labels:
-            tanzu.app.live.view: "true"
-            tanzu.app.live.view.application.name: "$(workload.metadata.name)$"
-          annotations:
-            autoscaling.knative.dev/minScale: "1"
-        spec:
-          containers:
-          - image: $(images[0].image)$
-            env:
-            - name: TARGET
-              value: "this is a test environment variable"
----
-apiVersion: kontinue.io/v1alpha1
 kind: ClusterTemplate
 metadata:
   name: app-deploy
@@ -131,3 +105,29 @@ spec:
         - ytt: {}
       deploy:
         - kapp: {}
+---
+apiVersion: kontinue.io/v1alpha1
+kind: ClusterConfigTemplate
+metadata:
+  name: knative-service-battery
+spec:
+  configPath: .status.template
+  template: 
+    apiVersion: serving.knative.dev/v1
+    kind: Service
+    metadata:
+      name: $(workload.metadata.name)$-service
+    spec:
+      template:
+        metadata:
+          labels:
+            tanzu.app.live.view: "true"
+            tanzu.app.live.view.application.name: "$(workload.metadata.name)$"
+          annotations:
+            autoscaling.knative.dev/minScale: "1"
+        spec:
+          containers:
+          - image: $(images[0].image)$
+            env:
+            - name: TARGET
+              value: "this is a test environment variable"
