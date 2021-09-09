@@ -36,11 +36,12 @@ url: https://accelerator.amer.end2end.link
 Alana has preloaded the accelerator with a variety of projects ranging from Spring Cloud Functions to Node.js. Cody is going to select a project that matches the language and runtime profile that he wants to develop in.
 
 App Accelerator allows the developer to customize and then download all of the necessary files to deploy a cloud-native application. Normally, we would select a generic application template, like Spring Web App. To speed up this demo, we are going to start with the template for a fully-formed application, Spring Sensors.
+
 Select the **Spring Sensors** card from the user interface. 
 
 Application Accelerator provides powerful features for finding, exploring, and customizing project templates. Users can explore a project's structure, open any of the text files in that project, and even edit configuration values before downloading the project. This is enabled by the ```Explore Files``` feature.
 
-```Click on the Explore Project button towards the bottom of the page```
+```Click on the Explore Files button towards the bottom of the page```
 
 Let's now view the workspace.yaml file in the Spring Sensors project.
 

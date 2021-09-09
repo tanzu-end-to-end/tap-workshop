@@ -16,7 +16,7 @@ Unzip the repo into your local file system:
 unzip -o spring-sensors.zip && envsubst < spring-sensors/config/workload.yaml > spring-sensors/config/tmp.yaml && mv spring-sensors/config/tmp.yaml spring-sensors/config/workload.yaml
 ```
 
-Commit the configured application to Git, where it can be picked up by the Supply Chain Choreographer:
+Commit the configured application to Git, where it can be picked up by Tanzu Application Platform:
 
 ```execute
 git -C ~/spring-sensors add ~/spring-sensors/
@@ -28,6 +28,12 @@ git -C ~/spring-sensors commit -a -m "Initial Commit of Spring Sensors"
 
 ```execute
 git -C ~/spring-sensors push -u origin main
+```
+
+Now Cody executes the *workload create* command to publish his new application to Tanzu Application Platform.
+
+```execute
+tanzu apps workload create spring-sensors -f spring-sensors/config/workload.yaml -y
 ```
 
 Let's see where Alana takes it from here!
