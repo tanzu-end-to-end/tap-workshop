@@ -25,3 +25,5 @@ The supply chain will kick off. Let's see what's happening with the Knative serv
 ```execute
 kn service list
 ```
+
+Initially, the LATEST revision column will show ```spring-sensors-service-0001```, the first deployment of our application. Refresh the command until the supply chain has completed deployment, and it will show ```spring-sensors-service-0002``` as the latest revision. At this point, we can click on the service URL, and we will see our code changes reflected in the deployed application.
