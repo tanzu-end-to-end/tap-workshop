@@ -7,7 +7,6 @@ metadata:
 spec:
   portal:
     title: Tanzu Application Platform Demos
-    password: tanzu
     registration:
       type: one-step
       enabled: false
@@ -19,6 +18,10 @@ spec:
     - name: tap-overview
       expires: 60m
       orphaned: 20m
+      capacity: 20
+      reserved: 3
+    - name: tap-development
+      expires: 60m
+      orphaned: 20m
       capacity: 10
       reserved: 0
-      initial: 0

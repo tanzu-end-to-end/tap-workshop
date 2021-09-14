@@ -36,4 +36,10 @@ Now Cody executes the *workload create* command to publish his new application t
 tanzu apps workload create spring-sensors -f spring-sensors/config/workload.yaml -y
 ```
 
+We'll start streaming the logs that show what Tanzu Application Platform does next:
+
+```execute-2
+tanzu apps workload tail spring-sensors --since 1h
+```
+
 Let's see where Alana takes it from here!

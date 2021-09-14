@@ -1,6 +1,6 @@
 # Getting started with Tanzu Application Platform.
 
-We're going to start our story with Cody. He's not a deep expert on container infrastructure, but he's an absolute star in writing business applications using popular languages and frameworks.
+We're going to start our story with Cody, an application developer. He's not a deep expert on container infrastructure, but he's an absolute star in writing business applications using popular languages and frameworks.
 
 ![Cody Languages](images/cody-languages.png)
 
@@ -14,9 +14,9 @@ But he's not sure where to begin. Fortunately, he has a partner in crime, in Ala
 
 ![Alana](images/meet-alana.png)
 
-Alana tells Cody to get started by logging into **Application Accelerator**.
+Alana tells our developer Cody to get started by logging into **Application Accelerator**.
 
-**Application Accelerator for Vmware Tanzu** is made to simplify the creation, discovery, and provisioning of projects and project tempates in enterprise software development.
+**Application Accelerator for VMware Tanzu** is made to simplify the creation, discovery, and provisioning of projects and project tempates in enterprise software development.
 
 * Enterprise Architects use Application Accelerator to provide developers and operators in their organization with enterprise-compliant templates for code and configurations.
 
@@ -33,7 +33,7 @@ name: Accelerator
 url: https://accelerator.amer.end2end.link
 ```
 
-Alana has preloaded the accelerator with a variety of projects ranging from Spring Cloud Functions to Node.js. Cody is going to select a project that matches the language and runtime profile that he wants to develop in.
+Alana the operator has preloaded the accelerator with a variety of projects ranging from Spring Cloud Functions to Node.js. As a developer, Cody is going to select a project that matches the language and runtime profile that he wants to develop in.
 
 App Accelerator allows the developer to customize and then download all of the necessary files to deploy a cloud-native application. Normally, we would select a generic application template, like Spring Web App. To speed up this demo, we are going to start with the template for a fully-formed application, Spring Sensors.
 
@@ -43,7 +43,7 @@ Application Accelerator provides powerful features for finding, exploring, and c
 
 ```Click on the Explore Files button towards the bottom of the page```
 
-Let's now view the workspace.yaml file in the Spring Sensors project.
+Let's now view the workload.yaml file in the Spring Sensors project.
 
 ```Drill down into 'config' folder in the file browser and open the workload.yaml file found there```
 
@@ -54,6 +54,6 @@ This file is the core TAP workload configuration file for the project, and is us
 
 Two tags are important here:
 
-* The ```spec.git.url``` tag is configured to point to the git repository containing the project code
+* The ```spec.source.git.url``` tag is configured to point to the git repository containing the project code
 * The ```app.tanzu.vmware.com/workload-type``` metadata label refers to the supply chain to be executed to build and deploy this project
 
