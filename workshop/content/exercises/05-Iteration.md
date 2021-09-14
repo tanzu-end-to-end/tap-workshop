@@ -11,11 +11,18 @@ file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
 text: "_webProperties.getBannerText()"
 ```
 
-We've selected the variable that determines the banner text at the top of the Web UI. Click below to replace the selectedtext with the string "Tanzu Application Platform Demo", or replace the text yourself with whatever you like.
+We've selected the variable that determines the banner text at the top of the Web UI. Click below to replace the selectedtext with a static constant.
 
 ```editor:replace-text-selection
 file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
-text: ""Tanzu Application Platform Demo""
+text: REPLACEMENT_BANNER_TEXT
+```
+
+Optionally, you can overwrite this static constant to display whatever text you like:
+
+```editor:select-matching-text
+file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
+text: "Tanzu Application Platform Demo"
 ```
 
 Now, let's commit the change to the Git repo that is being monitored by our supply chain:
