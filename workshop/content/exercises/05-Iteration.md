@@ -15,7 +15,7 @@ We've selected the variable that determines the banner text at the top of the We
 
 ```editor:replace-text-selection
 file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
-text: "Tanzu Application Platform Demo"
+text: \"Tanzu Application Platform Demo\"
 ```
 
 Now, let's commit the change to the Git repo that is being monitored by our supply chain:

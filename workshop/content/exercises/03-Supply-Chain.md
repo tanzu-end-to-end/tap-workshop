@@ -30,12 +30,6 @@ file: supplychain/supplychain-templates.yaml
 
 This file contains the definition of each supply chain resource. For example, the first resource is named ```git-repository-battery``` and leverages Flux to monitor and act on changes to our git repository. Similarly, ```kpack-battery``` utilizes kpack in conjunction with TBS to build and package the image. And ```app-deploy``` uses Tanzu Cloud Native Runtime to perform a Knative deployment of our application.
 
-# Monitoring the build
+# Monitoring Supply Chain Execution
 
-For our demonstration, we are simply going to use the Tanzu command line to watch the logs:
-
-```execute-2
-tanzu apps workload tail spring-sensors --since 1h
-```
-
-When the build is complete, the container images are stored in a Harbor registry, from which deployment operations will pull those images. Let's now look at how TAP automates the deployment and execution of our application.
+The logs in the bottom terminal window show the progress of supply chain execution. When the build is complete, the container images are stored in a Harbor registry, from which deployment operations will pull those images. Let's now look at how TAP automates the deployment and execution of our application.
