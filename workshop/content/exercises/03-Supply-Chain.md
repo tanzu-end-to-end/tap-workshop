@@ -35,7 +35,7 @@ This file contains the definition of each supply chain resource. For example, th
 For our demonstration, we are simply going to use the Tanzu command line to watch the logs:
 
 ```execute-2
-tanzu apps workload tail spring-sensors
+tanzu apps workload tail spring-sensors --since 1h
 ```
 
 When the build is complete, the container images are stored in a Harbor registry, from which deployment operations will pull those images. Let's now look at how TAP automates the deployment and execution of our application.

@@ -6,8 +6,16 @@ So Cody now has a running deployment, and it conforms to the compliance standard
 
 Let's make a code change
 
-```editor:open-file
+```editor:select-matching-text
 file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
+text: "_webProperties.getBannerText()"
+```
+
+We've selected the variable that determines the banner text at the top of the Web UI. Click below to replace the selectedtext with the string "Tanzu Application Platform Demo", or replace the text yourself with whatever you like.
+
+```editor:replace-text-selection
+file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
+text: "Tanzu Application Platform Demo"
 ```
 
 Now, let's commit the change to the Git repo that is being monitored by our supply chain:
