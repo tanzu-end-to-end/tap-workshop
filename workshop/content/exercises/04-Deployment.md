@@ -2,7 +2,7 @@ At this point, our onboarding developer simply needs to verify that her applicat
 
 ## Verify Packaging
 
-Once the supply chain completes building and packing Spring Sensors, it is pushed to the Harbor Registry.
+Once the supply chain completes building and packaging Spring Sensors, it is pushed to the Harbor Registry.
 
 Use the following link to access the Harbor registry:
 
