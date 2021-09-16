@@ -35,7 +35,7 @@ url: https://accelerator.amer.end2end.link
 
 Alana the operator has preloaded the accelerator with a variety of projects ranging from Spring Cloud Functions to Node.js. As a developer, Cody is going to select a project that matches the language and runtime profile that he wants to develop in.
 
-App Accelerator allows the developer to customize and then download all of the necessary files to deploy a cloud-native application. Normally, we would select a generic application template, like Spring Web App. To speed up this demo, we are going to start with the template for a fully-formed application, Spring Sensors.
+App Accelerator allows the developer to customize and then download all of the necessary files to deploy a cloud-native application. Normally, we would select a generic application template, such as "Spring Web App" which would just contain the scaffolding for a new application, but not any application code itself.  To speed up this demo, we'll use the "Spring Sensors" template, which instead of scaffolding, has a fully developed application as the template.
 
 Select the **Spring Sensors** card from the user interface. 
 
