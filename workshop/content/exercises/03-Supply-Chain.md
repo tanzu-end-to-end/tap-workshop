@@ -6,7 +6,7 @@ Alana works with Tanzu Application Platform by defining a **supply chain**. A su
 
 This is Alana's supply chain, and she is free to customize it as she pleases: adding, removing, and swapping out components. This supply chain defines an automated, repeatable path to production for all applications being deployed to her clusters. Alana can define multiple supply chains to be used for different use cases.
 
-For this demo, we are going to use a simplifies supply chain, which retrieves application source from Git, creates a container image using Tanzu Build Service, and deploys it using Cloud Native Runtime.
+For this demo, we are going to use a simplified supply chain, which retrieves application source from Git, creates a container image using Tanzu Build Service, and deploys it using Cloud Native Runtime.
 
 ![Supply Chain](images/supply-chain.png)
 
