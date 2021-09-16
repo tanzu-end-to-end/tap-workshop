@@ -25,7 +25,7 @@ url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}
 
 ## Verify Deployment
 
-The Tanzu CLI is your one-stop shop for operating and monitoring the entire TAP platform. Here we can use the CLI to verify that the workload has made it through the supply chain:
+We can use the Tanzu CLI to verify that the workload has made it through the supply chain:
 
 ```execute
 tanzu apps workload list
