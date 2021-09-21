@@ -7,7 +7,7 @@ The workflow here is that Cody downloads the accelerator template to his local m
 For this demo, we'll use the command line instead of the Web UI to download the Spring Sensors application accelerator.
 
 ```execute
-curl acc-ui-server.accelerator-system/api/accelerators/zip?name=spring-sensors -H 'Content-Type: application/json' -d '{"options":{"projectName":"spring-sensors","bannerText":"Tanzu Sensor Database","bannerColor":"Salmon"}}' -o spring-sensors.zip
+tanzu accelerator generate spring-sensors --server-url https://accelerator.{{ ingress_domain }}
 ```
 
 Unzip the repo into your local file system:
