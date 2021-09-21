@@ -25,9 +25,12 @@ RUN curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.20.0/pack
 # Tanzu
 RUN curl -o /usr/local/bin/tanzu https://storage.googleapis.com/tanzu-cli/artifacts/core/latest/tanzu-core-linux_amd64 && \
   chmod 755 /usr/local/bin/tanzu
-COPY artifacts /tmp/artifacts
-COPY artifacts /tmp/artifacts/
-RUN tanzu plugin install apps --local /tmp/artifacts --version dev
+COPY plugins/apps-artifacts /tmp/apps-artifacts
+COPY plugins/apps-artifacts /tmp/apps-artifacts/
+RUN tanzu plugin install apps --local /tmp/apps-artifacts --version dev
+COPY plugins/acc-artifacts /tmp/acc-artifacts
+COPY plugins/acc-artifacts /tmp/acc-artifacts/
+RUN tanzu plugin install accelerator --local /tmp/acc-artifacts --version v0.3.0-rc.1
 # Knative
 RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/download/v0.25.0/kn-linux-amd64 && \
     chmod 755 /usr/local/bin/kn
