@@ -48,4 +48,4 @@ name: Live
 url: https://appview.{{ ingress_domain }}
 ```
 
-Select the dashboard titled {{ session_namespace }}. Here Cody can get a live view of diagnostic information about his running application, and troubleshoot any issues in the deployment.
+Select the dashboard titled spring-sensors-{{ session_namespace }}. Here Cody can get a live view of diagnostic information about his running application, and troubleshoot any issues in the deployment.

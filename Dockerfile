@@ -27,7 +27,7 @@ RUN curl -o /usr/local/bin/tanzu https://storage.googleapis.com/tanzu-cli/artifa
   chmod 755 /usr/local/bin/tanzu
 COPY plugins/apps-artifacts /tmp/apps-artifacts
 COPY plugins/apps-artifacts /tmp/apps-artifacts/
-RUN tanzu plugin install apps --local /tmp/apps-artifacts --version dev
+RUN tanzu plugin install apps --local /tmp/apps-artifacts --version v0.2.0
 COPY plugins/acc-artifacts /tmp/acc-artifacts
 COPY plugins/acc-artifacts /tmp/acc-artifacts/
 RUN tanzu plugin install accelerator --local /tmp/acc-artifacts --version v0.3.0-rc.1
