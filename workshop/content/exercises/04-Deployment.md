@@ -47,3 +47,5 @@ One of the more exciting aspects of the TAP platform is its tools for automatica
 name: Live
 url: https://appview.{{ ingress_domain }}
 ```
+
+Select the dashboard titled {{ session_namespace }}. Here Cody can get a live view of diagnostic information about his running application, and troubleshoot any issues in the deployment.

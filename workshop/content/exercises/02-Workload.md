@@ -4,7 +4,7 @@ The workflow here is that Cody downloads the accelerator template to his local m
 
 ![Accelerator to Git](images/push-to-git.png)
 
-For this demo, we'll use the command line instead of the Web UI to download the Spring Sensors application accelerator.
+For this demo, we'll use the Tanzu command line interface instead of the Web UI to download the Spring Sensors application accelerator. The Tanzu CLI is your one-stop shop for interacting with theq TAP platform.
 
 ```execute
 tanzu accelerator generate spring-sensors --server-url https://accelerator.{{ ingress_domain }}
@@ -30,7 +30,7 @@ git -C ~/spring-sensors commit -a -m "Initial Commit of Spring Sensors"
 git -C ~/spring-sensors push -u origin main
 ```
 
-Now Cody executes the *workload create* command to publish his new application, using the Tanzu CLI. The Tanzu CLI is your one-stop shop for interacting with theq TAP platform.
+Now Cody executes the *workload create* command to publish his new application. 
 
 ```execute
 tanzu apps workload create spring-sensors -f spring-sensors/config/workload.yaml -y

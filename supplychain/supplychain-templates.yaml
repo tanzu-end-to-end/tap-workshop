@@ -91,7 +91,7 @@ spec:
                     metadata:
                       labels:
                         tanzu.app.live.view: "true"
-                        tanzu.app.live.view.application.name: "$(workload.metadata.name)$"
+                        tanzu.app.live.view.application.name: "$(workload.metadata.namespace)$"
                       annotations:
                         autoscaling.knative.dev/minScale: "1"
                     spec:
