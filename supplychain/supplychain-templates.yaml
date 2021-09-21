@@ -1,9 +1,8 @@
-
 ---
-apiVersion: kontinue.io/v1alpha1
+apiVersion: carto.run/v1alpha1
 kind: ClusterSourceTemplate
 metadata:
-  name: git-repository-battery
+  name: source
 spec:
   urlPath: .status.artifact.url
   revisionPath: .status.artifact.revision
@@ -12,9 +11,9 @@ spec:
     apiVersion: source.toolkit.fluxcd.io/v1beta1
     kind: GitRepository
     metadata:
-      name: $(workload.metadata.name)$-source
+      name: $(workload.metadata.name)$
     spec:
-      interval: 3m
+      interval: 1m
       url: $(workload.spec.source.git.url)$
       ref: $(workload.spec.source.git.ref)$
       gitImplementation: libgit2
@@ -22,10 +21,17 @@ spec:
 
 
 ---
-apiVersion: kontinue.io/v1alpha1
+#
+#
+# `image` instantiates a `kpack/Image` object, responsible for ensuring that
+# there's a container image built and pushed to a container image registry
+# whenever there's either new source code, or its image builder gets na update.
+#
+#
+apiVersion: carto.run/v1alpha1
 kind: ClusterImageTemplate
 metadata:
-  name: kpack-battery
+  name: image
 spec:
   imagePath: .status.latestImage
 
@@ -33,7 +39,7 @@ spec:
     apiVersion: kpack.io/v1alpha1
     kind: Image
     metadata:
-      name: $(workload.metadata.name)$-image
+      name: $(workload.metadata.name)$
     spec:
       tag: harbor.amer.end2end.link/$(workload.metadata.namespace)$/$(workload.metadata.name)$
       serviceAccount: service-account
@@ -43,11 +49,24 @@ spec:
       source:
         blob:
           url: $(sources[0].url)$
+
 ---
-apiVersion: kontinue.io/v1alpha1
+#
+#
+# `app-deploy` instantiates a `kapp-ctrl/App` making use of an image that comes
+# as input in the form of `$(images.image.image)$`.
+#
+# the use of `App` here is important because of how `knative` updates the
+# knative service under the hood to include some extra annotations that _can't_
+# be mutated once applied by knative's controller. As `kapp` is able to be
+# configured to not patch certain features (something `cartographer` can't
+# yet), we're able to bridge that gap with the use of `kapp-ctrl/App`.
+#
+#
+apiVersion: carto.run/v1alpha1
 kind: ClusterTemplate
 metadata:
-  name: app-deploy
+  name: app-deploy-v6
 spec:
   template:
     apiVersion: kappctrl.k14s.io/v1alpha1
@@ -55,7 +74,7 @@ spec:
     metadata:
       name: $(workload.metadata.name)$
     spec:
-      serviceAccountName: service-account
+      serviceAccountName: default
       fetch:
         - inline:
             paths:
@@ -81,6 +100,7 @@ spec:
                     type: copy
                     sources: [new, existing]
                     resourceMatchers: *matchers
+
                 ---
                 apiVersion: serving.knative.dev/v1
                 kind: Service
@@ -91,43 +111,17 @@ spec:
                     metadata:
                       labels:
                         tanzu.app.live.view: "true"
-                        tanzu.app.live.view.application.name: "$(workload.metadata.name)$"
+                        tanzu.app.live.view.application.name: "$(workload.metadata.name)$-$(workload.metadata.namespace)$"
+                        carto.run/workload-name: $(workload.metadata.name)$
                       annotations:
                         autoscaling.knative.dev/minScale: "1"
                     spec:
                       containers:
-                        - image: $(images[0].image)$
-                          name: workload
-                          env:
-                          - name: TARGET
-                            value: "this is a test environment variable"
+                        - name: workload
+                          image: $(images[0].image)$
+                          securityContext:
+                            runAsUser: 1000
       template:
         - ytt: {}
       deploy:
         - kapp: {}
----
-apiVersion: kontinue.io/v1alpha1
-kind: ClusterConfigTemplate
-metadata:
-  name: knative-service-battery
-spec:
-  configPath: .status.template
-  template: 
-    apiVersion: serving.knative.dev/v1
-    kind: Service
-    metadata:
-      name: $(workload.metadata.name)$-service
-    spec:
-      template:
-        metadata:
-          labels:
-            tanzu.app.live.view: "true"
-            tanzu.app.live.view.application.name: "$(workload.metadata.name)$"
-          annotations:
-            autoscaling.knative.dev/minScale: "1"
-        spec:
-          containers:
-          - image: $(images[0].image)$
-            env:
-            - name: TARGET
-              value: "this is a test environment variable"
