@@ -1,7 +1,7 @@
-created: 2021-08-27T16:58:01.496885317Z
+created: 2021-09-15T19:59:23.171491974Z
 plugins:
 - name: apps
   description: Applications on Kubernetes
   versions: []
 version: ""
-coreVersion: dev
+coreVersion: v0.2.0
