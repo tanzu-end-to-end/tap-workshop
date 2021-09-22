@@ -105,7 +105,7 @@ spec:
                 apiVersion: serving.knative.dev/v1
                 kind: Service
                 metadata:
-                  name: $(workload.metadata.name)$-service
+                  name: $(workload.metadata.name)$
                 spec:
                   template:
                     metadata:
@@ -113,6 +113,7 @@ spec:
                         tanzu.app.live.view: "true"
                         tanzu.app.live.view.application.name: "$(workload.metadata.name)$-$(workload.metadata.namespace)$"
                         carto.run/workload-name: $(workload.metadata.name)$
+                        carto.run/workload-namespace: $(workload.metadata.namespace)$
                       annotations:
                         autoscaling.knative.dev/minScale: "1"
                     spec:
