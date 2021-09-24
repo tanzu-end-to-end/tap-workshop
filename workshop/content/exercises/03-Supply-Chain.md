@@ -28,7 +28,7 @@ To understand what each component does, you can take a look at the supplychain-t
 file: supplychain/supplychain-templates.yaml
 ```
 
-This file contains the definition of each supply chain resource. For example, the first resource is named ```git-repository-battery``` and leverages Flux to monitor and act on changes to our git repository. Similarly, ```kpack-battery``` utilizes kpack in conjunction with TBS to build and package the image. And ```app-deploy``` uses Tanzu Cloud Native Runtime to perform a Knative deployment of our application.
+This file contains the definition of each supply chain resource. For example, the first resource is named ```source``` and leverages Flux to monitor and act on changes to our git repository. Similarly, ```image``` utilizes kpack in conjunction with TBS to build and package the image. And ```app-deploy``` uses Tanzu Cloud Native Runtime to perform a Knative deployment of our application.
 
 # Monitoring Supply Chain Execution
 
