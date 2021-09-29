@@ -18,7 +18,7 @@ metadata:
   name: supply-chain
 spec:
   selector:
-    app.tanzu.vmware.com/workload-type: web
+    app.tanzu.vmware.com/workload-type: web-app
 
   #
   #
