@@ -8,7 +8,7 @@ To install the Tanzu Application Platform workshop in your own environment, the 
 
 **Environment Values File**
 
-Follow the docs for [Customizing the Environment Values File](install/values/README.md). Ensure that you have the carvel tools **ytt** and **kapp** installed on your local machine.
+Follow the docs for [Customizing the Environment Values File](install/values/README.MD). Ensure that you have the carvel tools **ytt** and **kapp** installed on your local machine.
 
 **Educates**
 
