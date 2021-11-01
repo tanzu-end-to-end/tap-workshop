@@ -4,7 +4,7 @@ metadata:
   name: tap-supply-chain
 spec:
   selector:
-    app.tanzu.vmware.com/workload-type: web
+    app.tanzu.vmware.com/workload-type: web-app
 
   components:
     - name: source-provider
