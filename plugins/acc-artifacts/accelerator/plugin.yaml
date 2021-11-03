@@ -1,6 +1,6 @@
 name: accelerator
-description: Manage accelerators in your kubernetes cluster
-version: v0.3.0-rc.1
+description: Manage accelerators in a Kubernetes cluster
+version: v0.4.1
 buildSHA: ""
 group: Build
 completionType: 0
