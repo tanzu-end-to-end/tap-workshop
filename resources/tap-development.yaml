@@ -13,7 +13,7 @@ spec:
   url: https://github.com/tanzu-end-to-end/tap-workshop
   content:
     image: #@ "harbor.{}/tanzu-e2e/eduk8s-tap-workshop:latest".format(data.values.ingress.domain)
-    files: #@ "https://github.com/{}/tap-workshop/home?ref={}".format(data.values.git.account,data.values.git.branch)
+    files: #@ "github.com/{}/tap-workshop?ref={}".format(data.values.git.account,data.values.git.branch)
   session:
     env:
       - name: GITEA_PASSWORD
@@ -64,7 +64,7 @@ spec:
       - apiVersion: v1
         kind: ServiceAccount
         metadata:
-          name: default
+          name: tap-sa
         secrets:
           - name: registry-credentials
         imagePullSecrets:
@@ -72,41 +72,30 @@ spec:
           - name: tap-registry
 
       - apiVersion: rbac.authorization.k8s.io/v1
-        kind: Role
+        kind: ClusterRoleBinding
         metadata:
-          name: kapp-permissions
-          annotations:
-            kapp.k14s.io/change-group: "role"
-        rules:
-          - apiGroups:
-              - servicebinding.io
-            resources: ['servicebindings']
-            verbs: ['*']
-          - apiGroups:
-              - services.tanzu.vmware.com
-            resources: ['resourceclaims']
-            verbs: ['*']
-          - apiGroups:
-              - serving.knative.dev
-            resources: ['services']
-            verbs: ['*']
-          - apiGroups: [""]
-            resources: ['configmaps']
-            verbs: ['get', 'watch', 'list', 'create', 'update', 'patch', 'delete']
-
-      - apiVersion: rbac.authorization.k8s.io/v1
-        kind: RoleBinding
-        metadata:
-          name: kapp-permissions
-          annotations:
-            kapp.k14s.io/change-rule: "upsert after upserting role"
+          name: $(session_namespace)-supply-chain-binding
         roleRef:
           apiGroup: rbac.authorization.k8s.io
-          kind: Role
-          name: kapp-permissions
+          kind: ClusterRole
+          name: cluster-admin
         subjects:
           - kind: ServiceAccount
-            name: default
+            namespace: $(workshop_namespace)
+            name: $(service_account)
+
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRoleBinding
+        metadata:
+          name: $(session_namespace)-supply-chain-binding
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: cluster-admin
+        subjects:
+          - kind: ServiceAccount
+            namespace: $(workshop_namespace)
+            name: tap-sa
 
 #      - apiVersion: rbac.authorization.k8s.io/v1
 #        kind: ClusterRole

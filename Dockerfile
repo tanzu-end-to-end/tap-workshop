@@ -1,4 +1,4 @@
-FROM projects.registry.vmware.com/educates/base-environment@sha256:7f2ab8bea0e08ecc1b8b58aeab74dd2d2c43c17a5ebd96e91c01281be21f0a54
+FROM projects.registry.vmware.com/educates/base-environment
 
 # All the direct Downloads need to run as root as they are going to /usr/local/bin
 USER root
@@ -23,5 +23,7 @@ RUN tanzu plugin install accelerator --local /tmp/acc-artifacts --version v0.4.1
 # Knative
 RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/download/v0.26.0/kn-linux-amd64 && \
     chmod 755 /usr/local/bin/kn
+# Utilities
+RUN apt-get update && apt-get install -y unzip
 
 USER 1001

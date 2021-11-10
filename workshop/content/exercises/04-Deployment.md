@@ -6,7 +6,7 @@ Once the supply chain completes building and packaging Spring Sensors, it is pus
 
 Use the following link to access the Harbor registry:
 
-```dashboard:create-dashboard
+```dashboard:open-url
 name: Harbor
 url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}/repositories
 ```
@@ -18,7 +18,7 @@ You will be redirected to the sign-in page.
 
 Let's navigate to the repo where the supply chain published the image:
 
-```dashboard:reload-dashboard
+```dashboard:open-url
 name: Harbor
 url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}/repositories
 ```
@@ -43,9 +43,9 @@ This command generates the URL for our running application. If we click on the U
 
 One of the more exciting aspects of the TAP platform is its tools for automatically adding and visualizing application monitoring. Access the App Live view here:
 
-```dashboard:create-dashboard
+```dashboard:open-url
 name: Live
-url: https://appview.{{ ingress_domain }}
+url: https://app-live-view.{{ ingress_domain }}
 ```
 
 Select the dashboard titled spring-sensors-{{ session_namespace }}. Here Cody can get a live view of diagnostic information about his running application, and troubleshoot any issues in the deployment.

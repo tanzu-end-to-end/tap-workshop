@@ -8,18 +8,17 @@ spec:
   portal:
     title: Tanzu Application Platform Demos
     registration:
-      type: one-step
-      enabled: false
+      type: anonymous
     updates:
       workshop: true
     sessions:
       maximum: 10
   workshops:
-    - name: tap-overview
-      expires: 60m
-      orphaned: 20m
-      capacity: 20
-      reserved: 0
+#    - name: tap-overview
+#      expires: 60m
+#      orphaned: 20m
+#      capacity: 20
+#      reserved: 0
     - name: tap-development
       expires: 60m
       orphaned: 20m

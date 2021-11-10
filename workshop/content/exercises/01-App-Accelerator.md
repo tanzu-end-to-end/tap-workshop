@@ -28,7 +28,7 @@ If you are familiar with the [Spring Boot Initializr](https://start.spring.io/) 
 
 Check out Application Accelerator:
 
-```dashboard:create-dashboard
+```dashboard:open-url
 name: Accelerator
 url: https://accelerator.amer.end2end.link
 ```
