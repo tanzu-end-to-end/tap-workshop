@@ -2,7 +2,7 @@
 set -x
 set +e
 
-export REPO_NAME=$SESSION_NAMESPACE-$RANDOM
+export REPO_NAME=$SESSION_NAMESPACE-$(date +%s)
 echo $REPO_NAME > repo.txt
 
 mkdir spring-sensors
