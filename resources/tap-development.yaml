@@ -61,6 +61,19 @@ spec:
         data:
           .dockerconfigjson: e30K
 
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRoleBinding
+        metadata:
+          name: $(session_namespace)-binding
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: cluster-admin
+        subjects:
+          - kind: ServiceAccount
+            namespace: $(workshop_namespace)
+            name: $(service_account)
+
       - apiVersion: v1
         kind: ServiceAccount
         metadata:
@@ -80,19 +93,6 @@ spec:
           - apiGroups: ["*"]
             resources: ["*"]
             verbs: ["*"]
-
-      - apiVersion: rbac.authorization.k8s.io/v1
-        kind: RoleBinding
-        metadata:
-          name: $(session_namespace)-binding
-        roleRef:
-          apiGroup: rbac.authorization.k8s.io
-          kind: Role
-          name: service-account-role
-        subjects:
-          - kind: ServiceAccount
-            namespace: $(workshop_namespace)
-            name: $(service_account)
 
       - apiVersion: rbac.authorization.k8s.io/v1
         kind: RoleBinding
