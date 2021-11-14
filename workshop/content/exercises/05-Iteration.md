@@ -35,10 +35,10 @@ git -C ~/spring-sensors commit -a -m "Application Change"
 git -C ~/spring-sensors push -u origin main
 ```
 
-The supply chain will kick off. Let's see what's happening with the Knative service that is being managed by Cloud Native Runtime:
+Wait a moment, and the supply chain will kick off. You will be able to see the build and deploy progress in the bottom terminal window. After the deploy, you can verify it is complete by again running:
 
 ```execute
-kn service list
+tanzu apps workload get spring-sensors
 ```
 
-Initially, the LATEST revision column will show ```spring-sensors-service-0001```, the first deployment of our application. Refresh the command until the supply chain has completed deployment, and it will show ```spring-sensors-service-0002``` as the latest revision. At this point, we can click on the service URL, and we will see our code changes reflected in the deployed application.
+You will see the second build process listed for the build you triggered with your application update. The State for that build pod should show **Succeeded**. You can once again click on the URL displayed for your application Service, and we will see our code changes reflected in the deployed version.

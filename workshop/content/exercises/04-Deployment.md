@@ -31,13 +31,13 @@ We can use the Tanzu CLI to verify that the workload has made it through the sup
 tanzu apps workload list
 ```
 
-Now let's look at the how to access our application.
+Once the status shows **Ready**, let's see how to access our application.
 
 ```execute
-kubectl get ksvc -o=jsonpath='{.items[0].status.url}{"\n"}'
+tanzu apps workload get spring-sensors
 ```
 
-This command generates the URL for our running application. If we click on the URL in the terminal, we can begin using it.
+This command provides details on our application, including the URL associated with the Knative (CNR) Service that provides Ingress to our application. Click on the URL in the terminal window to open our application in a browser window.
 
 ## Monitor Operations
 
