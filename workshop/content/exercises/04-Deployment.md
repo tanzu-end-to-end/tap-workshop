@@ -8,7 +8,7 @@ Use the following link to access the Harbor registry:
 
 ```dashboard:open-url
 name: Harbor
-url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}/repositories
+url: https://harbor.{{ ingress_domain }}
 ```
 
 You will be redirected to the sign-in page.
@@ -16,11 +16,10 @@ You will be redirected to the sign-in page.
 * Username: ```admin```
 * password ```{{ ENV_HARBOR_PASSWORD }}```
 
-Let's navigate to the repo where the supply chain published the image:
+Once you are logged in, click on **tap** in the Projects list, and then click on the **tap/spring-sensors** repo. You will see artifacts for the spring-sensors application. If you want to verify which image is yours, you can check the sha256 for your container image with this command:
 
-```dashboard:open-url
-name: Harbor
-url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}/repositories
+```execute
+kp image list
 ```
 
 ## Verify Deployment
