@@ -1,29 +1,61 @@
-apiVersion: kontinue.io/v1alpha1
-kind: ClusterSupplyChain
-metadata:
-  name: tap-supply-chain
-spec:
-  selector:
-    app.tanzu.vmware.com/workload-type: web-app
-
-  components:
-    - name: source-provider
-      templateRef:
-        kind: ClusterSourceTemplate
-        name: git-repository-battery
-
-    - name: built-image-provider
-      templateRef:
-        kind: ClusterImageTemplate
-        name: kpack-battery
-      sources:
-        - component: source-provider
-          name: solo-source-provider
-
-    - name: knative-service-provider
-      templateRef:
-        kind: ClusterConfigTemplate
-        name: knative-service-battery
-      images:
-        - component: built-image-provider
-          name: solo-image-provider
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: carto.run/v1alpha1
+    kind: ClusterSupplyChain
+    metadata:
+      name: source-to-url
+    spec:
+      selector:
+        apps.tanzu.vmware.com/workload-type: web
+      resources:
+        - name: source-provider
+          params:
+            - name: serviceAccount
+              value: tap-sa
+          templateRef:
+            kind: ClusterSourceTemplate
+            name: source-template
+        - name: image-builder
+          params:
+            - name: serviceAccount
+              value: tap-sa
+            - name: clusterBuilder
+              value: default
+            - name: registry
+              value:
+                repository: tap
+                server: harbor.tap.amer.end2end.link
+          sources:
+            - name: source
+              resource: source-provider
+          templateRef:
+            kind: ClusterImageTemplate
+            name: kpack-template
+        - images:
+            - name: image
+              resource: image-builder
+          name: config-provider
+          params:
+            - name: serviceAccount
+              value: tap-sa
+          templateRef:
+            kind: ClusterConfigTemplate
+            name: convention-template
+        - configs:
+            - name: config
+              resource: config-provider
+          name: app-deploy
+          params:
+            - name: serviceAccount
+              value: tap-sa
+          templateRef:
+            kind: ClusterTemplate
+            name: deploy-template
+        - configs:
+            - name: config
+              resource: config-provider
+          name: app-config
+          templateRef:
+            kind: ClusterTemplate
+            name: config-template
