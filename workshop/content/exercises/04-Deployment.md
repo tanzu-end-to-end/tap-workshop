@@ -47,4 +47,4 @@ name: Live
 url: https://app-live-view.{{ ingress_domain }}
 ```
 
-Select the dashboard titled spring-sensors-{{ session_namespace }}. Here Cody can get a live view of diagnostic information about his running application, and troubleshoot any issues in the deployment.
+Drill down into the spring-sensors application and select one of the rows. Here Cody can get a live view of diagnostic information about his running application, and troubleshoot any issues in the deployment.

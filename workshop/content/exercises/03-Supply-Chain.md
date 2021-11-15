@@ -24,12 +24,6 @@ There are a few things to highlight in this file.
 
 To understand what each resource does, you can take a look at the numbered definition files for each step in the supply chain, starting with ```supply-chain-01-source.yaml```
 
-```editor:open-file
-file: supplychain/supplychain-templates.yaml
-```
-
-This file contains the definition of each supply chain resource. For example, the first resource is named ```source``` and leverages Flux to monitor and act on changes to our git repository. Similarly, ```image``` utilizes kpack in conjunction with TBS to build and package the image. And ```app-deploy``` uses Tanzu Cloud Native Runtime to perform a Knative deployment of our application.
-
 # Monitoring Supply Chain Execution
 
 The logs in the bottom terminal window show the progress of supply chain execution. When the build is complete, the container images are stored in a Harbor registry, from which deployment operations will pull those images. Let's now look at how TAP automates the deployment and execution of our application.
