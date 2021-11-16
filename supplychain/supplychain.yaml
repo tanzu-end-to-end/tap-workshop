@@ -1,49 +1,61 @@
-# Copyright 2021 VMware
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-apiVersion: carto.run/v1alpha1
-kind: ClusterSupplyChain
-metadata:
-  name: supply-chain
-spec:
-  selector:
-    app.tanzu.vmware.com/workload-type: web-app
-
-  #
-  #
-  #   source-provider <--[src]-- image-builder <--[img]--- deployer
-  #     GitRepository               Image                    App
-  #
-  #
-  components:
-    - name: source-provider
-      templateRef:
-        kind: ClusterSourceTemplate
-        name: source
-
-    - name: image-builder
-      templateRef:
-        kind: ClusterImageTemplate
-        name: image
-      sources:
-        - component: source-provider
-          name: source
-
-    - name: deployer
-      templateRef:
-        kind: ClusterTemplate
-        name: app-deploy-v6
-      images:
-        - component: image-builder
-          name: image
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: carto.run/v1alpha1
+    kind: ClusterSupplyChain
+    metadata:
+      name: source-to-url
+    spec:
+      selector:
+        apps.tanzu.vmware.com/workload-type: web
+      resources:
+        - name: source-provider
+          params:
+            - name: serviceAccount
+              value: tap-sa
+          templateRef:
+            kind: ClusterSourceTemplate
+            name: source-template
+        - name: image-builder
+          params:
+            - name: serviceAccount
+              value: tap-sa
+            - name: clusterBuilder
+              value: default
+            - name: registry
+              value:
+                repository: tap
+                server: harbor.tap.amer.end2end.link
+          sources:
+            - name: source
+              resource: source-provider
+          templateRef:
+            kind: ClusterImageTemplate
+            name: kpack-template
+        - images:
+            - name: image
+              resource: image-builder
+          name: config-provider
+          params:
+            - name: serviceAccount
+              value: tap-sa
+          templateRef:
+            kind: ClusterConfigTemplate
+            name: convention-template
+        - configs:
+            - name: config
+              resource: config-provider
+          name: app-deploy
+          params:
+            - name: serviceAccount
+              value: tap-sa
+          templateRef:
+            kind: ClusterTemplate
+            name: deploy-template
+        - configs:
+            - name: config
+              resource: config-provider
+          name: app-config
+          templateRef:
+            kind: ClusterTemplate
+            name: config-template

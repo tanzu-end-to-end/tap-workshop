@@ -19,16 +19,10 @@ file: supplychain/supplychain.yaml
 ```
 There are a few things to highlight in this file.
 
-1. The ```spec/app.tanzu.vmware.com/workload-type``` entry defines that tag that will be used in the workload.yaml file of any application that utilizes this supply chain.
-2. The ```components``` section has a sequential list of all components used by the supply chain.
+1. The ```spec/selector/app.tanzu.vmware.com/workload-type``` entry defines that tag that will be used in the workload.yaml file of any application that utilizes this supply chain.
+2. The ```resources``` section has a sequential list of all the steps in the supply chain.
 
-To understand what each component does, you can take a look at the supplychain-tempates.yaml file:
-
-```editor:open-file
-file: supplychain/supplychain-templates.yaml
-```
-
-This file contains the definition of each supply chain resource. For example, the first resource is named ```source``` and leverages Flux to monitor and act on changes to our git repository. Similarly, ```image``` utilizes kpack in conjunction with TBS to build and package the image. And ```app-deploy``` uses Tanzu Cloud Native Runtime to perform a Knative deployment of our application.
+To understand what each resource does, you can take a look at the numbered definition files for each step in the supply chain, starting with ```supply-chain-01-source.yaml```
 
 # Monitoring Supply Chain Execution
 

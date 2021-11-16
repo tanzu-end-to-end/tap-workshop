@@ -6,9 +6,9 @@ Once the supply chain completes building and packaging Spring Sensors, it is pus
 
 Use the following link to access the Harbor registry:
 
-```dashboard:create-dashboard
+```dashboard:open-url
 name: Harbor
-url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}/repositories
+url: https://harbor.{{ ingress_domain }}
 ```
 
 You will be redirected to the sign-in page.
@@ -16,11 +16,10 @@ You will be redirected to the sign-in page.
 * Username: ```admin```
 * password ```{{ ENV_HARBOR_PASSWORD }}```
 
-Let's navigate to the repo where the supply chain published the image:
+Once you are logged in, click on **tap** in the Projects list, and then click on the **tap/spring-sensors** repo. You will see artifacts for the spring-sensors application. If you want to verify which image is yours, you can check the sha256 for your container image with this command:
 
-```dashboard:reload-dashboard
-name: Harbor
-url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}/repositories
+```execute
+kp image list
 ```
 
 ## Verify Deployment
@@ -31,21 +30,21 @@ We can use the Tanzu CLI to verify that the workload has made it through the sup
 tanzu apps workload list
 ```
 
-Now let's look at the how to access our application.
+Once the status shows **Ready**, let's see how to access our application.
 
 ```execute
-kubectl get ksvc -o=jsonpath='{.items[0].status.url}{"\n"}'
+tanzu apps workload get spring-sensors
 ```
 
-This command generates the URL for our running application. If we click on the URL in the terminal, we can begin using it.
+This command provides details on our application, including the URL associated with the Knative (CNR) Service that provides Ingress to our application. Click on the URL in the terminal window to open our application in a browser window.
 
 ## Monitor Operations
 
 One of the more exciting aspects of the TAP platform is its tools for automatically adding and visualizing application monitoring. Access the App Live view here:
 
-```dashboard:create-dashboard
+```dashboard:open-url
 name: Live
-url: https://appview.{{ ingress_domain }}
+url: https://app-live-view.{{ ingress_domain }}
 ```
 
-Select the dashboard titled spring-sensors-{{ session_namespace }}. Here Cody can get a live view of diagnostic information about his running application, and troubleshoot any issues in the deployment.
+Drill down into the spring-sensors application and select one of the rows. Here Cody can get a live view of diagnostic information about his running application, and troubleshoot any issues in the deployment.
