@@ -40,11 +40,18 @@ This command provides details on our application, including the URL associated w
 
 ## Monitor Operations
 
-One of the more exciting aspects of the TAP platform is its tools for automatically adding and visualizing application monitoring. Access the App Live view here:
+Cody can now use the Tanzu Application Platform GUI to get more information about his deployed workloads. Click here to access the TAP GUI
 
 ```dashboard:open-url
 name: Live
-url: https://app-live-view.{{ ingress_domain }}
+url: https://tap-gui.{{ ingress_domain }}
 ```
 
-Drill down into the spring-sensors application and select one of the rows. Here Cody can get a live view of diagnostic information about his running application, and troubleshoot any issues in the deployment.
+TAP GUI provides a great deal of information about running software deployed through TAP, but Cody is particularly interested in the App Live View. It provides realtime visibility into his new application. Navigate to App Live View:
+
+```dashboard:open-url
+name: Live
+url: https://tap-gui.{{ ingress_domain }}/app-live-view/apps/spring-sensors
+```
+
+Click on the top pod row. On the subsequent screen, you can use the "Information Category" dropdown to navigate through detailed troubleshooting data on the Spring Sensors app.
