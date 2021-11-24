@@ -16,6 +16,9 @@ modules:
         exit_sign: Iteration
     exercises/05-Iteration:
         name: Iteration
+        exit_sign: Data Services
+    exercises/06-Data-Services:
+        name: Data Services
         exit_sign: Conclusion
     workshop-summary:
         name: Workshop Summary

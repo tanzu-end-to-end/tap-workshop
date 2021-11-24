@@ -45,15 +45,17 @@ Application Accelerator provides powerful features for finding, exploring, and c
 
 Let's now view the workload.yaml file in the Spring Sensors project.
 
-```Drill down into 'config' folder in the file browser and open the workload.yaml file found there```
+```Drill down into 'tap' folder in the file browser and open the workload.yaml file found there```
 
 This file is the core TAP workload configuration file for the project, and is used by developers to define the parameters by which TAP and Kubernetes should deploy and operate the application. Some specific items to note here:
 
 * The ```metadata``` section contains tags that will be used to hand this application off to Tanzu Application Platform.
 * The ```spec``` section contains configuration used to build, deploy, and run the application.
 
-Two tags are important here:
 
-* The ```spec.source.git.url``` tag is configured to point to the git repository containing the project code
+There are a three things to highlight in this file.
+
 * The ```app.tanzu.vmware.com/workload-type``` metadata label refers to the supply chain to be executed to build and deploy this project
+* The ```spec.source.git``` configuration points to a git repository branch with the application code
+* The ```serviceClaims``` configures a service binding with a RabbitMQ cluster for asynchronous messaging. More details about it later.
 

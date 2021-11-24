@@ -209,14 +209,35 @@ spec:
                           fieldPath: metadata.namespace
                     - name: app.live.view.connector.mode
                       value: "namespace-scoped"
-
-#      - apiVersion: rbac.authorization.k8s.io/v1
-#        kind: ClusterRole
-#        metadata:
-#          name: service-binding-rmq
-#          labels:
-#            servicebinding.io/controller: "true"
-#        rules:
-#          - apiGroups: ["rabbitmq.com"]
-#            resources: ["rabbitmqclusters"]
-#            verbs: ["get", "list", "watch"]
+      - apiVersion: rabbitmq.com/v1beta1
+        kind: RabbitmqCluster
+        metadata:
+          name: rmq-1
+          namespace: $(session_namespace)
+        spec:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 250Mi
+            limits:
+              cpu: 100m
+              memory: 250Mi
+      - apiVersion: carto.run/v1alpha1
+        kind: Workload
+        metadata:
+          name: spring-sensors-sensor
+          namespace: $(session_namespace)
+          labels:
+            apps.tanzu.vmware.com/workload-type: web
+        spec:
+          source:
+            git:
+              url: https://github.com/tanzu-end-to-end/spring-sensors-sensor
+              ref:
+                branch: main
+          serviceClaims:
+            - name: rmq
+              ref:
+                apiVersion: rabbitmq.com/v1beta1
+                kind: RabbitmqCluster
+                name: rmq-1
