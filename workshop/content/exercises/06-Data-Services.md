@@ -1,4 +1,3 @@
-## Data Services
 Most applications require backing services, such as databases, queues, and caches, to run successfully.
 
 Tanzu Application Platform makes it easy to discover, curate, consume, and manage such backing services across single or multi-cluster environments. 

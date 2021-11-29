@@ -30,7 +30,7 @@ Check out Application Accelerator:
 
 ```dashboard:open-url
 name: Accelerator
-url: https://accelerator.amer.end2end.link
+url: https://accelerator.{{ ingress_domain }}
 ```
 
 Alana the operator has preloaded the accelerator with a variety of projects ranging from Spring Cloud Functions to Node.js. As a developer, Cody is going to select a project that matches the language and runtime profile that he wants to develop in.

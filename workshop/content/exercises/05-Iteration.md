@@ -1,5 +1,3 @@
-## Iteration
-
 So Cody now has a running deployment, and it conforms to the compliance standards that Alana defined. But Cody's just getting started. The supply chain is repeatable, so each new commit that Cody makes to the codebase will trigger another execution of the supply chain.
 
 ![Iterate](images/iterate.png)
