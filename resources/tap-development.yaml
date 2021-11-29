@@ -222,22 +222,38 @@ spec:
             limits:
               cpu: 100m
               memory: 250Mi
-      - apiVersion: carto.run/v1alpha1
-        kind: Workload
+      - apiVersion: apps/v1
+        kind: Deployment
         metadata:
-          name: spring-sensors-sensor
+          name: sensors-publisher
           namespace: $(session_namespace)
           labels:
-            apps.tanzu.vmware.com/workload-type: web
+            app: sensors-publisher
         spec:
-          source:
-            git:
-              url: https://github.com/tanzu-end-to-end/spring-sensors-sensor
-              ref:
-                branch: main
-          serviceClaims:
-            - name: rmq
-              ref:
-                apiVersion: rabbitmq.com/v1beta1
-                kind: RabbitmqCluster
-                name: rmq-1
+          replicas: 1
+          template:
+            metadata:
+              name: sensors-publisher
+              labels:
+                app: sensors-publisher
+            spec:
+              containers:
+                - name: sensors-publisher
+                  image: harbor.tap.amer.end2end.link/tap/spring-sensors-sensor
+                  imagePullPolicy: IfNotPresent
+                  volumeMounts:
+                    - mountPath: /bindings/rmq
+                      name: service-binding
+                  env:
+                    - name: SERVICE_BINDING_ROOT
+                      value: /bindings
+              restartPolicy: Always
+              volumes:
+                - name: service-binding
+                  projected:
+                    sources:
+                      - secret:
+                          name: rmq-1-default-user
+          selector:
+            matchLabels:
+              app: sensors-publisher
