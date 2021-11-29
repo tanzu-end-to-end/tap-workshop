@@ -8,12 +8,12 @@ This experience is made possible in Tanzu Application Platform by using the **Se
 Within the context of Tanzu Application Platform, one of the most important use cases is binding an application workload to a backing service such as a PostgreSQL database or a RabbitMQ queue. 
 This use case is made possible by the [Service Binding Specification](https://github.com/k8s-service-bindings/spec) for Kubernetes. 
 
-In our case we have a RabbitMQ cluster provided by the RabbitMQ Cluster Operator for Kubernetes running in the workshop namespace, which is used for asynchronous communication between our application and a sensor application that is also deployed in the workshop namespace.
+In our case we have a RabbitMQ cluster provided by the RabbitMQ Cluster Operator for Kubernetes running in the workshop namespace, which is used for asynchronous communication between our application and a ```sensors-publisher``` application that is also deployed in the workshop namespace.
 ```execute
 kubectl get RabbitmqCluster
 ```
 ```execute
-tanzu apps workload list
+kubectl get deployments sensors-publisher
 ```
 For both, the credentials that are required for the connection to the RabbitMQ cluster are injected as environment variables into the containers via a service binding.
 ```execute

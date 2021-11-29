@@ -1,5 +1,3 @@
-# Getting started with Tanzu Application Platform.
-
 We're going to start our story with Cody, an application developer. He's not a deep expert on container infrastructure, but he's an absolute star in writing business applications using popular languages and frameworks.
 
 ![Cody Languages](images/cody-languages.png)
@@ -16,7 +14,7 @@ But he's not sure where to begin. Fortunately, he has a partner in crime, in Ala
 
 Alana tells our developer Cody to get started by logging into **Application Accelerator**.
 
-**Application Accelerator for VMware Tanzu** is made to simplify the creation, discovery, and provisioning of projects and project tempates in enterprise software development.
+**Application Accelerator for VMware Tanzu** is made to simplify the creation, discovery, and provisioning of projects and project templates in enterprise software development.
 
 * Enterprise Architects use Application Accelerator to provide developers and operators in their organization with enterprise-compliant templates for code and configurations.
 
@@ -37,7 +35,7 @@ Alana the operator has preloaded the accelerator with a variety of projects rang
 
 App Accelerator allows the developer to customize and then download all of the necessary files to deploy a cloud-native application. Normally, we would select a generic application template, such as "Spring Web App" which would just contain the scaffolding for a new application, but not any application code itself.  To speed up this demo, we'll use the "Spring Sensors" template, which instead of scaffolding, has a fully developed application as the template.
 
-Select the **Spring Sensors** card from the user interface. 
+Select the **spring-sensors-rabbit** card from the user interface. 
 
 Application Accelerator provides powerful features for finding, exploring, and customizing project templates. Users can explore a project's structure, open any of the text files in that project, and even edit configuration values before downloading the project. This is enabled by the ```Explore Files``` feature.
 
