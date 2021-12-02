@@ -1,5 +1,3 @@
-## Iteration
-
 So Cody now has a running deployment, and it conforms to the compliance standards that Alana defined. But Cody's just getting started. The supply chain is repeatable, so each new commit that Cody makes to the codebase will trigger another execution of the supply chain.
 
 ![Iterate](images/iterate.png)
@@ -8,7 +6,7 @@ Let's enhance the number formatting of the sensor data values.
 
 ```editor:select-matching-text
 file: spring-sensors/src/main/java/org/tanzu/demo/SensorsUiController.java
-text: "model.addAttribute("sensors", sensorRepository.findAll());"
+text: "model.addAttribute(\"sensors\", sensorRepository.findAll());"
 ```
 
 We've selected the code that retrieves the stored data of the sensors form the database and makes it available to the UI. Click below to add the code to enhance the number formatting for the UI.
@@ -16,14 +14,14 @@ We've selected the code that retrieves the stored data of the sensors form the d
 ```editor:replace-text-selection
 file: spring-sensors/src/main/java/org/tanzu/demo/SensorsUiController.java
 text: |
-var formattedSensorData = sensorRepository.findAll()
-        .stream().map(s -> new SensorData(
-                        s.getId(),
-                        Math.round(s.getTemperature() * 100) / 100.0d,
-                        Math.round(s.getPressure() * 100) / 100.0d
-                )
-        ).collect(Collectors.toList());
-model.addAttribute("sensors", formattedSensorData);
+    var formattedSensorData = sensorRepository.findAll()
+            .stream().map(s -> new SensorData(
+                            s.getId(),
+                            Math.round(s.getTemperature() * 100) / 100.0d,
+                            Math.round(s.getPressure() * 100) / 100.0d
+                    )
+            ).collect(java.util.stream.Collectors.toList());
+            model.addAttribute("sensors", formattedSensorData);
 ```
 
 Now, let's commit the change to the Git repo that is being monitored by our supply chain:
