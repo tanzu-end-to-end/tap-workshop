@@ -18,9 +18,9 @@ Install the educates operator, per these instructions: https://docs-staging.vmwa
 
 Follow the docs for [Installing Harbor](install/harbor/README.md)
 
-**Tanzu Build Service**
+**Tanzu Application Platform**
 
-Install Tanzu Build Service per the [Documentation](https://docs.pivotal.io/build-service/1-2/installing.html)
+Install Tanzu Application Platform per the [Documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/0.3/tap-0-3/GUID-install-intro.html)
 
 **Gitea**
 

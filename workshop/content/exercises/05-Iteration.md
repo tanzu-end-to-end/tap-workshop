@@ -1,28 +1,27 @@
-## Iteration
-
 So Cody now has a running deployment, and it conforms to the compliance standards that Alana defined. But Cody's just getting started. The supply chain is repeatable, so each new commit that Cody makes to the codebase will trigger another execution of the supply chain.
 
 ![Iterate](images/iterate.png)
 
-Let's make a code change
+Let's enhance the number formatting of the sensor data values.
 
 ```editor:select-matching-text
-file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
-text: "_webProperties.getBannerText()"
+file: spring-sensors/src/main/java/org/tanzu/demo/SensorsUiController.java
+text: "model.addAttribute(\"sensors\", sensorRepository.findAll());"
 ```
 
-We've selected the variable that determines the banner text at the top of the Web UI. Click below to replace the selectedtext with a static constant.
+We've selected the code that retrieves the stored data of the sensors form the database and makes it available to the UI. Click below to add the code to enhance the number formatting for the UI.
 
 ```editor:replace-text-selection
-file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
-text: REPLACEMENT_BANNER_TEXT
-```
-
-Optionally, you can overwrite this static constant to display whatever text you like:
-
-```editor:select-matching-text
-file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
-text: "Tanzu Application Platform Demo"
+file: spring-sensors/src/main/java/org/tanzu/demo/SensorsUiController.java
+text: |
+    var formattedSensorData = sensorRepository.findAll()
+            .stream().map(s -> new SensorData(
+                            s.getId(),
+                            Math.round(s.getTemperature() * 100) / 100.0d,
+                            Math.round(s.getPressure() * 100) / 100.0d
+                    )
+            ).collect(java.util.stream.Collectors.toList());
+            model.addAttribute("sensors", formattedSensorData);
 ```
 
 Now, let's commit the change to the Git repo that is being monitored by our supply chain:
@@ -41,4 +40,4 @@ Wait a moment, and the supply chain will kick off. You will be able to see the b
 tanzu apps workload get spring-sensors
 ```
 
-You will see the second build process listed for the build you triggered with your application update. The State for that build pod should show **Succeeded**. You can once again click on the URL displayed for your application Service, and we will see our code changes reflected in the deployed version.
+You will see the second build process listed for the build you triggered with your application update. The State for that build pod should show **Succeeded**. You can once again click on the URL displayed for your application Knative Serving Service, and we will see our code changes reflected in the deployed version.

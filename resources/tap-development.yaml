@@ -209,14 +209,51 @@ spec:
                           fieldPath: metadata.namespace
                     - name: app.live.view.connector.mode
                       value: "namespace-scoped"
-
-#      - apiVersion: rbac.authorization.k8s.io/v1
-#        kind: ClusterRole
-#        metadata:
-#          name: service-binding-rmq
-#          labels:
-#            servicebinding.io/controller: "true"
-#        rules:
-#          - apiGroups: ["rabbitmq.com"]
-#            resources: ["rabbitmqclusters"]
-#            verbs: ["get", "list", "watch"]
+      - apiVersion: rabbitmq.com/v1beta1
+        kind: RabbitmqCluster
+        metadata:
+          name: rmq-1
+          namespace: $(session_namespace)
+        spec:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 500Mi
+            limits:
+              cpu: 100m
+              memory: 500Mi
+      - apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: sensors-publisher
+          namespace: $(session_namespace)
+          labels:
+            app: sensors-publisher
+        spec:
+          replicas: 1
+          template:
+            metadata:
+              name: sensors-publisher
+              labels:
+                app: sensors-publisher
+            spec:
+              containers:
+                - name: sensors-publisher
+                  image: harbor.tap.amer.end2end.link/tap/spring-sensors-sensor
+                  imagePullPolicy: IfNotPresent
+                  volumeMounts:
+                    - mountPath: /bindings/rmq
+                      name: service-binding
+                  env:
+                    - name: SERVICE_BINDING_ROOT
+                      value: /bindings
+              restartPolicy: Always
+              volumes:
+                - name: service-binding
+                  projected:
+                    sources:
+                      - secret:
+                          name: rmq-1-default-user
+          selector:
+            matchLabels:
+              app: sensors-publisher

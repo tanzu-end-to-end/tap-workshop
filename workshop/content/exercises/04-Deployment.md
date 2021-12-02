@@ -36,7 +36,7 @@ Once the status shows **Ready**, let's see how to access our application.
 tanzu apps workload get spring-sensors
 ```
 
-This command provides details on our application, including the URL associated with the Knative (CNR) Service that provides Ingress to our application. Click on the URL in the terminal window to open our application in a browser window.
+This command provides details on our application, including the URL associated with the Knative Serving (which is part for Cloud Native Runtimes for VMware Tanzu) Service that provides Ingress to our application. Click on the URL in the terminal window to open our application in a browser window.
 
 ## Monitor Operations
 

@@ -7,13 +7,13 @@ The workflow here is that Cody downloads the accelerator template to his local m
 For this demo, we'll use the Tanzu command line interface instead of the Web UI to download the Spring Sensors application accelerator. The Tanzu CLI is your one-stop shop for interacting with the Tanzu Application Platform.
 
 ```execute
-tanzu accelerator generate spring-sensors --server-url https://accelerator.{{ ingress_domain }}
+tanzu accelerator generate spring-sensors-rabbit --server-url https://accelerator.{{ ingress_domain }} --options='{"gitUrl": "'"$GITREPO"'","gitBranch":"main"}'
 ```
 
 Unzip the repo into your local file system:
 
 ```execute
-unzip -o spring-sensors.zip && envsubst < spring-sensors/config/workload.yaml > spring-sensors/config/tmp.yaml && mv spring-sensors/config/tmp.yaml spring-sensors/config/workload.yaml
+unzip -o spring-sensors-rabbit.zip && shopt -s dotglob && mv spring-sensors-rabbit/* spring-sensors/ && rm -rf spring-sensors-rabbit
 ```
 
 Commit the configured application to Git, where it can be picked up by Tanzu Application Platform's Supply Chain Choreographer.
@@ -33,7 +33,7 @@ git -C ~/spring-sensors push -u origin main
 Now Cody executes the *workload create* command to publish his new application. 
 
 ```execute
-tanzu apps workload create spring-sensors -f spring-sensors/config/workload.yaml -y
+tanzu apps workload create spring-sensors -f spring-sensors/tap/workload.yaml -y
 ```
 
 We'll start streaming the logs that show what Tanzu Application Platform does next:
