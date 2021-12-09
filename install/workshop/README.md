@@ -6,7 +6,17 @@ docker build . -t harbor.(your-ingress-domain)/tanzu-e2e/eduk8s-tap-workshop
 docker push harbor.(your-ingress-domain)/tanzu-e2e/eduk8s-tap-workshop
 ```
 
-Then, install the Educates workshop:
+From this directory of the repo, execute the script to install the Metacontrollers. They will manage resources specific to workshop sessions, such as Harbor projects:
+```
+./install-metacontrollers.sh /path/to/my/values.yaml
+```
+
+The workshop demonstrates the binding of a sample application workload to a RabbitMQ Cluster provided by the RabbitMQ Cluster Operator for Kubernetes. Install the operator in your cluster via:
+```
+./install-rabbit-operator.sh
+```
+
+Then, install the Learning Center workshop:
 ```
 ./install-workshop.sh /path/to/my/values.yaml
 ```
