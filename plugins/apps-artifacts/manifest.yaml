@@ -4,4 +4,4 @@ plugins:
   description: Applications on Kubernetes
   versions: []
 version: ""
-coreVersion: v0.2.0
+coreVersion: v0.4.0

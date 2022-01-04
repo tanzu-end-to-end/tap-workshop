@@ -1,6 +1,6 @@
 #@ load("@ytt:data", "data")
 ---
-apiVersion: training.eduk8s.io/v1alpha2
+apiVersion: learningcenter.tanzu.vmware.com/v1beta1
 kind: Workshop
 metadata:
   name: tap-development
@@ -42,15 +42,15 @@ spec:
               max:
                 storage: 10Gi
 
-      # Lifecycle of Harbor Projects
-      - apiVersion: e2e.tanzu.vmware.com/v1beta1
-        kind: HarborProject
-        metadata:
-          name: $(session_namespace)
-          annotations:
-            training.eduk8s.io/objects.crd.scope: Namespaced
-        spec:
-          name: $(session_namespace)
+      # Lifecycle of Harbor Projects. Not used in current version
+#      - apiVersion: e2e.tanzu.vmware.com/v1beta1
+#        kind: HarborProject
+#        metadata:
+#          name: $(session_namespace)
+#          annotations:
+#            training.eduk8s.io/objects.crd.scope: Namespaced
+#        spec:
+#          name: $(session_namespace)
 
       # Permissions for tap-sa (Supply Chain)
       - apiVersion: v1
@@ -115,7 +115,7 @@ spec:
       - apiVersion: rbac.authorization.k8s.io/v1
         kind: ClusterRoleBinding
         metadata:
-          name: $(session_namespace)-binding
+          name: $(session_namespace)-session-crb
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: ClusterRole
@@ -124,6 +124,19 @@ spec:
           - kind: ServiceAccount
             namespace: $(workshop_namespace)
             name: $(service_account)
+
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRoleBinding
+        metadata:
+          name: $(session_namespace)-default-crb
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: cluster-admin
+        subjects:
+          - kind: ServiceAccount
+            namespace: $(session_namespace)
+            name: default
 
       - apiVersion: rbac.authorization.k8s.io/v1
         kind: Role
@@ -135,80 +148,7 @@ spec:
             resources: ["*"]
             verbs: ["*"]
 
-      # App Live View Connector
-      - apiVersion: v1
-        kind: ServiceAccount
-        metadata:
-          name: app-live-view-connector-service-account
-          namespace: $(session_namespace)
-      - apiVersion: rbac.authorization.k8s.io/v1
-        kind: Role
-        metadata:
-          name: $(session_namespace)-app-live-view-connector-role
-        rules:
-          - apiGroups: ["*"]
-            resources: ["pods"]
-            verbs: ["watch"]
-      - apiVersion: rbac.authorization.k8s.io/v1
-        kind: RoleBinding
-        metadata:
-          name: $(session_namespace)-app-live-view-connector-role-binding
-        roleRef:
-          apiGroup: rbac.authorization.k8s.io
-          kind: Role
-          name: $(session_namespace)-app-live-view-connector-role
-        subjects:
-          - kind: ServiceAccount
-            name: app-live-view-connector-service-account
-            namespace: $(session_namespace)
-      - apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: application-live-view-connector
-          namespace: $(session_namespace)
-          labels:
-            app: application-live-view-connector
-        spec:
-          selector:
-            matchLabels:
-              name: application-live-view-connector
-          template:
-            metadata:
-              labels:
-                name: application-live-view-connector
-            spec:
-              serviceAccountName: app-live-view-connector-service-account
-              containers:
-                - name: application-live-view-connector
-                  image: harbor.tap.amer.end2end.link/app-live-view/connector
-                  imagePullPolicy: IfNotPresent
-                  livenessProbe:
-                    httpGet:
-                      path: /health
-                      port: 8787
-                    initialDelaySeconds: 15
-                    periodSeconds: 5
-                    timeoutSeconds: 3
-                  resources:
-                    requests:
-                      memory: "70Mi"
-                      cpu: "150m"
-                    limits:
-                      memory: "120Mi"
-                      cpu: "250m"
-                  env:
-                    - name: app.live.view.client.host
-                      value: application-live-view-7000.app-live-view.svc.cluster.local
-                    - name: NODE_NAME
-                      valueFrom:
-                        fieldRef:
-                          fieldPath: spec.nodeName
-                    - name: NAMESPACE_NAME
-                      valueFrom:
-                        fieldRef:
-                          fieldPath: metadata.namespace
-                    - name: app.live.view.connector.mode
-                      value: "namespace-scoped"
+      # RabbitMQ Instance
       - apiVersion: rabbitmq.com/v1beta1
         kind: RabbitmqCluster
         metadata:
@@ -221,7 +161,26 @@ spec:
               memory: 500Mi
             limits:
               cpu: 100m
-              memory: 500Mi
+              memory: 500Mirab
+
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRole
+        metadata:
+          name: resource-claims-rmq-role
+          labels:
+            resourceclaims.services.apps.tanzu.vmware.com/controller: "true"
+        rules:
+          - apiGroups:
+              - rabbitmq.com
+            resources:
+              - rabbitmqclusters
+            verbs:
+              - get
+              - list
+              - watch
+              - update
+
+      # Sensors publisher app for generating messages
       - apiVersion: apps/v1
         kind: Deployment
         metadata:

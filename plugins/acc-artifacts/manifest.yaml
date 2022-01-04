@@ -4,4 +4,4 @@ plugins:
     description: Manage accelerators in a Kubernetes cluster
     versions: []
 version: ""
-coreVersion: v0.4.1
+coreVersion: v1.0.0

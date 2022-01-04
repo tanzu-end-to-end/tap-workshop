@@ -1,10 +1,11 @@
 #@ load("@ytt:data", "data")
 
 expose:
+  type: loadBalancer
   tls:
     certSource: secret
     secret:
-      secretName: #@ "{}/{}".format(data.values.ingress.contour_tls_namespace,data.values.ingress.contour_tls_secret)
+      secretName: #@ "{}".format(data.values.ingress.contour_tls_secret)
   ingress:
     hosts:
       core: #@ "harbor.{}".format(data.values.ingress.domain)
@@ -25,3 +26,5 @@ harborAdminPassword: #@ data.values.harbor.adminPassword
 trivy:
   gitHubToken: #@ data.values.git.gitHubToken
 #@ end
+notary:
+  enabled: false
