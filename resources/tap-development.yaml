@@ -163,7 +163,7 @@ spec:
               memory: 500Mi
             limits:
               cpu: 100m
-              memory: 500Mirab
+              memory: 500Mi
 
       # Sensors publisher app for generating messages
       - apiVersion: apps/v1
