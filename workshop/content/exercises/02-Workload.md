@@ -33,7 +33,7 @@ git -C ~/spring-sensors push -u origin main
 Now Cody executes the *workload create* command to publish his new application. 
 
 ```execute
-tanzu apps workload create spring-sensors -f spring-sensors/tap/workload.yaml -y
+tanzu apps workload create spring-sensors -f spring-sensors/config/workload.yaml -y
 ```
 
 We'll start streaming the logs that show what Tanzu Application Platform does next:
