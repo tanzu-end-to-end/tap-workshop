@@ -113,9 +113,10 @@ spec:
 
       # Permissions for workshop session
       - apiVersion: rbac.authorization.k8s.io/v1
-        kind: ClusterRoleBinding
+        kind: RoleBinding
         metadata:
           name: $(session_namespace)-session-crb
+          namespace: $(session_namespace)
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: ClusterRole
@@ -126,9 +127,10 @@ spec:
             name: $(service_account)
 
       - apiVersion: rbac.authorization.k8s.io/v1
-        kind: ClusterRoleBinding
+        kind: RoleBinding
         metadata:
           name: $(session_namespace)-default-crb
+          namespace: $(session_namespace)
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: ClusterRole
@@ -161,24 +163,7 @@ spec:
               memory: 500Mi
             limits:
               cpu: 100m
-              memory: 500Mirab
-
-      - apiVersion: rbac.authorization.k8s.io/v1
-        kind: ClusterRole
-        metadata:
-          name: resource-claims-rmq-role
-          labels:
-            resourceclaims.services.apps.tanzu.vmware.com/controller: "true"
-        rules:
-          - apiGroups:
-              - rabbitmq.com
-            resources:
-              - rabbitmqclusters
-            verbs:
-              - get
-              - list
-              - watch
-              - update
+              memory: 500Mi
 
       # Sensors publisher app for generating messages
       - apiVersion: apps/v1
