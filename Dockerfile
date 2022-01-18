@@ -1,4 +1,4 @@
-FROM projects.registry.vmware.com/educates/base-environment
+FROM registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:681ef8d2e6fc8414b3783e4de424adbfabf2aa0126e34fa7dcd07dab61e55a89
 
 # All the direct Downloads need to run as root as they are going to /usr/local/bin
 USER root

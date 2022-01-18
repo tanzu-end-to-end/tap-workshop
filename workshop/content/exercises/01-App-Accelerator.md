@@ -26,7 +26,8 @@ If you are familiar with the [Spring Boot Initializr](https://start.spring.io/) 
 
 Check out Application Accelerator:
 
-```dashboard:open-url
+```dashboard:create-dashboard
+name: Accelerator
 url: https://tap-gui.{{ ingress_domain }}/create
 ```
 

@@ -6,7 +6,7 @@ Once the supply chain completes building and packaging Spring Sensors, it is pus
 
 Use the following link to access the Harbor registry:
 
-```dashboard:open-url
+```dashboard:create-dashboard
 name: Harbor
 url: https://harbor.{{ ingress_domain }}
 ```
@@ -49,7 +49,7 @@ url: https://tap-gui.{{ ingress_domain }}
 
 TAP GUI provides a great deal of information about running software deployed through TAP, but Cody is particularly interested in the App Live View. It provides realtime visibility into his new application. Navigate to App Live View:
 
-```dashboard:open-url
+```dashboard:create-dashboard
 name: Live
 url: https://tap-gui.{{ ingress_domain }}/app-live-view/apps/spring-sensors
 ```
