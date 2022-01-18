@@ -49,8 +49,7 @@ url: https://tap-gui.{{ ingress_domain }}
 
 TAP GUI provides a great deal of information about running software deployed through TAP, but Cody is particularly interested in the App Live View. It provides realtime visibility into his new application. Navigate to App Live View:
 
-```dashboard:create-dashboard
-name: Live
+```dashboard:open-url
 url: https://tap-gui.{{ ingress_domain }}/app-live-view/apps/spring-sensors
 ```
 
