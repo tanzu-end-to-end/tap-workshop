@@ -6,7 +6,7 @@ Alana works with Tanzu Application Platform by defining a **supply chain**. A su
 
 This is Alana's supply chain, and she is free to customize it as she pleases: adding, removing, and swapping out components. This supply chain defines an automated, repeatable path to production for all applications being deployed to her clusters. Alana can define multiple supply chains to be used for different use cases.
 
-For this demo, we are going to use a simplified supply chain, which retrieves application source from Git, creates a container image using Tanzu Build Service, and deploys it using Cloud Native Runtime.
+For this demo, we are going to use a simplified supply chain, which retrieves application source from Git, creates a container image using Tanzu Build Service, and deploys it using Cloud Native Runtimes.
 
 ![Supply Chain](images/supply-chain.png)
 
@@ -19,7 +19,7 @@ file: supplychain/supplychain.yaml
 ```
 There are a few things to highlight in this file.
 
-1. The ```spec/selector/app.tanzu.vmware.com/workload-type``` entry defines that tag that will be used in the workload.yaml file of any application that utilizes this supply chain.
+1. The ```spec/selector/apps.tanzu.vmware.com/workload-type``` entry defines that tag that will be used in the workload.yaml file of any application that utilizes this supply chain.
 2. The ```resources``` section has a sequential list of all the steps in the supply chain.
 
 To understand what each resource does, you can take a look at the numbered definition files for each step in the supply chain, starting with ```supply-chain-01-source.yaml```
