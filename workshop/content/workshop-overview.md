@@ -4,4 +4,4 @@
 
 ![TAP Overview Diagram](exercises/images/tap-conceptual.png)
 
-This demonstration is intended to walk the audience through through how development teams and operators will interact with the platform to enable iterative development cycles, and secure, automated delivery to production.
+This demonstration is intended to walk the audience through how development teams and operators will interact with the platform to enable iterative development cycles, and secure, automated delivery to production.
