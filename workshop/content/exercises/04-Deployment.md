@@ -53,6 +53,6 @@ TAP GUI provides a great deal of information about running software deployed thr
 url: https://tap-gui.{{ ingress_domain }}/catalog/default/component/spring-sensors/workloads
 ```
 
-From here, you will drill down on the Knative Service associated with your application, and click on the most recent deployment. This will bring you to a detail screen that includes App Live View capabilities. Use the drop-down menu on the App Live View pane to navigate runtime info for your application.
+From here, you will drill down on the Knative Service associated with your application, and click on the most recent deployment. On the deployment detail screen, scroll down and click on one of your pods. This will bring you to a detail screen that includes App Live View capabilities. Use the drop-down menu on the App Live View pane to navigate runtime info for your application.
 
 Click on the top pod row. On the subsequent screen, you can use the "Information Category" dropdown to navigate through detailed troubleshooting data on the Spring Sensors app.
