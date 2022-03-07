@@ -47,10 +47,12 @@ name: Live
 url: https://tap-gui.{{ ingress_domain }}
 ```
 
-TAP GUI provides a great deal of information about running software deployed through TAP, but Cody is particularly interested in the App Live View. It provides realtime visibility into his new application. Navigate to App Live View:
+TAP GUI provides a great deal of information about running software deployed through TAP, but Cody is particularly interested in the App Live View. It provides realtime visibility into his new application. Navigate to the Runtime Resources associated with your application:
 
 ```dashboard:open-url
-url: https://tap-gui.{{ ingress_domain }}/app-live-view/apps/spring-sensors
+url: https://tap-gui.{{ ingress_domain }}/catalog/default/component/spring-sensors/workloads
 ```
+
+From here, you will drill down on the Knative Service associated with your application, and click on the most recent deployment. This will bring you to a detail screen that includes App Live View capabilities. Use the drop-down menu on the App Live View pane to navigate runtime info for your application.
 
 Click on the top pod row. On the subsequent screen, you can use the "Information Category" dropdown to navigate through detailed troubleshooting data on the Spring Sensors app.
