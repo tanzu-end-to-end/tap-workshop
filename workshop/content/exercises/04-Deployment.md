@@ -1,22 +1,15 @@
-At this point, our onboarding developer simply needs to verify that her application was packaged and deployed. We can do this by using the Harbor registry to verify packages have been built and are available, and the Tanzu CLI to verify the workloads are deployed and running. We can also leverage Tanzu's powerful App Live View dashboard to verify ongoing operations.
+At this point, our onboarding developer simply needs to verify that her application was packaged and deployed.  We can do this by using the Carvel `imgpkg` tool list out the digests for the images have been built and are available, and then use the Tanzu CLI to verify the workloads are deployed and running.  We can also leverage Tanzu's powerful App Live View dashboard to verify ongoing operations.
 
 ## Verify Packaging
 
-Once the supply chain completes building and packaging Spring Sensors, it is pushed to the Harbor Registry.
+Once the supply chain completes building and packaging Spring Sensors, it is pushed to a container registry.
 
-Use the following link to access the Harbor registry:
-
-```dashboard:create-dashboard
-name: Harbor
-url: https://harbor.{{ ingress_domain }}
+Let's use the `imgpkg` tool to list out the tags and digests for our image in the container registry:
+```execute
+imgpkg tag list --digests -i harbor.{{ ingress_domain }}/tap/supply-chain/spring-sensors-{{ session_namespace }}
 ```
 
-You will be redirected to the sign-in page.
-
-* Username: ```admin```
-* password ```{{ ENV_HARBOR_PASSWORD }}```
-
-Once you are logged in, click on **tap** in the Projects list, and then click on the **tap/spring-sensors** repo. You will see artifacts for the spring-sensors application. If you want to verify which image is yours, you can check the sha256 for your container image with this command:
+You should see a listing of any images that have been built for the spring-sensors application.  If you want to verify which image is deployed, you can check the sha256 for your deployed container image with this command:
 
 ```execute
 kp image list
