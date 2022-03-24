@@ -10,3 +10,5 @@ kubectl create namespace harbor
 ```
 
 If you defined a DockerHub proxy cache in your values.yaml, you will need to create it as described [here](https://goharbor.io/docs/2.2.0/administration/configure-proxy-cache/)
+
+This script will create a load balancer endpoint in the harbor namespace. You will need to create a DNS record (A or CNAME) for harbor.(ingress.domain) that resolves to the load balancer endpoint.
