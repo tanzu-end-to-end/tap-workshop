@@ -58,6 +58,4 @@ Click on the resource name for the Kubernetes Pod.  In the image above, that ent
 
 Scrolling down in the resulting view will be show a section titled "Live View" that includes the App Live View capabilities.  Use the drop-down menu on the App Live View pane to explore application details, health information, logging levels, metrics and other details about the running application.  
 
-The information in the App Live View is surfaced for projects utilizing [Spring Boot's Actuators](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html) or [Steeltoe's Management endpoints](https://steeltoe.io/cloud-management).  These endpoints are automatically configured by the supply chain to only be accessible from the TAP GUI, so Cody doesn't have to remember to protect access to those endpoints.
-
-Click on the top pod row.  On the subsequent screen, you can use the "Information Category" drop-down to navigate through detailed troubleshooting data on the Spring Sensors app.
+The information in the App Live View is surfaced for projects utilizing [Spring Boot's Actuators](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html) or [Steeltoe's Management endpoints](https://steeltoe.io/cloud-management).  These endpoints are automatically configured by the supply chain to be accessible from the TAP GUI, so Cody doesn't have to remember turn on those endpoints.
