@@ -18,6 +18,8 @@ spec:
     env:
       - name: GITEA_PASSWORD
         value: #@ data.values.gitea.adminPassword
+      - name: HARBOR_USER
+        value: #@ data.values.harbor.user
       - name: HARBOR_PASSWORD
         value: #@ data.values.harbor.adminPassword
     namespaces:
