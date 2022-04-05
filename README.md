@@ -10,17 +10,13 @@ To install the Tanzu Application Platform workshop in your own environment, the 
 
 Follow the docs for [Customizing the Environment Values File](install/values/README.MD). Ensure that you have the carvel tools **ytt** and **kapp** installed on your local machine.
 
-**Educates**
+**Tanzu Application Platform**
 
-Install the educates operator, per these instructions: https://docs-staging.vmware.com/en/Educates/0.0.0/educates-0-0-0/GUID-getting-started-installing-operator.html
+Install Tanzu Application Platform per the [Documentation](https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-overview.html)
 
 **Harbor**
 
 Follow the docs for [Installing Harbor](install/harbor/README.md)
-
-**Tanzu Application Platform**
-
-Install Tanzu Application Platform per the [Documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/0.3/tap-0-3/GUID-install-intro.html)
 
 **Gitea**
 
