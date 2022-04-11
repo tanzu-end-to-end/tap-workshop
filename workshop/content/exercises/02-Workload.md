@@ -7,13 +7,13 @@ The workflow here is that Cody downloads the accelerator template to his local m
 For this demo, we'll use the Tanzu command line interface instead of the Web UI to download the Spring Sensors application accelerator. The Tanzu CLI is your one-stop shop for interacting with the Tanzu Application Platform.
 
 ```execute
-tanzu accelerator generate spring-sensors-rabbit --server-url https://accelerator.{{ ingress_domain }} --options='{"gitUrl": "'"$GITREPO"'","gitBranch":"main"}'
+tanzu accelerator generate spring-sensors --server-url https://accelerator.{{ ingress_domain }} --options='{"gitUrl": "'"$GITREPO"'","gitBranch":"main"}'
 ```
 
 Unzip the repo into your local file system:
 
 ```execute
-unzip -o spring-sensors-rabbit.zip && shopt -s dotglob && mv spring-sensors-rabbit/* spring-sensors/ && rm -rf spring-sensors-rabbit
+unzip -o spring-sensors.zip && mv spring-sensors-rabbit/* spring-sensors/ && rm -rf spring-sensors-rabbit
 ```
 
 Commit the configured application to Git, where it can be picked up by Tanzu Application Platform's Supply Chain Choreographer.
@@ -53,7 +53,7 @@ tanzu accelerator generate spring-sensors --server-url https://accelerator.tap.t
 Unzip the repo into your local file system:
 
 ```execute
-unzip -o spring-sensors.zip && shopt -s dotglob && mv spring-sensors/* java-web-app/
+unzip -o spring-sensors.zip
 ```
 
 Now lets take a look at the code in the VSCode editor:
@@ -61,14 +61,14 @@ Now lets take a look at the code in the VSCode editor:
 `workload.yaml` is the Kubernetes YAML file needed to get this app running on the platform:
 
 ```editor:open-file
-file: java-web-app/config/workload.yaml
+file: spring-sensors/config/workload.yaml
 ```  
 
 In the `workload.yaml` that was generated from the accelerator, we can see it pointing to a git repo we still did not create. We're still in our "Inner Loop" so we didn't commit any code yet.
 
 Let's now take a look at our Spring Sensors java app code:
 ```editor:open-file
-file: java-web-app/src/main/java/org/tanzu/demo/SensorsUiController.java
+file: spring-sensors/src/main/java/org/tanzu/demo/SensorsUiController.java
 ```
 As we can see, our application is fetching sensor data from a database and returns it via this API call.
 
@@ -77,7 +77,7 @@ Tilt is an open source project for development against Kubernetes environments, 
 Lets see what our generated Tiltfile looks like:
 
 ```editor:open-file
-file: java-web-app/Tiltfile
+file: spring-sensors/Tiltfile
 ``` 
 
 This file might look a bit daunting at first, but thanks to App Accelerator it is all generated boilerplate code, there is no need for the developer to change anything here.
