@@ -2,7 +2,6 @@ FROM registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:a8
 
 COPY --chown=1001:0 . /home/eduk8s/
 RUN mv /home/eduk8s/workshop /opt/workshop
-RUN fix-permissions /home/eduk8s
 
 # All the direct Downloads need to run as root as they are going to /usr/local/bin
 USER root
@@ -59,3 +58,4 @@ RUN apt-get install -y ruby && \
 RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | PATH=~/.local/bin:$PATH bash
 
 USER 1001
+RUN fix-permissions /home/eduk8s
