@@ -19,5 +19,3 @@ exec /opt/code-server/bin/code-server \
     --disable-telemetry \
     $EDITOR_HOME
 EOF
-
-chown -R eduk8s:users /home/eduk8s/.local
