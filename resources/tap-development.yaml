@@ -13,7 +13,7 @@ spec:
   url: https://github.com/tanzu-end-to-end/tap-workshop
   content:
     image: #@ "harbor.{}/tanzu-e2e/eduk8s-tap-workshop:latest".format(data.values.ingress.domain)
-    files: #@ "github.com/{}/tap-workshop?ref=development".format(data.values.git.account)
+    files: #@ "github.com/{}/tap-workshop?ref=inner".format(data.values.git.account)
   session:
     env:
       - name: GITEA_PASSWORD
