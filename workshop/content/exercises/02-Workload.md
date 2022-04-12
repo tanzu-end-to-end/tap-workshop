@@ -68,7 +68,7 @@ In the `workload.yaml` that was generated from the accelerator, we can see it po
 
 Let's now take a look at our Spring Sensors java app code:
 ```editor:open-file
-file: spring-sensors/src/main/java/org/tanzu/demo/SensorsUiController.java
+file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
 ```
 As we can see, our application is fetching sensor data from a database and returns it via this API call.
 

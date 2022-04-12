@@ -43,7 +43,8 @@ COPY extensions/humao.rest-client-0.24.6.vsix /home/eduk8s/.local/share/code-ser
 COPY extensions/ms-python.python-2022.2.1924087327.vsix /home/eduk8s/.local/share/code-server/extensions/
 #RUN mv /opt/code-server/extensions/ms-toolsai.jupyter-2021.6.99 /opt/code-server/extensions/ms-kubernetes-tools.vscode-kubernetes-tools-1.2.4 /opt/code-server/extensions/golang.go-0.27.2 /opt/code-server/extensions/humao.rest-client-0.24.3 /opt/code-server/extensions/ms-python.python-2021.8.1159798656 /opt/code-server/extensions/pivotal.eduk8s-vscode-helper-0.0.1 /home/eduk8s/.local/share/code-server/extensions/
 RUN echo -n 'export PATH=~/.local/bin:$PATH' >> /etc/profile
-RUN chown eduk8s:users /home/eduk8s/.cache
+RUN chown -R eduk8s:users /home/eduk8s/.cache
+RUN chown -R eduk8s:users /home/eduk8s/.local
 RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
 RUN chown -R eduk8s:users /home/eduk8s/.tilt-dev
 RUN curl -L https://github.com/tohjustin/kube-lineage/releases/download/v0.4.2/kube-lineage_linux_amd64.tar.gz --output /tmp/kube-lineage_linux_amd64.tar.gz && \
