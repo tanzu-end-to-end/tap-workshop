@@ -89,9 +89,7 @@ command: tanzu.liveUpdateStart
 ```
 
 This will begin to build a container image for our application and then deploy it to our cluster. As this is the first run in can take around 5 minutes to complete.  
-You will know it has completed when you see the output of the app itself running in the condole simillar to the bellow:
-
-![App Is Ready](images/App-Is-Ready.PNG)
+You will know it has completed when you see the output of the app itself running in the console similar to the below:
 
 Tilt automatically configures port forwarding for our app to our localhost at port 8080.
 
