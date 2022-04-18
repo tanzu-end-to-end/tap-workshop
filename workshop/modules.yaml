@@ -5,6 +5,9 @@ modules:
     exercises/01-App-Accelerator:
         name: Getting Started
         exit_sign: Workloads
+    exercises/02-Workload:
+        name: Workloads
+        exit_sign: Supply Chain
     exercises/03-Supply-Chain:
         name: Supply Chain
         exit_sign: Deployment
