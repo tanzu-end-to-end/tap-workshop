@@ -9,11 +9,9 @@ set -x
 
 set -eo pipefail
 
-echo "Hello"
-
 CODE_SERVER_BIND_ADDRESS=${CODE_SERVER_BIND_ADDRESS:-127.0.0.1}
 
-EDITOR_HOME=${EDITOR_HOME:-/home/eduk8s/java-web-app}
+EDITOR_HOME=${EDITOR_HOME:-/home/eduk8s/spring-sensors}
 
 exec /opt/code-server/bin/code-server \
     --bind-addr "$CODE_SERVER_BIND_ADDRESS:10085" \
