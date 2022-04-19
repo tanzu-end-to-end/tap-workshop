@@ -15,19 +15,3 @@ spec:
         - name: gitea-http
           port: 3000
 
-#@ if data.values.psp.cluster_role:
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  namespace: gitea
-  name: psp-rolebinding
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: #@ data.values.psp.cluster_role
-subjects:
-  - kind: Group
-    apiGroup: rbac.authorization.k8s.io
-    name: system:authenticated
-#@ end
