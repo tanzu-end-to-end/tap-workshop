@@ -2,9 +2,6 @@
 set -x
 set +e
 
-echo "Namespace=$SESSION_NAMESPACE"
-echo "Registry=$REGISTRY_HOST"
-
 cat <<'EOF' > /home/eduk8s/.local/share/code-server/User/settings.json
 {
     "redhat.telemetry.enabled": false,
@@ -20,6 +17,8 @@ cat <<'EOF' > /home/eduk8s/.local/share/code-server/User/settings.json
     "python.linting.enabled": false
 }
 EOF
+
+envsubst < /home/eduk8s/.local/share/code-server/User/settings.json > /tmp/settings.json && mv /tmp/settings.json /home/eduk8s/.local/share/code-server/User/settings.json
 
 cat <<'EOF' > /opt/eduk8s/sbin/start-code-server
 #!/bin/bash
