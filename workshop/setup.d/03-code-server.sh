@@ -2,6 +2,9 @@
 set -x
 set +e
 
+echo "Namespace=$SESSION_NAMESPACE"
+echo "Registry=$REGISTRY_HOST"
+
 cat <<'EOF' > /home/eduk8s/.local/share/code-server/User/settings.json
 {
     "redhat.telemetry.enabled": false,
