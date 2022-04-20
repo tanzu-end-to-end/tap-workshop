@@ -32,6 +32,8 @@ spec:
         enabled: true
       editor:
         enabled: true
+      registry:
+        enabled: true
     objects:
       - apiVersion: v1
         kind: LimitRange
