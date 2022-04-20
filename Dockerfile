@@ -25,7 +25,7 @@ RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/down
 RUN apt-get update && apt-get install -y unzip openjdk-11-jdk
 
 # Requirements for Live Update
-RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version 4.2.0
+RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version 4.3.0
 RUN mv /usr/bin/code-server /opt/code-server/bin/code-server
 COPY extensions/tanzu-vscode-extension.vsix /tmp
 RUN code-server --install-extension vscjava.vscode-java-pack && \
@@ -35,9 +35,9 @@ RUN chown -R eduk8s:users /home/eduk8s/.cache
 RUN chown -R eduk8s:users /home/eduk8s/.local
 RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
 RUN chown -R eduk8s:users /home/eduk8s/.tilt-dev
-RUN curl -L https://github.com/tohjustin/kube-lineage/releases/download/v0.4.2/kube-lineage_linux_amd64.tar.gz --output /tmp/kube-lineage_linux_amd64.tar.gz && \
-    tar -zxvf /tmp/kube-lineage_linux_amd64.tar.gz -C /tmp && \
-    mv /tmp/kube-lineage /usr/local/bin/kubectl-lineage
+#RUN curl -L https://github.com/tohjustin/kube-lineage/releases/download/v0.4.2/kube-lineage_linux_amd64.tar.gz --output /tmp/kube-lineage_linux_amd64.tar.gz && \
+#    tar -zxvf /tmp/kube-lineage_linux_amd64.tar.gz -C /tmp && \
+#    mv /tmp/kube-lineage /usr/local/bin/kubectl-lineage
 
 # Install Tilt for eduk8s user in local path under homedir
 RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | PATH=~/.local/bin:$PATH bash
