@@ -13,12 +13,12 @@ RUN curl -o /usr/local/bin/tanzu https://storage.googleapis.com/tanzu-cli/artifa
   chmod 755 /usr/local/bin/tanzu
 COPY plugins/apps-artifacts /tmp/apps-artifacts
 COPY plugins/apps-artifacts /tmp/apps-artifacts/
-RUN tanzu plugin install apps --local /tmp/apps-artifacts --version v0.4.0
+RUN tanzu plugin install apps --local /tmp/apps-artifacts --version v0.5.1
 COPY plugins/acc-artifacts /tmp/acc-artifacts
 COPY plugins/acc-artifacts /tmp/acc-artifacts/
-RUN tanzu plugin install accelerator --local /tmp/acc-artifacts --version v1.0.0
+RUN tanzu plugin install accelerator --local /tmp/acc-artifacts --version v1.1.1
 # Knative
-RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/download/knative-v1.3.1/kn-linux-amd64 && \
+RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/download/knative-v1.4.0/kn-linux-amd64 && \
     chmod 755 /usr/local/bin/kn
 
 # Utilities
