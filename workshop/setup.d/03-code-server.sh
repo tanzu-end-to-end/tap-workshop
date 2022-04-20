@@ -6,7 +6,7 @@ cat <<'EOF' > /home/eduk8s/.local/share/code-server/User/settings.json
 {
     "redhat.telemetry.enabled": false,
     "java.server.launchMode": "Standard",
-    “tanzu.sourceImage”: “harbor.tap.amer.end2end.link/tap/tanzu-java-web-app-source”,
+    "tanzu.sourceImage": "harbor.tap.amer.end2end.link/tap/tanzu-java-web-app-source",
     "terminal.integrated.automationShell.linux": "/bin/bash",
     "workbench.startupEditor": "none",
     "update.showReleaseNotes": false,
