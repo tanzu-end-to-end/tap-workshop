@@ -15,6 +15,8 @@ spec:
     image: #@ "harbor.{}/tanzu-e2e/inner-tap-workshop:latest".format(data.values.ingress.domain)
     files: #@ "github.com/{}/tap-workshop?ref=inner".format(data.values.git.account)
   session:
+    resources:
+      memory: 3Gi
     env:
       - name: GITEA_PASSWORD
         value: #@ data.values.gitea.adminPassword
