@@ -5,9 +5,6 @@ RUN mv /home/eduk8s/workshop /opt/workshop
 
 # All the direct Downloads need to run as root as they are going to /usr/local/bin
 USER root
-# TMC
-RUN curl -L -o /usr/local/bin/tmc $(curl -s https://tanzupaorg.tmc.cloud.vmware.com/v1alpha/system/binaries | jq -r 'getpath(["versions",.latestVersion]).linuxX64') && \
-  chmod 755 /usr/local/bin/tmc
 # TBS
 RUN curl -L -o /usr/local/bin/kp https://github.com/vmware-tanzu/kpack-cli/releases/download/v0.4.2/kp-linux-0.4.2 && \
   chmod 755 /usr/local/bin/kp
@@ -33,7 +30,6 @@ RUN mv /usr/bin/code-server /opt/code-server/bin/code-server
 COPY extensions/tanzu-vscode-extension.vsix /tmp
 RUN code-server --install-extension vscjava.vscode-java-pack && \
     code-server --install-extension /tmp/tanzu-vscode-extension.vsix
-#RUN mv /opt/code-server/extensions/redhat.java-1.4.0 /opt/code-server/extensions/redhat.vscode-yaml-1.5.1 /opt/code-server/extensions/ms-kubernetes-tools.vscode-kubernetes-tools-1.3.7 /opt/code-server/extensions/golang.go-0.32.0 /opt/code-server/extensions/humao.rest-client-0.24.6 /home/eduk8s/.local/share/code-server/extensions/
 RUN echo -n 'export PATH=~/.local/bin:$PATH' >> /etc/profile
 RUN chown -R eduk8s:users /home/eduk8s/.cache
 RUN chown -R eduk8s:users /home/eduk8s/.local
@@ -42,10 +38,6 @@ RUN chown -R eduk8s:users /home/eduk8s/.tilt-dev
 RUN curl -L https://github.com/tohjustin/kube-lineage/releases/download/v0.4.2/kube-lineage_linux_amd64.tar.gz --output /tmp/kube-lineage_linux_amd64.tar.gz && \
     tar -zxvf /tmp/kube-lineage_linux_amd64.tar.gz -C /tmp && \
     mv /tmp/kube-lineage /usr/local/bin/kubectl-lineage
-#RUN apt-get install -y ruby && \
-#    curl -L -o /tmp/eksporter.tar.gz https://github.com/Kyrremann/kubectl-eksporter/releases/download/v1.7.0/eksporter.tar.gz && \
-#    tar -zxvf /tmp/eksporter.tar.gz -C /tmp && \
-#    mv /tmp/eksporter.rb /usr/local/bin/kubectl-eksporter
 
 # Install Tilt for eduk8s user in local path under homedir
 RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | PATH=~/.local/bin:$PATH bash
