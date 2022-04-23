@@ -3,6 +3,7 @@ name: TAP Overview
 modules:
     activate:
     - workshop-overview
+    - exercises/01-Learning-Center
     - exercises/01-App-Accelerator
     - exercises/02-Workload
     - exercises/03-Supply-Chain

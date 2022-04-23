@@ -1,7 +1,10 @@
 modules:
     workshop-overview:
         name: Workshop Overview
-        exit_sign: Getting Started
+        exit_sign: Learning Center
+    exercises/01-Learning-Center:
+        name: Learning Center
+        exit_sign: Application Accelerator
     exercises/01-App-Accelerator:
         name: Getting Started
         exit_sign: Workloads

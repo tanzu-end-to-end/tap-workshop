@@ -1,8 +1,12 @@
 # Tanzu Application Platform Live Demonstration
-**Note:** Some of the features of this demonstration will have trouble in the Safari browser.  We recommend you switch to a browser like Edge, Firefox, or Chrome for the smoothest experience.
+_We recommend you use Chrome, Edge, or Firefox browsers in this workshop for the smoothest experience._
 
-**Tanzu Application Platform (TAP)** delivers a **developer experience** atop Kubernetes. Operators are able to customize and deploy an **application-aware platform**, instead of requiring developers to write platform-aware applications. Tanzu Application Platform abstracts away  the individual components in the DevSecOps toolchain that is leveraged in building, testing, verifying, deploying, and operating applications. This new experience is accomplished through the addition of enhanced developer tooling, supply chain automation, and coordination of work/separation of concerns between developers, architects, security teams, and operators. Tanzu Application Platform runs on any API-compatible Kubernetes distribution.
+**Tanzu Application Platform (TAP)** enables enterprises to deliver a **developer experience** atop Kubernetes. Operators are able to customize and deploy an **application-aware platform**, instead of requiring developers to write platform-aware applications. 
 
-![TAP Overview Diagram](exercises/images/tap-conceptual.png)
+Tanzu Application Platform abstracts away the mechanics of container orchestration, secure software supply chains, and GitOps deployment/promotion models. It allows developers to focus purely on the authoring of business logic, user interfaces, and APIs. Meanwhile, the operations teams can declare compliant delivery processes that will be implemented, in a consistent, automated, repeatable manner to each new application workload that is onboarded.
 
-This demonstration is intended to walk the audience through how development teams and operators will interact with the platform to enable iterative development cycles, and secure, automated delivery to production.
+![TAP Overview Diagram](exercises/images/tap-overview.png)
+
+This demonstration will show how development teams and operators will interact with the platform to enable iterative development cycles, and secure, automated delivery to production.
+
+You can always progress to the next part of the workshop by clicking the blue button in the right corner below. Click on the button labelled "Learning Center" to get started.
