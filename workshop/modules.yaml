@@ -5,8 +5,8 @@ modules:
     exercises/01-Learning-Center:
         name: Learning Center
         exit_sign: Application Accelerator
-    exercises/01-App-Accelerator:
-        name: Getting Started
+    exercises/02-App-Accelerator:
+        name: Application Accelerator
         exit_sign: Workloads
     exercises/02-Workload:
         name: Workloads
