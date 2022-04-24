@@ -5,7 +5,7 @@ _We recommend you use Chrome, Edge, or Firefox browsers in this workshop for the
 
 Tanzu Application Platform abstracts away the mechanics of container orchestration, secure software supply chains, and GitOps deployment/promotion models. It allows developers to focus purely on the authoring of business logic, user interfaces, and APIs. Meanwhile, the operations teams can declare compliant delivery processes that will be implemented, in a consistent, automated, repeatable manner to each new application workload that is onboarded.
 
-![TAP Overview Diagram](exercises/images/tap-overview.png)
+<img alt="TAP Overview Diagram" height="90%" src="exercises/images/tap-overview.png" width="90%"/>
 
 This demonstration will show how development teams and operators will interact with the platform to enable iterative development cycles, and secure, automated delivery to production.
 

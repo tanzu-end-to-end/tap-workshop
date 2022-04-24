@@ -5,9 +5,8 @@ modules:
     - workshop-overview
     - exercises/01-Learning-Center
     - exercises/02-App-Accelerator
-    - exercises/03-Iterative-Development
-    - exercises/03-Supply-Chain
-    - exercises/04-Deployment
+    - exercises/03-IDE-Tools
+    - exercises/04-Iterative-Development
     - exercises/05-Iteration
     - exercises/06-Data-Services
     - workshop-summary
