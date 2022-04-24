@@ -20,8 +20,8 @@ spec:
     env:
       - name: GITEA_PASSWORD
         value: #@ data.values.gitea.adminPassword
-      - name: TAP_GUI_DOMAIN
-        value: #@ data.values.tap.gui_domain
+      - name: VIEW_CLUSTER_DOMAIN
+        value: #@ data.values.tap.view_cluster_domain
       - name: HARBOR_USER
         value: #@ data.values.harbor.user
       - name: HARBOR_PASSWORD

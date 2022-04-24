@@ -7,9 +7,9 @@ modules:
         exit_sign: Application Accelerator
     exercises/02-App-Accelerator:
         name: Application Accelerator
-        exit_sign: Workloads
-    exercises/02-Workload:
-        name: Workloads
+        exit_sign: Iterative Development
+    exercises/03-Iterative-Development
+        name: Iterative Development
         exit_sign: Supply Chain
     exercises/03-Supply-Chain:
         name: Supply Chain
