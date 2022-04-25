@@ -13,9 +13,9 @@ modules:
         exit_sign: Iterative Development
     exercises/04-Iterative-Development:
         name: Iterative Development
-        exit_sign: Iteration
-    exercises/05-Iteration:
-        name: Iteration
+        exit_sign: Live View
+    exercises/05-App-Live-View:
+        name: Live View
         exit_sign: Data Services
     exercises/06-Data-Services:
         name: Data Services

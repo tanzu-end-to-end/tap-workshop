@@ -1,7 +1,7 @@
 As we saw previously, Application Accelerator allows you to download your project template as a .zip file to your local machine, using the Web UI. Here, we are going to use a command-line tool to download the template to our workshop terminal session. The Tanzu CLI provides plugin features for working with Tanzu Application Platform. Let's download the project template:
 
 ```execute
-tanzu accelerator generate spring-sensors --server-url https://accelerator.{{ ENV_VIEW_CLUSTER_DOMAIN }} --options='{"gitUrl": "'"$GITREPO"'","gitBranch":"main","ociCodeRepo":"'"$CODE_OCI_TARGET"'","advSettings":true,"devMode":true,"kubeContext":"eduk8s","securityConfig":"both","artifactId":"java-web-app"}'
+tanzu accelerator generate spring-sensors --server-url https://accelerator.{{ ENV_VIEW_CLUSTER_DOMAIN }} --options='{"gitUrl": "'"$GITREPO"'","artifactId":"spring-sensors"}'
 ```
 
 It was downloaded as a .zip file, so we'll need to unzip it:

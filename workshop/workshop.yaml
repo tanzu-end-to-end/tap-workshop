@@ -7,7 +7,7 @@ modules:
     - exercises/02-App-Accelerator
     - exercises/03-IDE-Tools
     - exercises/04-Iterative-Development
-    - exercises/05-Iteration
+    - exercises/05-App-Live-View
     - exercises/06-Data-Services
     - workshop-summary
     vars:
