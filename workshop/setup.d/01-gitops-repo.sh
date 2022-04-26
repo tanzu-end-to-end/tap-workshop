@@ -20,5 +20,9 @@ git push -u origin main
 
 cd ..
 git clone https://gitea_admin:$GITEA_PASSWORD@gitea.${INGRESS_DOMAIN}/gitea_admin/gitops-workloads.git
+git -C /home/eduk8s/gitops-workloads config user.name gitea_admin
+git -C /home/eduk8s/gitops-workloads config user.email "gitea_admin@example.com"
+
 envsubst < workload.yaml > gitops-workloads/workload-$SESSION_NAMESPACE.yaml
+
 rm workload.yaml
