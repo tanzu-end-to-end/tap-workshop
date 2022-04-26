@@ -16,9 +16,9 @@ modules:
         exit_sign: Live View
     exercises/05-App-Live-View:
         name: Live View
-        exit_sign: Data Services
-    exercises/06-Data-Services:
-        name: Data Services
+        exit_sign: Submitting the Build
+    exercises/06-Submitting-Build:
+        name: Submitting the Build
         exit_sign: Conclusion
     workshop-summary:
         name: Workshop Summary

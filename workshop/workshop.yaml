@@ -8,7 +8,7 @@ modules:
     - exercises/03-IDE-Tools
     - exercises/04-Iterative-Development
     - exercises/05-App-Live-View
-    - exercises/06-Data-Services
+    - exercises/06-Submitting-Build
     - workshop-summary
     vars:
     - name: harbor_project_id
