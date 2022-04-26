@@ -59,19 +59,19 @@ So let's review. Cody performed his development activities on the Iterate cluste
 Execute the following commands to commit the Workload definition to the GitOps repository:
 
 ```execute
-git add /home/eduk8s/gitops-workloads/workload-{{ session_namespace }}.yaml
+git -C /home/eduk8s/gitops-workloads add workload-{{ session_namespace }}.yaml
 ```
 
 ```execute
-git commmit /home/eduk8s/gitops-workloads/workload-{{ session_namespace }}.yaml -m "Adding workload for {{ session_namespace }}"
+git -C /home/eduk8s/gitops-workloads commit -a -m "Adding workload for {{ session_namespace }}"
 ```
 
 ```execute
-git pull -r /home/eduk8s/gitops-workloads
+git -C /home/eduk8s/gitops-workloads pull -r
 ```
 
 ```execute
-git push /home/eduk8s/gitops-workloads -u origin main
+git -C /home/eduk8s/gitops-workloads push -u origin main
 ```
 
 Now, we'll see what the Build Server does.

@@ -8,7 +8,8 @@ echo $REPO_NAME > repo.txt
 mkdir spring-sensors
 cd spring-sensors
 echo "# Spring Sensors Application" >> README.MD
-git init -b main
+git init
+git checkout -b main
 git config user.name gitea_admin
 git config user.email "gitea_admin@example.com"
 git add .

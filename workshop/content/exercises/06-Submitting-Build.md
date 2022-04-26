@@ -7,7 +7,7 @@ The Iterate cluster is a multitenant cluster, where Cody and his coworkers can l
 The Iterate cluster is the only Kubernetes cluster where the developers need credentials or access. When Cody is ready to schedule a build, he simply needs to commit his changes to Git. As we will see, there are other clusters that will handle build, promotion, and deployment. Let's go ahead and commit changes to the Spring Sensors application we've been writing.
 
 ```execute
-git -C /home/eduk8s/spring-sensors add /home/eduk8s/spring-sensors/
+git -C /home/eduk8s/spring-sensors add .
 ```
 
 ```execute
