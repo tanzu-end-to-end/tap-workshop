@@ -18,4 +18,4 @@ spec:
     - name: gitops_repository
       value: ssh://git@github.com/cpage-pivotal/tap-gitops
     - name: gitops_branch
-      value: spring-sensors
+      value: spring-sensors-$SESSION_NAMESPACE

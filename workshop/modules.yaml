@@ -19,6 +19,9 @@ modules:
         exit_sign: Submitting the Build
     exercises/06-Submitting-Build:
         name: Submitting the Build
+        exit_sign: Workload
+    exercises/07-Workload:
+        name: Workload
         exit_sign: Conclusion
     workshop-summary:
         name: Workshop Summary
