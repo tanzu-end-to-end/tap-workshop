@@ -74,5 +74,5 @@ git -C /home/eduk8s/gitops-workloads pull -r
 git -C /home/eduk8s/gitops-workloads push -u origin main
 ```
 
-Now, we'll see what the Build Server does.
+Now, we'll see what the Build cluster does.
 
