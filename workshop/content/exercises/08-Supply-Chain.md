@@ -5,10 +5,10 @@ Alana the operator, in consultation with other stakeholders like Enterprise Arch
 When we created the Workload definition for our application (through the GitOps repo), Supply Chain Choreographer created a new supply chain for us (it may take 30 seconds or so to show up). Let's take a look:
 
 ```dashboard:open-url
-url: https://tap-gui.{{ ENV_VIEW_CLUSTER_DOMAIN }}/supply-chain
+url: https://tap-gui.{{ ENV_VIEW_CLUSTER_DOMAIN }}/supply-chain/default/spring-sensors-{{ session_namespace }}
 ```
 
-Here, we see all of the supply chains on the Build cluster, ours is named **spring-sensors-{{ session_namespace }}**. Click on that one.
+It may take up to 60 seconds from the time we committed the workload, until the time the supply chain is created on the Build cluster. If the screen for the supply chain is empty, wait a few seconds and then refresh.
 
 This is a relatively simply supply chain, that is simpler to follow. Each stage in the supply chain independently determines when its source inputs have changed, and whether it needs to take reconciliation steps to ensure that the application deployment is compliant.
 
