@@ -25,4 +25,10 @@ git -C /home/eduk8s/gitops-workloads config user.email "gitea_admin@example.com"
 
 envsubst < workload.yaml > gitops-workloads/workload-$SESSION_NAMESPACE.yaml
 
+git clone https://gitea_admin:$GITEA_PASSWORD@gitea.${INGRESS_DOMAIN}/gitea_admin/gitops-deliverables.git
+git -C /home/eduk8s/gitops-deliverables config user.name gitea_admin
+git -C /home/eduk8s/gitops-deliverables config user.email "gitea_admin@example.com"
+
+envsubst < deliverable.yaml > gitops-deliverables/deliverable-$SESSION_NAMESPACE.yaml
+
 rm workload.yaml
