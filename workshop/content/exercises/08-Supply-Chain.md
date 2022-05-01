@@ -2,7 +2,7 @@ Tanzu Application Platform deploys an important software component onto the Buil
 
 Alana the operator, in consultation with other stakeholders like Enterprise Architecture and Security, will declare her company's approved process for container builds, deployment specifications, and security scanning, and this process will be dynamically applied to each new workload that is deployed onto the build server.
 
-When we created the Workload definition for our application (through the GitOps repo), Supply Chain Choreographer created a new supply chain for us. Let's take a look:
+When we created the Workload definition for our application (through the GitOps repo), Supply Chain Choreographer created a new supply chain for us (it may take 30 seconds or so to show up). Let's take a look:
 
 ```dashboard:open-url
 url: https://tap-gui.{{ ENV_VIEW_CLUSTER_DOMAIN }}/supply-chain

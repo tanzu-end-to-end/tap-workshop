@@ -25,6 +25,9 @@ modules:
         exit_sign: Supply Chain
     exercises/08-Supply-Chain:
         name: Supply Chain
+        exit_sign: Deliverable
+    exercises/09-Deliverable:
+        name: Deliverable
         exit_sign: Conclusion
     workshop-summary:
         name: Workshop Summary
