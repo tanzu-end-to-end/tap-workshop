@@ -22,6 +22,10 @@ spec:
         value: #@ data.values.gitea.adminPassword
       - name: VIEW_CLUSTER_DOMAIN
         value: #@ data.values.tap.view_cluster_domain
+      - name: HARBOR_USER
+        value: #@ data.values.harbor.user
+      - name: HARBOR_PASSWORD
+        value: #@ data.values.harbor.adminPassword
     namespaces:
       budget: custom
     applications:
