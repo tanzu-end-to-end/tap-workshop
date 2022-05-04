@@ -1,0 +1,21 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: spring-sensors-$SESSION_NAMESPACE
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: spring-sensors
+spec:
+  source:
+    git:
+      url: https://gitea.$INGRESS_DOMAIN/gitea_admin/$REPO_NAME.git
+      ref:
+        branch: main
+  params:
+    - name: annotations
+      value:
+        autoscaling.knative.dev/minScale: "1"
+    - name: gitops_repository
+      value: ssh://git@github.com/cpage-pivotal/tap-gitops
+    - name: gitops_branch
+      value: spring-sensors-$SESSION_NAMESPACE

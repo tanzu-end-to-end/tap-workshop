@@ -1,0 +1,113 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: workshop-cluster-role
+rules:
+  - apiGroups:
+      - ""
+    resources: ["configmaps"]
+    verbs: ["*"]
+  - apiGroups:
+      - carto.run
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups:
+      - conventions.apps.tanzu.vmware.com
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups:
+      - kpack.io
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups:
+      - kappctrl.k14s.io
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups:
+      - source.toolkit.fluxcd.io
+    resources:
+      - gitrepositories
+    verbs: ["*"]
+  - apiGroups:
+      - source.apps.tanzu.vmware.com
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups:
+      - tekton.dev
+    resources: ["taskruns"]
+    verbs: ["*"]
+  - apiGroups:
+      - v1
+    resources: ["persistentvolumes"]
+    verbs: ["*"]
+  - apiGroups:
+      - servicebinding.io
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups:
+      - serving.knative.dev
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups:
+      - messaging.knative.dev
+    resources: ["*"]
+    verbs:
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - sources.knative.dev
+    resources: ["*"]
+    verbs:
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - eventing.knative.dev
+    resources: ["*"]
+    verbs:
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - flows.knative.dev
+    resources: ["*"]
+    verbs:
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - networking.internal.knative.dev
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups:
+      - bindings.labs.vmware.com
+    resources: ["*"]
+    verbs:
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - sources.tanzu.vmware.com
+    resources: ["*"]
+    verbs:
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - sources.triggermesh.io
+    resources: ["*"]
+    verbs:
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - rabbitmq.com
+    resources: ["*"]
+    verbs:
+      - get
+      - watch
+      - list
+
+
+  

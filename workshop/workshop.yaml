@@ -3,12 +3,15 @@ name: TAP Overview
 modules:
     activate:
     - workshop-overview
-    - exercises/01-App-Accelerator
-    - exercises/02-Workload
-    - exercises/03-Supply-Chain
-    - exercises/04-Deployment
-    - exercises/05-Iteration
-    - exercises/06-Data-Services
+    - exercises/01-Learning-Center
+    - exercises/02-App-Accelerator
+    - exercises/03-IDE-Tools
+    - exercises/04-Iterative-Development
+    - exercises/05-App-Live-View
+    - exercises/06-Submitting-Build
+    - exercises/07-Workload
+    - exercises/08-Supply-Chain
+    - exercises/09-Deliverable
     - workshop-summary
     vars:
     - name: harbor_project_id

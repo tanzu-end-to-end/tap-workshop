@@ -1,24 +1,33 @@
 modules:
     workshop-overview:
         name: Workshop Overview
-        exit_sign: Getting Started
-    exercises/01-App-Accelerator:
-        name: Getting Started
-        exit_sign: Workloads
-    exercises/02-Workload:
-        name: Workloads
+        exit_sign: Learning Center
+    exercises/01-Learning-Center:
+        name: Learning Center
+        exit_sign: Application Accelerator
+    exercises/02-App-Accelerator:
+        name: Application Accelerator
+        exit_sign: IDE Tools
+    exercises/03-IDE-Tools:
+        name: IDE Tools
+        exit_sign: Iterative Development
+    exercises/04-Iterative-Development:
+        name: Iterative Development
+        exit_sign: Live View
+    exercises/05-App-Live-View:
+        name: Live View
+        exit_sign: Submitting the Build
+    exercises/06-Submitting-Build:
+        name: Submitting the Build
+        exit_sign: Workload
+    exercises/07-Workload:
+        name: Workload
         exit_sign: Supply Chain
-    exercises/03-Supply-Chain:
+    exercises/08-Supply-Chain:
         name: Supply Chain
-        exit_sign: Deployment
-    exercises/04-Deployment:
-        name: Deployment
-        exit_sign: Iteration
-    exercises/05-Iteration:
-        name: Iteration
-        exit_sign: Data Services
-    exercises/06-Data-Services:
-        name: Data Services
+        exit_sign: Deliverable
+    exercises/09-Deliverable:
+        name: Deliverable
         exit_sign: Conclusion
     workshop-summary:
         name: Workshop Summary

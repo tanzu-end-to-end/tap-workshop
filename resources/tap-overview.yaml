@@ -7,17 +7,21 @@ metadata:
 spec:
   title: TAP Overview
   description: An introduction to the Tanzu Application Platform
-  vendor: eduk8s.io
+  vendor: vmware.com
   difficulty: beginner
   duration: 30m
   url: https://github.com/tanzu-end-to-end/tap-workshop
   content:
-    image: #@ "harbor.{}/tanzu-e2e/eduk8s-tap-workshop:latest".format(data.values.ingress.domain)
+    image: #@ "harbor.{}/tanzu-e2e/inner-tap-workshop:latest".format(data.values.ingress.domain)
     files: #@ "github.com/{}/tap-workshop?ref={}".format(data.values.git.account,data.values.git.branch)
   session:
+    resources:
+      memory: 3Gi
     env:
       - name: GITEA_PASSWORD
         value: #@ data.values.gitea.adminPassword
+      - name: VIEW_CLUSTER_DOMAIN
+        value: #@ data.values.tap.view_cluster_domain
       - name: HARBOR_USER
         value: #@ data.values.harbor.user
       - name: HARBOR_PASSWORD
@@ -30,8 +34,9 @@ spec:
         layout: split
       console:
         enabled: true
-        vendor: octant
       editor:
+        enabled: true
+      registry:
         enabled: true
     objects:
       - apiVersion: v1
@@ -44,162 +49,60 @@ spec:
               max:
                 storage: 10Gi
 
-      # Lifecycle of Harbor Projects. Not used in current version
-#      - apiVersion: e2e.tanzu.vmware.com/v1beta1
-#        kind: HarborProject
-#        metadata:
-#          name: $(session_namespace)
-#          annotations:
-#            training.eduk8s.io/objects.crd.scope: Namespaced
-#        spec:
-#          name: $(session_namespace)
-
-      # Permissions for tap-sa (Supply Chain)
-      - apiVersion: v1
-        kind: Secret
-        metadata:
-          name: tap-registry
-          annotations:
-            secretgen.carvel.dev/image-pull-secret: ""
-        type: kubernetes.io/dockerconfigjson
-        data:
-          .dockerconfigjson: e30K
-
-      - apiVersion: v1
-        kind: ServiceAccount
-        metadata:
-          name: tap-sa
-        secrets:
-          - name: registry-credentials
-        imagePullSecrets:
-          - name: registry-credentials
-          - name: tap-registry
-
+      # Permissions for workshop
       - apiVersion: rbac.authorization.k8s.io/v1
-        kind: Role
+        kind: ClusterRoleBinding
         metadata:
-          name: $(session_namespace)-kapp-permissions
-          annotations:
-            kapp.k14s.io/change-group: "role"
-        rules:
-          - apiGroups:
-              - servicebinding.io
-            resources: ['servicebindings']
-            verbs: ['*']
-          - apiGroups:
-              - services.tanzu.vmware.com
-            resources: ['resourceclaims']
-            verbs: ['*']
-          - apiGroups:
-              - serving.knative.dev
-            resources: ['services']
-            verbs: ['*']
-          - apiGroups: [""]
-            resources: ['configmaps']
-            verbs: ['get', 'watch', 'list', 'create', 'update', 'patch', 'delete']
-
-      - apiVersion: rbac.authorization.k8s.io/v1
-        kind: RoleBinding
-        metadata:
-          name: $(session_namespace)-kapp-permissions
-          annotations:
-            kapp.k14s.io/change-rule: "upsert after upserting role"
-        roleRef:
-          apiGroup: rbac.authorization.k8s.io
-          kind: Role
-          name: $(session_namespace)-kapp-permissions
-        subjects:
-          - kind: ServiceAccount
-            namespace: $(session_namespace)
-            name: tap-sa
-
-      # Permissions for workshop session
-      - apiVersion: rbac.authorization.k8s.io/v1
-        kind: RoleBinding
-        metadata:
-          name: $(session_namespace)-session-crb
+          name: $(session_namespace)-workshop-read-crb
           namespace: $(session_namespace)
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: ClusterRole
-          name: cluster-admin
+          name: k8s-reader
         subjects:
           - kind: ServiceAccount
             namespace: $(workshop_namespace)
             name: $(service_account)
 
       - apiVersion: rbac.authorization.k8s.io/v1
-        kind: RoleBinding
+        kind: ClusterRoleBinding
         metadata:
-          name: $(session_namespace)-default-crb
+          name: $(session_namespace)-workshop-rw-crb
           namespace: $(session_namespace)
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: ClusterRole
-          name: cluster-admin
+          name: workshop-cluster-role
+        subjects:
+          - kind: ServiceAccount
+            namespace: $(workshop_namespace)
+            name: $(service_account)
+
+      # Permissions for session user
+      - apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRoleBinding
+        metadata:
+          name: $(session_namespace)-session-read-crb
+          namespace: $(session_namespace)
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: k8s-reader
         subjects:
           - kind: ServiceAccount
             namespace: $(session_namespace)
             name: default
 
       - apiVersion: rbac.authorization.k8s.io/v1
-        kind: Role
+        kind: ClusterRoleBinding
         metadata:
-          name: service-account-role
+          name: $(session_namespace)-session-rw-crb
           namespace: $(session_namespace)
-        rules:
-          - apiGroups: ["*"]
-            resources: ["*"]
-            verbs: ["*"]
-
-      # RabbitMQ Instance
-      - apiVersion: rabbitmq.com/v1beta1
-        kind: RabbitmqCluster
-        metadata:
-          name: rmq-1
-          namespace: $(session_namespace)
-        spec:
-          resources:
-            requests:
-              cpu: 100m
-              memory: 500Mi
-            limits:
-              cpu: 100m
-              memory: 500Mi
-
-      # Sensors publisher app for generating messages
-      - apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: sensors-publisher
-          namespace: $(session_namespace)
-          labels:
-            app: sensors-publisher
-        spec:
-          replicas: 1
-          template:
-            metadata:
-              name: sensors-publisher
-              labels:
-                app: sensors-publisher
-            spec:
-              containers:
-                - name: sensors-publisher
-                  image: harbor.tap.amer.end2end.link/tap/spring-sensors-sensor
-                  imagePullPolicy: IfNotPresent
-                  volumeMounts:
-                    - mountPath: /bindings/rmq
-                      name: service-binding
-                  env:
-                    - name: SERVICE_BINDING_ROOT
-                      value: /bindings
-              restartPolicy: Always
-              volumes:
-                - name: service-binding
-                  projected:
-                    sources:
-                      - secret:
-                          name: rmq-1-default-user
-          selector:
-            matchLabels:
-              app: sensors-publisher
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: workshop-cluster-role
+        subjects:
+          - kind: ServiceAccount
+            namespace: $(session_namespace)
+            name: default

@@ -1,0 +1,14 @@
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  name: spring-sensors-$SESSION_NAMESPACE
+  labels:
+    app.tanzu.vmware.com/deliverable-type: web
+    app.kubernetes.io/part-of: spring-sensors
+    app.kubernetes.io/component: deliverable
+spec:
+  source:
+    git:
+      ref:
+        branch: spring-sensors-$SESSION_NAMESPACE
+      url: https://github.com/cpage-pivotal/tap-gitops

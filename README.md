@@ -12,7 +12,7 @@ Follow the docs for [Customizing the Environment Values File](install/values/REA
 
 **Tanzu Application Platform**
 
-Install Tanzu Application Platform per the [Documentation](https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-overview.html)
+Install Tanzu Application Platform per the [Documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html)
 
 **Harbor**
 
@@ -28,6 +28,6 @@ Finally, follow the docs for [Installing the Workshop](install/workshop/README.m
 
 The workshop will take a couple of minutes to start. Run:
 ```
-kubectl get eduk8s-training
+kubectl get learningcenter-training
 ```
 to verify everything is deployed.
