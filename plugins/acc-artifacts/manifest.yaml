@@ -1,7 +1,0 @@
-created: 2021-09-15T19:59:23.171491974Z
-plugins:
-  - name: accelerator
-    description: Manage accelerators in a Kubernetes cluster
-    versions: []
-version: ""
-coreVersion: v1.1.1

@@ -1,6 +1,0 @@
-name: accelerator
-description: Manage accelerators in a Kubernetes cluster
-version: v1.1.1
-buildSHA: ""
-group: Build
-completionType: 0
