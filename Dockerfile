@@ -23,7 +23,7 @@ RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/down
 RUN apt-get clean && apt-get update && apt-get install -y unzip openjdk-11-jdk
 
 # Requirements for Live Update
-RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version 4.4.0
+RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version 4.3.0
 RUN mv /usr/bin/code-server /opt/code-server/bin/code-server
 COPY extensions/tanzu-vscode-extension.vsix /tmp
 RUN code-server --install-extension vscjava.vscode-java-pack && \
