@@ -12,7 +12,7 @@ spec:
   duration: 30m
   url: https://github.com/tanzu-end-to-end/tap-workshop
   content:
-    image: #@ "harbor.{}/tanzu-e2e/inner-tap-workshop:latest".format(data.values.ingress.domain)
+    image: #@ "harbor.{}/tanzu-e2e/eduk8s-tap-workshop:latest".format(data.values.ingress.domain)
     files: #@ "github.com/{}/tap-workshop?ref={}".format(data.values.git.account,data.values.git.branch)
   session:
     resources:

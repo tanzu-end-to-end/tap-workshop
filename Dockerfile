@@ -6,23 +6,21 @@ RUN mv /home/eduk8s/workshop /opt/workshop
 # All the direct Downloads need to run as root as they are going to /usr/local/bin
 USER root
 # TBS
-RUN curl -L -o /usr/local/bin/kp https://github.com/vmware-tanzu/kpack-cli/releases/download/v0.4.2/kp-linux-0.4.2 && \
+RUN curl -L -o /usr/local/bin/kp https://github.com/vmware-tanzu/kpack-cli/releases/download/v0.5.0/kp-linux-0.5.0 && \
   chmod 755 /usr/local/bin/kp
 # Tanzu
-RUN curl -o /usr/local/bin/tanzu https://storage.googleapis.com/tanzu-cli/artifacts/core/latest/tanzu-core-linux_amd64 && \
-  chmod 755 /usr/local/bin/tanzu
-COPY plugins/apps-artifacts /tmp/apps-artifacts
-COPY plugins/apps-artifacts /tmp/apps-artifacts/
-RUN tanzu plugin install apps --local /tmp/apps-artifacts --version v0.5.1
-COPY plugins/acc-artifacts /tmp/acc-artifacts
-COPY plugins/acc-artifacts /tmp/acc-artifacts/
-RUN tanzu plugin install accelerator --local /tmp/acc-artifacts --version v1.1.1
+COPY /plugins/core/v0.11.2/tanzu-core-linux_amd64 /usr/local/bin/tanzu
+RUN chmod 755 /usr/local/bin/tanzu
+COPY /plugins/discovery /tmp/discovery
+COPY /plugins/distribution /tmp/distribution
+RUN tanzu plugin install --local /tmp all
+
 # Knative
-RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/download/knative-v1.4.0/kn-linux-amd64 && \
+RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/download/knative-v1.4.1/kn-linux-amd64 && \
     chmod 755 /usr/local/bin/kn
 
 # Utilities
-RUN apt-get update && apt-get install -y unzip openjdk-11-jdk
+RUN apt-get clean && apt-get update && apt-get install -y unzip openjdk-11-jdk
 
 # Requirements for Live Update
 RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version 4.3.0
@@ -35,9 +33,6 @@ RUN chown -R eduk8s:users /home/eduk8s/.cache
 RUN chown -R eduk8s:users /home/eduk8s/.local
 RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
 RUN chown -R eduk8s:users /home/eduk8s/.tilt-dev
-#RUN curl -L https://github.com/tohjustin/kube-lineage/releases/download/v0.4.2/kube-lineage_linux_amd64.tar.gz --output /tmp/kube-lineage_linux_amd64.tar.gz && \
-#    tar -zxvf /tmp/kube-lineage_linux_amd64.tar.gz -C /tmp && \
-#    mv /tmp/kube-lineage /usr/local/bin/kubectl-lineage
 
 # Install Tilt for eduk8s user in local path under homedir
 RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | PATH=~/.local/bin:$PATH bash
