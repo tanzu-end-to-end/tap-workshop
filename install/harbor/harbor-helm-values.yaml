@@ -1,7 +1,7 @@
 #@ load("@ytt:data", "data")
 
 expose:
-  type: loadBalancer
+  type: ingress
   tls:
     certSource: secret
     secret:
@@ -22,7 +22,7 @@ persistence:
   #@ end
 externalURL: #@ "https://harbor.{}".format(data.values.ingress.domain)
 harborAdminPassword: #@ data.values.harbor.adminPassword
-#@ if data.values.git.gitHubToken:
+#@ if hasattr(data.values.git,"gitHubToken"):
 trivy:
   gitHubToken: #@ data.values.git.gitHubToken
 #@ end

@@ -1,0 +1,10 @@
+#@ load("@ytt:overlay", "overlay")
+#@overlay/match by=overlay.subset({"kind":"PersistentVolumeClaim"}), expects="0+"
+---
+metadata:
+  #@overlay/match missing_ok=True
+  #@overlay/remove
+  annotations:
+  #@overlay/match missing_ok=True
+  #@overlay/remove
+  labels: (this value is ignored)
