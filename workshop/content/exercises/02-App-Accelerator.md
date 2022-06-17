@@ -24,4 +24,4 @@ Application Accelerator now creates your project template, and gives you the opt
 
 ![Explore Template](images/acc-explore.png)
 
-If you drill down into the files in the Explore Project view, you will see that they mostly consist of source code files that Cody would use for a starter application, plus some generated files that will give Tanzu Application Platform additional context for working with the application. We will look close at those additional files in later sections. But now... let's start coding!
+If you drill down into the files in the Explore Project view, you will see that they mostly consist of source code files that Cody would use for a starter application, plus some generated files that will give Tanzu Application Platform additional context for working with the application. We will look closely at those additional files in later sections. But now... let's start coding!
