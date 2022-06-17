@@ -10,7 +10,7 @@ url: https://tap-gui.{{ ENV_VIEW_CLUSTER_DOMAIN }}/supply-chain/default/spring-s
 
 It may take up to 60 seconds from the time we committed the workload, until the time the supply chain is created on the Build cluster. If the screen for the supply chain is empty, wait a few seconds and then refresh.
 
-This is a relatively simply supply chain, that is simpler to follow. Each stage in the supply chain independently determines when its source inputs have changed, and whether it needs to take reconciliation steps to ensure that the application deployment is compliant.
+This is a relatively simple supply chain, that is easy to follow. Each stage in the supply chain independently determines when its source inputs have changed, and whether it needs to take reconciliation steps to ensure that the application deployment is compliant.
 
 ![Source Provider](images/scc-source-provider.png)
 
