@@ -12,5 +12,6 @@ You'll see a lot more of Learning Center as we progress, but let's get comfortab
 
 ```execute
 kubectl config get-contexts eduk8s
-```  
+```
 
+Click on the button labelled "Application Accelerator" to continue to the next section of the workshop.
