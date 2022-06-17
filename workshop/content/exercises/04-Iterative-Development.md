@@ -48,3 +48,5 @@ text: Hot New Banner
 This code change will automatically trigger a patch to the running container. In under 10 seconds, you'll see the application restart in the terminal window. Go to the browser tab where your application is running, and refresh it. You'll see the code changes applied.
 
 Now Cody the developer can hit the productivity zone. He can start coding on his next feature, and immediately see incremental results in his running container to keep driving in the right direction. Let's see what else Cody can do with Tanzu Application Platform.
+
+Click on the button labelled "Live View" to continue to the next section of the workshop.
