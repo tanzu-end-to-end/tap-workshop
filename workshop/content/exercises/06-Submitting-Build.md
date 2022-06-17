@@ -19,3 +19,5 @@ git -C /home/eduk8s/spring-sensors push -u origin main
 ```
 
 Now, let's go check in with the Operations team to see how the build is automated.
+
+Click on the button labelled "Workload" to continue to the next section of the workshop.
