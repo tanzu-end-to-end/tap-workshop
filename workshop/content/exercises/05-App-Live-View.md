@@ -16,6 +16,10 @@ If you scroll down in this screen, you will see the Kubernetes resources associa
 
 ![Pod View](images/pod-view.png)
 
+At the top of the pod info screen, you'll see a detail panel, that provides you quick access to key info about your process. If you click on "View Pod Logs", you will be able to see the application logs from the Kubernetes server where your app is running.
+
+![Pod Detail](images/pod-detail.png)
+
 Scroll down a little bit, and you'll find our Live View pane. It has a menu drop-down called Information Category that allows you to navigate all sorts of data in your Application Runtime.
 
 ![Live View](images/live-view.png)
