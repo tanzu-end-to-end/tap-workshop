@@ -23,7 +23,7 @@ Tilt lets us make updates to our running application in seconds. Let's see how i
 tanzu apps workload get spring-sensors
 ```
 
-At the bottom, you will see a working URL like this once the deployment is ready:
+This reports the status of the workload as it progress through the supply chain, along with associated pods and Knative Services.  At the bottom, you will see a working URL like this once the deployment is ready.  If you do not see the Knative Services section with Ready in the READY column, then you can repeate the command every few seconds until it is complete:
 ```
 Knative Services
 NAME             READY   URL
