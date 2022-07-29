@@ -11,7 +11,8 @@ modules:
     - exercises/06-Submitting-Build
     - exercises/07-Workload
     - exercises/08-Supply-Chain
-    - exercises/09-Deliverable
+    - exercises/09-Ongoing-Compliance
+    - exercises/10-Deliverable
     - workshop-summary
     vars:
     - name: harbor_project_id
