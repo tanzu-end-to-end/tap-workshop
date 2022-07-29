@@ -25,8 +25,11 @@ modules:
         exit_sign: Supply Chain
     exercises/08-Supply-Chain:
         name: Supply Chain
+        exit_sign: Ongoing Compliance
+    exercises/09-Ongoing-Compliance:
+        name: Ongoing Compliance
         exit_sign: Deliverable
-    exercises/09-Deliverable:
+    exercises/10-Deliverable:
         name: Deliverable
         exit_sign: Conclusion
     workshop-summary:

@@ -4,6 +4,7 @@ metadata:
   name: spring-sensors-$SESSION_NAMESPACE
   labels:
     apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/scanning: "true"
     app.kubernetes.io/part-of: spring-sensors
 spec:
   source:

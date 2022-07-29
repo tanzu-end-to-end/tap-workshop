@@ -10,15 +10,23 @@ url: https://tap-gui.{{ ENV_VIEW_CLUSTER_DOMAIN }}/supply-chain/build-cluster/de
 
 It may take up to 60 seconds from the time we committed the workload, until the time the supply chain is created on the Build cluster. If the screen for the supply chain is empty, wait a few seconds and then refresh.
 
-This is a relatively simply supply chain, that is simpler to follow. Each stage in the supply chain independently determines when its source inputs have changed, and whether it needs to take reconciliation steps to ensure that the application deployment is compliant.
+Each stage in the supply chain independently determines when its source inputs have changed, and whether it needs to take reconciliation steps to ensure that the application deployment is compliant.
 
 ![Source Provider](images/scc-source-provider.png)
 
-The supply chain begins at the source provider step, where it will be monitoring the Git source code repo that was specified in the workload. It will supply the application source to subsequent steps in the supply chain, and continuously monitor for subsequent updates (commits) to the source.
+This supply chain begins at the source provider step, where it will be monitoring the Git source code repo that was specified in the workload. It will supply the application source to subsequent steps in the supply chain, and continuously monitor for subsequent updates (commits) to the source.
+
+![Source Scanner](images/scc-source-scanner.png)
+
+The next stage of this supply chain runs a security scan on the provided source code. Here, we are using the open-source Grype tool to run the scan, but Alana the operator can swap in a preferred third-party provider like Snyk or SonarQube if she prefers.
 
 ![Image Builder](images/scc-image-builder.png)
 
 The Image Builder step is responsible for producing the container image runtime for the application. The default implementation of Image Builder uses **Tanzu Build Service**. We saw how Tanzu Build Service simplified container creation for Cody the developer during iterative development, but it is especially powerful when used in a Supply Chain. Tanzu Application platform continually publishes security fixes and version updates for the buildpacks and OS images used for container creation, and it can automatically trigger patching and rebuilds of the container images without any intervention from developers or operators.
+
+![Image Scanner](images/scc-image-scanner.png)
+
+The Image Scanner runs a security scan on the container image that was produced in the previous step, to generate a list of CVEs. We are using Grype as our image scanner for this supply chain, and we'll take a closer look at this in the next section.
 
 ![Config Provider](images/scc-config-provider.png)
 
