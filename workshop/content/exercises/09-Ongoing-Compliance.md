@@ -1,6 +1,6 @@
-We've seen an application progress through the supply chain, but the supply chain hasn't stopped working! Let's take a closer look at why Tanzu Application Platform's Supply Chain Choreographer gives Alana the operator ongoing peace of mind.
+We've seen an application progress through the supply chain, but the supply chain hasn't stopped working! Let's take a closer look at why Tanzu Application Platform's Supply Chain Choreographer gives Alana, the operator, ongoing peace of mind.
 
-Each stage of the supply chain is running an ongoing reconciliation process ensuring that the governance process it is responsible for (e.g. container build, security scan, convention definition) remains compliant, and takes corrective action when necessary. This is the difference between our **Choreography** approach, and the **Orchestration** approach used by traditional pipelines.
+Each stage of the supply chain is running an ongoing reconciliation, ensuring that the governance process it is responsible for (e.g. container build, security scan, convention definition) remains compliant, and takes corrective action when necessary. This is the difference between our **Choreography** approach, and the **Orchestration** approach used by traditional pipelines.
 
 Let's look at an example. Click on the **Image Scanner** box in our supply chain. At the bottom of the screen, you will see Stage Detail Information.
 
@@ -22,8 +22,8 @@ Click on the **Image Builder** box in the Supply Chain. In the Stage Detail, you
 
 ![Build Config](images/build-config.png)
 
-Here, a single container build has occurred, and the reason given is CONFIG, meaning that we received updated source code from the previous stage in the supply chain, which triggered the build. But let's look at the Stage Detail from a workload that was submitted a little while ago:
+A single container build has occurred, and the reason given is CONFIG, meaning that we received updated source code from the previous stage in the supply chain, which triggered the build. But let's look at the Stage Detail from a different workload that was submitted a little while ago:
 
 ![Build Buildpack](images/build-buildpack.png)
 
-Here, we see that a second build occurred a couple of hours after the first one, and the reason given is BUILDPACK. Tanzu Application platform continually publishes security fixes and version updates for the buildpacks and OS images used for container creation. Alana elects to automatically ingest these updates, and makes them available to the Image Builder. The Image Builder is able to immediately trigger rebuilds of images that are affected by the updates, and progrss them through the supply chain, without waiting on earlier stages. Image Builder ensures that all workload containers are being continually patched and updated, without any manual intervention required from Cody or Alana!
+Here, we see that a second build occurred a couple of hours after the first one, and the reason given is BUILDPACK. Tanzu Application Platform continually publishes security fixes and version updates for the buildpacks and OS images used for container creation. Alana elects to automatically ingest these updates, and makes them available to the Image Builder. The Image Builder is able to immediately trigger rebuilds of images that are affected by the updates, and progrss them through the supply chain, without waiting on earlier stages. Image Builder ensures that all workload containers are being continually patched and updated, without any manual intervention required from Cody or Alana!
