@@ -1,11 +1,3 @@
-We can check the runtime deployment created by the deliverable:
-
-```dashboard:open-url
-url: https://spring-sensors-{{ session_namespace}}-default.{{ ENV_VIEW_CLUSTER_DOMAIN }}
-```
-
-The supply chains and the deliverables will continually reconcile. When new source code is committed, when security patches for the container images are ingested by Tanzu Build Service, when the architecture team specifies changes in the Convention Service, Supply Chain Choreographer will generate a new deployment definition, which can roll all the way through to the Run clusters.
-
 That concludes our high-level overview of the Tanzu Application Platform.
 
 Want to have more time to take your learning further?  Download and install [Tanzu Community Edition](https://tanzu.vmware.com/tanzu/community) on your development machine in Docker, on virtual machines in a public cloud, or in a private VMware vSphere environment! 

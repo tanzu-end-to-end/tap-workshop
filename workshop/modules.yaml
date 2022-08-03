@@ -31,6 +31,9 @@ modules:
         exit_sign: Deliverable
     exercises/10-Deliverable:
         name: Deliverable
+        exit_sign: Policy Violations
+    exercises/11-Policy-Violations:
+        name: Cody Goes Rogue!
         exit_sign: Conclusion
     workshop-summary:
         name: Workshop Summary
