@@ -1,17 +1,20 @@
-Cody's a star developer, and he's usually good about following SecOps policies. But hey, we all have days where we take shortcuts. Let's see what happens if carelessness introduces a security risk into our software supply chain.
+![Rogue Cody](images/rogue-cody.png)
+
+Cody's a fantastic developer, and he's usually good about following SecOps policies. But hey, we all have days where we take shortcuts. Let's see what happens if carelessness introduces a security risk into our software supply chain.
 
 Let's look at the pom.xml file in Cody's application. In a Java product, this describes the external software dependencies that will be packaged with our application.
 
 ```editor:select-matching-text
 file: spring-sensors/pom.xml
-text: "2.7.2"
+text: "<version(.*)version>"
+isRegex: true"
 ```
 
 Cody is using a current version of Spring Boot, a Java microservice framework in his application. But let's simulate what would happen if Cody reused an older pom.xml file, with references to an out-of-date version of Spring Boot.
 
 ```editor:replace-text-selection
 file: spring-sensors/pom.xml
-text: "2.6.0"
+text: "<version>2.6.0</version>"
 ```
 
 This will cause Cody's application to package a version of Spring Boot from last year, with unpatched security holes. Is our software supply chain doomed? Let's commit the changes:
