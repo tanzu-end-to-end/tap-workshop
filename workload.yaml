@@ -12,12 +12,12 @@ spec:
       url: https://gitea.$INGRESS_DOMAIN/gitea_admin/$REPO_NAME.git
       ref:
         branch: main
-    serviceClaims:
-      - name: db
-        ref:
-          apiVersion: with.sql.tanzu.vmware.com/v1
-          kind: MySQL
-          name: sensors-mysql
+  serviceClaims:
+    - name: db
+      ref:
+        apiVersion: with.sql.tanzu.vmware.com/v1
+        kind: MySQL
+        name: sensors-mysql
   params:
     - name: annotations
       value:
