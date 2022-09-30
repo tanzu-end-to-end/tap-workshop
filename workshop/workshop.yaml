@@ -13,7 +13,8 @@ modules:
     - exercises/08-Supply-Chain
     - exercises/09-Ongoing-Compliance
     - exercises/10-Deliverable
-    - exercises/11-Policy-Violations
+    - exercises/11-Data-Services
+    - exercises/12-Policy-Violations
     - workshop-summary
     vars:
     - name: harbor_project_id
