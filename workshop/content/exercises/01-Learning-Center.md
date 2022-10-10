@@ -11,6 +11,6 @@ It's very easy for Cody's company to author and customize Learning Center worksh
 You'll see a lot more of Learning Center as we progress, but let's get comfortable using the terminal. On one of the terminal windows to the right, type a Linux shell command, or click in the textbox below to have Learning Center execute a command for you.
 
 ```execute
-kubectl config get-contexts eduk8s
+kubectl version
 ```  
 
