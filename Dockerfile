@@ -6,17 +6,17 @@ RUN mv /home/eduk8s/workshop /opt/workshop
 # All the direct Downloads need to run as root as they are going to /usr/local/bin
 USER root
 # TBS
-RUN curl -L -o /usr/local/bin/kp https://github.com/vmware-tanzu/kpack-cli/releases/download/v0.5.0/kp-linux-0.5.0 && \
+RUN curl -L -o /usr/local/bin/kp https://github.com/vmware-tanzu/kpack-cli/releases/download/v0.7.1/kp-linux-amd64-0.7.1 && \
   chmod 755 /usr/local/bin/kp
 # Tanzu
-COPY /plugins/core/v0.11.2/tanzu-core-linux_amd64 /usr/local/bin/tanzu
+COPY /plugins/core/v0.25.0/tanzu-core-linux_amd64 /usr/local/bin/tanzu
 RUN chmod 755 /usr/local/bin/tanzu
 COPY /plugins/discovery /tmp/discovery
 COPY /plugins/distribution /tmp/distribution
 RUN tanzu plugin install --local /tmp all
-
+RUN chmod -R 755 .config/tanzu
 # Knative
-RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/download/knative-v1.4.1/kn-linux-amd64 && \
+RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/download/knative-v1.7.1/kn-linux-amd64 && \
     chmod 755 /usr/local/bin/kn
 
 # Utilities
