@@ -10,4 +10,4 @@ Tanzu Application Platform abstracts away the mechanics of container orchestrati
 
 This demonstration will show how development teams and operators will interact with the platform to enable iterative development cycles, and secure, automated delivery to production.
 
-You can always progress to the next part of the workshop by clicking the blue button in the right corner below. Click on the button labelled "Learning Center" to get started.
+You can always progress to the next part of the workshop by clicking the blue button in the right corner below. Click on the button labelled "About this Workshop" to get started.
