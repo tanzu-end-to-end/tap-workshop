@@ -1,4 +1,5 @@
 # Tanzu Application Platform Live Demonstration
+
 _We recommend you use Chrome, Edge, or Firefox browsers in this workshop for the smoothest experience._
 
 **Tanzu Application Platform (TAP)** enables enterprises to deliver a **developer experience** atop Kubernetes. Operators are able to customize and deploy an **application-aware platform**, instead of requiring developers to write platform-aware applications. 
