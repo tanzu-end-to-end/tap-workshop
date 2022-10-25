@@ -1,4 +1,4 @@
-Cody is ready to start developing! He's not a deep expert on container infrastructure, but he's an absolute star in writing business applications using popular languages and frameworks.
+We're going to begin our story with Cody, an application developer. His company is now running Tanzu Application Platform, and Cody wants to start using the platform to deliver containerized applications. He's not a deep expert on container infrastructure, but he's an absolute star in writing business applications using popular languages and frameworks.
 
 ![Cody Languages](images/cody-languages.png)
 
