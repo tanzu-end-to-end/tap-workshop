@@ -1,7 +1,15 @@
 That concludes our high-level overview of the Tanzu Application Platform.
 
-Want to have more time to take your learning further?  Download and install [Tanzu Community Edition](https://tanzu.vmware.com/tanzu/community) on your development machine in Docker, on virtual machines in a public cloud, or in a private VMware vSphere environment! 
+Want to take your learning further?  Download and install [Tanzu Application Platform](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html) as a free trial.
 
-**Tanzu Community Edition** is the free, community-supported, open-source distribution of VMware Tanzu.  It includes a Kubernetes distribution and the **Tanzu Application Toolkit**.  The Tanzu Application Toolkit contains the components needed to orchestrate workload deployments using [Cartographer](https://github.com/vmware-tanzu/cartographer).  You get container image build services provided by [kpack](https://buildpacks.io/docs/tools/kpack/.  And the toolkit includes services to run your workloads using [Knative Serving](https://knative.dev/docs/serving/).
+You can run Tanzu Application Platform on your choice of Kubernetes distributions. Don't have one? [Tanzu Kubernetes Grid](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/index.html) is free for non-commercial use.
 
-[Tanzu Application Platform](https://tanzu.vmware.com/application-platform) is a software subscription that includes the Application Accelerator, the Learning Center, the Tanzu Application Platform GUI, and  supply chains with integrated container image vulnerability scanning.  You can contact us for a trial of the Tanzu Application Platform by filling out the form at the bottom of the [Tanzu Application Platform](https://tanzu.vmware.com/application-platform) landing page.
+Also, feel free to check out some of the open-source projects that drive Tanzu Application Platform:
+
+[Cartographer](https://cartographer.sh/): Build and run Cloud Native Supply Chains
+
+[Cloud Native Buildpacks](https://buildpacks.io/): Automated, secure, container builds from source code
+
+[Backstage](https://backstage.io/): The Developer Portal UI that drives Tanzu Application Platform GUI
+
+[Knative](https://knative.dev/docs/): The autoscaling runtime for serverless application deployment.
