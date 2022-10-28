@@ -18,7 +18,7 @@ There is an exception, though! Alana consulted with her CISO team, and got an ex
 
 The Image Scanner is continuing to run, independently of other stages in the supply chain. This means that if Alana makes an update to the scan policy, it will be immediately applied to all workloads that have been submitted to the supply chain, without the need to re-execute previous stages.
 
-Click on the **Image Builder** box in the Supply Chain. In the Stage Detail, you will see something like this:
+Click on the **Image Provider** box in the Supply Chain. In the Stage Detail, you will see something like this:
 
 ![Build Config](images/build-config.png)
 
@@ -26,7 +26,7 @@ A single container build has occurred, and the reason given is CONFIG, meaning t
 
 ![Build Buildpack](images/build-buildpack.png)
 
-Here, we see that a second build occurred a couple of hours after the first one, and the reason given is BUILDPACK. Tanzu Application Platform continually publishes security fixes and version updates for the buildpacks and OS images used for container creation. Alana elects to automatically ingest these updates, and makes them available to the Image Builder. The Image Builder is able to immediately trigger rebuilds of images that are affected by the updates, and progrss them through the supply chain, without waiting on earlier stages. Image Builder ensures that all workload containers are being continually patched and updated, without any manual intervention required from Cody or Alana!
+Here, we see that a second build occurred a couple of hours after the first one, and the reason given is BUILDPACK. Tanzu Application Platform continually publishes security fixes and version updates for the buildpacks and OS images used for container creation. Alana elects to automatically ingest these updates, and makes them available to the Image Provicer. The Image Provider is able to immediately trigger rebuilds of images that are affected by the updates, and progrss them through the supply chain, without waiting on earlier stages. Image Provider ensures that all workload containers are being continually patched and updated, without any manual intervention required from Cody or Alana!
 
 Security teams may want to view the posture of the whole application portfolio, and not just individual applications. Tanzu Application Platform provides a security dashboard that provides an expansive view, with the ability to navigate to specific workloads:
 
