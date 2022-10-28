@@ -20,9 +20,9 @@ This supply chain begins at the source provider step, where it will be monitorin
 
 The next stage of this supply chain runs a security scan on the provided source code. Here, we are using the open-source Grype tool to run the scan, but Alana the operator can swap in a preferred third-party provider like Snyk or SonarQube if she prefers.
 
-![Image Builder](images/scc-image-builder.png)
+![Image Provider](images/scc-image-provider.png)
 
-The Image Builder step is responsible for producing the container image runtime for the application. The default implementation of Image Builder uses **Tanzu Build Service**. We saw how Tanzu Build Service simplified container creation for Cody the developer during iterative development, but it is especially powerful when used in a Supply Chain. Tanzu Application platform continually publishes security fixes and version updates for the buildpacks and OS images used for container creation, and it can automatically trigger patching and rebuilds of the container images without any intervention from developers or operators.
+The Image Provider step is responsible for producing the container image runtime for the application. The default implementation of Image Builder uses **Tanzu Build Service**. We saw how Tanzu Build Service simplified container creation for Cody the developer during iterative development, but it is especially powerful when used in a Supply Chain. Tanzu Application platform continually publishes security fixes and version updates for the buildpacks and OS images used for container creation, and it can automatically trigger patching and rebuilds of the container images without any intervention from developers or operators.
 
 ![Image Scanner](images/scc-image-scanner.png)
 
