@@ -12,6 +12,10 @@ rules:
     resources: ["*"]
     verbs: ["*"]
   - apiGroups:
+      - conventions.carto.run
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups:
       - conventions.apps.tanzu.vmware.com
     resources: ["*"]
     verbs: ["*"]
