@@ -5,7 +5,7 @@ Learning Center provides on-demand access to an in-browser experience that simul
 You are free to enter your own commands to experiment in this environment, or you can click on helper macros like this one to automatically enter commands for you:
 
 ```execute
-kubectl version
+kubectl config get-contexts eduk8s
 ```  
 
 Now, let's start delivering software with Tanzu Application Platform.
