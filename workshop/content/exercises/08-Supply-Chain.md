@@ -42,3 +42,5 @@ The App Config step will output a complete specification of the Kubernetes resou
 ![Config Writer](images/scc-config-writer.png)
 
 The final step of the supply chain is to output the deployment specification to a GitOps repo, to easily manage promotion to environments like QA, Staging, and Production.
+
+Click on the button labelled "Deliverable" to continue to the next section of the workshop.
