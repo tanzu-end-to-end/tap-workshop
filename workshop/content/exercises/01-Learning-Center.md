@@ -1,6 +1,6 @@
 We are running this workshop inside of Learning Center, a Kubernetes-native hosted environment that is distributed with Tanzu Application Platform.
 
-Learning Center provides on-demand access to an in-browser experience that simulates the IDEs, terminal windows, and web interfaces you'll be using when you actually work with Tanzu Application Platform, plus instructional pages like this one that halp guide the experience.
+Learning Center provides on-demand access to an in-browser experience that simulates the IDEs, terminal windows, and web interfaces you'll be using when you actually work with Tanzu Application Platform, plus instructional pages like this one that help guide the experience.
 
 You are free to enter your own commands to experiment in this environment, or you can click on helper macros like this one to automatically enter commands for you:
 
