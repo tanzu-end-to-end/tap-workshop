@@ -7,6 +7,10 @@ metadata:
     apps.tanzu.vmware.com/scanning: "true"
     app.kubernetes.io/part-of: spring-sensors
 spec:
+  build:
+    env:
+    - name: BP_JVM_VERSION
+      value: 17
   source:
     git:
       url: https://gitea.$INGRESS_DOMAIN/gitea_admin/$REPO_NAME.git
