@@ -6,7 +6,8 @@ Let's look at the pom.xml file in Cody's application. In a Java product, this de
 
 ```editor:select-matching-text
 file: spring-sensors/pom.xml
-text: "<artifactId>hsqldb</artifactId>\n            <version(.*)version>"
+text: "<version>(.*)</version>"
+start: 47
 isRegex: true"
 ```
 
