@@ -11,7 +11,7 @@ start: 47
 isRegex: true"
 ```
 
-Cody is using a current version of HSQLDB, a Java in-memory database useful for testing. But let's simulate what would happen if Cody reused an older pom.xml file, with references to an out-of-date version of HSQLDB.
+Cody is using a current version of HSQLDB, a Java in-memory database. But let's simulate what would happen if Cody reused an older pom.xml file, with references to an out-of-date version of HSQLDB.
 
 ```editor:replace-text-selection
 file: spring-sensors/pom.xml
