@@ -1,16 +1,24 @@
-As we saw previously, Application Accelerator allows you to download your project template as a .zip file to your local machine, using the Web UI. Here, we are going to use a command-line tool to download the template to our workshop terminal session. The Tanzu CLI provides plugin features for working with Tanzu Application Platform. Let's download the project template:
+Cody the developer is most productive when he doesn't have to context-switch out of the IDE where he does his development work. That's why Tanzu Application Platform offers integrations with popular IDEs such as Visual Studio Code, Visual Studio, and Jetbrains IntelliJ. Cody can access platform capabilities, including Application Accelerators, without leaving his IDE.
 
-```execute
-tanzu accelerator generate spring-sensors --server-url https://accelerator.{{ ENV_VIEW_CLUSTER_DOMAIN }}
+Let's fire up the Accelerator plugin for Cody's IDE to browse accelerators on the left sidebar:
+
+```editor:execute-command
+command: tanzu-app-accelerator.sortByNameAsc
 ```
 
-It was downloaded as a .zip file, so we'll need to unzip it:
+For this workshop, we'll use the Spring Sensors accelerator. It provides a starter template for a database web app. Select this accelerator:
 
-```execute
-unzip -o spring-sensors.zip
-```
+![Spring Sensors](images/spring-sensors.png)
 
-This is a Java web application, let's take a look at the source code:
+You'll be prompted for configuration options to customize the template. Accept the defaults and click "Next Step".
+
+![Next Step](images/next-step.png)
+
+Finally, confirm the settings and create a new IDE Project based on the accelerator by selecting "Generate Project":
+
+![Generate Project](generate-project.png)
+
+Once the project is loaded for our new Java webapp, we can take a look at the source code:
 
 ```editor:open-file
 file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
