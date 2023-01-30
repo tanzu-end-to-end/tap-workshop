@@ -3,7 +3,7 @@ Cody the developer is most productive when he doesn't have to context-switch out
 Let's fire up the Accelerator plugin for Cody's IDE to browse accelerators on the left sidebar:
 
 ```editor:execute-command
-command: tanzu-app-accelerator.sortByNameAsc
+command: tanzu-app-accelerator.AcceleratorList.focus
 ```
 
 For this workshop, we'll use the Spring Sensors accelerator. It provides a starter template for a database web app. Select this accelerator:
