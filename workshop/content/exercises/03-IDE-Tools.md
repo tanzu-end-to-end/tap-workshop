@@ -7,19 +7,15 @@ command: tanzu-app-accelerator.AcceleratorList.focus
 ```
 
 For this workshop, we'll use the Spring Sensors accelerator. It provides a starter template for a database web app. Select this accelerator:
-
 ![Spring Sensors](images/spring-sensors.png)
 
 You'll be prompted for configuration options to customize the template. Accept the defaults and click "Next Step".
-
 ![Next Step](images/next-step.png)
 
 Finally, confirm the settings and create a new IDE Project based on the accelerator by selecting "Generate Project":
-
 ![Generate Project](generate-project.png)
 
 At the top of the IDE, it will suggest creating the project in your home directory `/home/eduk8s`. Confirm this by hitting return.
-
 ![Home Directory](home-dir.png)
 
 Once the project is loaded for our new Java webapp, we can take a look at the source code:
