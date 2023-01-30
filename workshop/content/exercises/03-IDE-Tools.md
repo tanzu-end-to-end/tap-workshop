@@ -18,6 +18,10 @@ Finally, confirm the settings and create a new IDE Project based on the accelera
 
 ![Generate Project](generate-project.png)
 
+At the top of the IDE, it will suggest creating the project in your home directory `/home/eduk8s`. Confirm this by hitting return.
+
+![Home Directory](home-dir.png)
+
 Once the project is loaded for our new Java webapp, we can take a look at the source code:
 
 ```editor:open-file
