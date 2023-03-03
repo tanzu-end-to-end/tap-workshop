@@ -73,6 +73,7 @@ git -C /home/eduk8s/gitops-workloads pull -r
 ```execute
 git -C /home/eduk8s/gitops-workloads push -u origin main
 ```
+(Note: In a workshop with multiple participants others may push their workloads before you and this command might fail. Please re-run the "pull" command to get their changes and "push" yours again.)
 
 Now, we'll see what the Build cluster does.
 
