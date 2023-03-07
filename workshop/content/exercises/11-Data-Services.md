@@ -13,7 +13,7 @@ before: 0
 after: 5
 ```
 
-The service claim is a declaration that the application intends to connect to a data service, in this case a MySQL database with the identifier `sensors-db`. But Alana doesn't know the credentials for the database, and in fact the credentials will differ depending on whether this is a production or non-production deployment.
+The service claim is a declaration that the application intends to connect to a data service, in this case a MySQL database with the identifier `sensors-mysql`. But Alana doesn't know the credentials for the database, and in fact the credentials will differ depending on whether this is a production or non-production deployment.
 
 This abstraction allows a separate DBA team to manage the credentials for the data service. When the application is deployed, Tanzu Application Platform implements a **service binding** process that injects the data service credentials into the running application as environment variables.
 
