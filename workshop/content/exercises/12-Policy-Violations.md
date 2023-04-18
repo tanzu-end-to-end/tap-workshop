@@ -31,7 +31,7 @@ git -C /home/eduk8s/spring-sensors push -u origin main
 Now, we'll need to wait a few minutes. Our supply chain will notice that a new commit was made, and will begin packaging the updated application. It will pull the source code, and pass it off to the Source Scanner. We can follow along the progress here:
 
 ```dashboard:open-url
-url: https://tap-gui.{{ ENV_VIEW_CLUSTER_DOMAIN }}/supply-chain/build-cluster/default/spring-sensors-{{ session_namespace }}
+url: https://tap-gui.{{ ENV_VIEW_CLUSTER_DOMAIN }}/supply-chain/build-cluster/workloads/spring-sensors-{{ session_namespace }}
 ```
 
 Eventually, the green checkmark will disappear from the Source Scanner, and we will see that the supply chain stops progressing. Click on the Source Scanner box to find out why:
