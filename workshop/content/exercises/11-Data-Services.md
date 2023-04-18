@@ -20,7 +20,7 @@ This abstraction allows a separate DBA team to manage the credentials for the da
 Review the application that has been deployed in the runtime environment:
 
 ```dashboard:open-url
-url: https://spring-sensors-{{ session_namespace}}-default.{{ ENV_VIEW_CLUSTER_DOMAIN }}
+url: https://spring-sensors-{{ session_namespace}}-workloads.{{ ENV_VIEW_CLUSTER_DOMAIN }}
 ```
 
 If you look at the connection string on the right side, you can now see that the application is connected to a MySQL database called `sensors-mysql`, and is storing persistent data.
