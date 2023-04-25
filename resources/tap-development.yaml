@@ -6,7 +6,7 @@ metadata:
   name: tap-development
 spec:
   title: Experimental
-  description: Pre-release development version of the TAP Demo
+  description: Moved. Please visit https://waas.workshop.amer.end2end.link/trainingportals
   vendor: vmware.com
   difficulty: beginner
   duration: 60m
