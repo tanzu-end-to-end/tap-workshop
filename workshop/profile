@@ -1,3 +1,5 @@
 export GITREPO=https://gitea.$INGRESS_DOMAIN/gitea_admin/$(cat repo.txt).git
 
-export IMAGE_TARGET=harbor.$INGRESS_DOMAIN/$SESSION_NAMESPACE/spring-sensors
+REGISTRY_URL=${REGISTRY_URL:-harbor.${INGRESS_DOMAIN}}
+
+export IMAGE_TARGET=$REGISTRY_URL/$SESSION_NAMESPACE/spring-sensors
