@@ -25,8 +25,8 @@ spec:
   serviceClaims:
     - name: db
       ref:
-        apiVersion: with.sql.tanzu.vmware.com/v1
-        kind: MySQL
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ClassClaim
         name: sensors-mysql
   params:
     - name: annotations
