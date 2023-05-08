@@ -3,7 +3,7 @@ set -x
 set +e
 
 if [ -z ${HARBOR_USER+x} ]; then 
-  kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "exported-creds"}]}'
+  kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "exported-creds"},{"name": "learningcenter-registry-credentials"}]}'
 else 
   REGISTRY_USER=${HARBOR_USER:-admin}
   REGISTRY_URL=${REGISTRY_URL:-harbor.${INGRESS_DOMAIN}}
