@@ -16,7 +16,7 @@ This is a Java web application, let's take a look at the source code:
 file: spring-sensors/src/main/java/org/tanzu/demo/DemoController.java
 ```
 
-With Learning Center, we are using the embedded Coder dev environment that runs in your browser. Of course, you can also code on your local machine using supported IDEs like Visual Studio Code and IntelliJ IDEA. In our app, we see HTTP endpoints defined for generating and displaying sensor data. Give the embdedded Coder a few seconds to complete initialization; in the bottom right blue bar of the embedded Coder editor, you will see Java and a thumbs up symbol when initialization is complete.  Let's use the Developer Tooling in Tanzu Application Platform to run the application.
+With this environment, we are using the embedded Coder dev environment that runs in your browser. Of course, you can also code on your local machine using supported IDEs like Visual Studio Code and IntelliJ IDEA. In our app, we see HTTP endpoints defined for generating and displaying sensor data. Give the embdedded Coder a few seconds to complete initialization; in the bottom right blue bar of the embedded Coder editor, you will see Java and a thumbs up symbol when initialization is complete.  Let's use the Developer Tooling in Tanzu Application Platform to run the application.
 
 ```editor:open-file
 file: spring-sensors/Tiltfile

@@ -3,7 +3,6 @@ name: TAP Overview
 modules:
     activate:
     - workshop-overview
-    - exercises/01-Learning-Center
     - exercises/02-App-Accelerator
     - exercises/03-IDE-Tools
     - exercises/04-Iterative-Development
