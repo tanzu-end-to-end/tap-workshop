@@ -1,4 +1,4 @@
-FROM registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:36b8462ffdf064372e6124bf093e075b140ff2978b536477f28025253cb647cd
+FROM registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:39a5afe9604b9a36c14deda351ab73b53d15bd53085d89829838671cb867f6c4
 
 COPY --chown=1001:0 . /home/eduk8s/
 RUN mv /home/eduk8s/workshop /opt/workshop
@@ -23,13 +23,13 @@ RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/down
 RUN apt-get clean && apt-get update && apt-get install -y unzip openjdk-17-jdk
 
 # Requirements for Live Update
-RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version 4.9.1
+RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version 4.20.0
 RUN mv /usr/bin/code-server /opt/code-server/bin/code-server
-COPY extensions/tanzu-vscode-extension-0.13.0.vsix /tmp
-COPY extensions/tanzu-app-accelerator-0.1.5.vsix /tmp
+COPY extensions/tanzu-vscode-extension-1.0.6.vsix /tmp
+COPY extensions/tanzu-app-accelerator-0.1.6.vsix /tmp
 RUN code-server --install-extension vscjava.vscode-java-pack && \
-    code-server --install-extension /tmp/tanzu-vscode-extension-0.13.0.vsix && \
-    code-server --install-extension /tmp/tanzu-app-accelerator-0.1.5.vsix
+    code-server --install-extension /tmp/tanzu-vscode-extension-1.0.6.vsix && \
+    code-server --install-extension /tmp/tanzu-app-accelerator-0.1.6.vsix
 RUN echo -n 'export PATH=~/.local/bin:$PATH' >> /etc/profile
 RUN chown -R eduk8s:users /home/eduk8s/.cache
 RUN chown -R eduk8s:users /home/eduk8s/.local
