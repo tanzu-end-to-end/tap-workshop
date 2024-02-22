@@ -10,7 +10,7 @@ function initialize(workshop) {
     try {
         data = yaml.safeLoad(fileContents);
     } catch(err) {
-        //Deprecateded in js-yaml 4, so try load
+        //Deprecated in js-yaml 4, so try load
         data = yaml.load(fileContents);
     }
 
