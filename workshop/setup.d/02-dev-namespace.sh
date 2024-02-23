@@ -6,7 +6,7 @@ if [ -z ${HARBOR_USER+x} ]; then
   if [[ -z ${POLICY_ENGINE} ]]; then 
     kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "exported-creds"},{"name": "learningcenter-registry-credentials"}], "secrets": [{"name": "exported-creds"},{"name": "learningcenter-registry-credentials"}]}'
   else
-    kubectl patch serviceaccount default --type "json" -p '[{"op":"add","path":"/secrets/-","value":"exported-creds"}]'
+    kubectl patch serviceaccount default --type "json" -p '[{"op":"add","path":"/secrets","value":[]},{"op":"add","path":"/secrets/-","value":{"name":"exported-creds"}}]'
   fi
 else 
   REGISTRY_USER=${HARBOR_USER:-admin}
