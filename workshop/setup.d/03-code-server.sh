@@ -5,6 +5,7 @@ set +e
 jq ". + { \"java.server.launchMode\": \"Standard\", \"tanzu.sourceImage\": \"${REGISTRY_HOST}/spring-sensors-source\", \"tanzu.namespace\": \"${SESSION_NAMESPACE}\", \"redhat.telemetry.enabled\": false }" /home/eduk8s/.local/share/code-server/User/settings.json > /tmp/settings.json
 mv /tmp/settings.json /home/eduk8s/.local/share/code-server/User/settings.json
 
+if [[ -z ${POLICY_ENGINE} ]]; then
 cat <<'EOF' > /opt/eduk8s/sbin/start-code-server
 #!/bin/bash
 
@@ -22,3 +23,4 @@ exec /opt/code-server/bin/code-server \
     --disable-telemetry \
     $EDITOR_HOME
 EOF
+fi
