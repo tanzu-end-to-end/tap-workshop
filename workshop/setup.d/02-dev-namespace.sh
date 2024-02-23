@@ -4,7 +4,7 @@ set +e
 
 if [ -z ${HARBOR_USER+x} ]; then 
   embedded_reg_creds="learningcenter-registry-credentials"
-  if [ -z ${POLICY_ENGINE+x} ]; then 
+  if [[ -n ${POLICY_ENGINE} ]]; then 
     embedded_reg_creds="educates-registry-credentials"
   fi
   kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "exported-creds"},{"name": "'$embedded_reg_creds'"}], "secrets": [{"name": "exported-creds"},{"name": "'$embedded_reg_creds'"}]}'
