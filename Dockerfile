@@ -1,4 +1,4 @@
-FROM ghcr.io/vmware-tanzu-labs/educates-jdk11-environment:2.6
+FROM ghcr.io/vmware-tanzu-labs/educates-jdk17-environment:2.6
 
 # All the direct Downloads need to run as root as they are going to /usr/local/bin
 USER root
