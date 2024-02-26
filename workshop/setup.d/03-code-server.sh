@@ -2,7 +2,7 @@
 set -x
 set +e
 
-jq ". + { \"java.server.launchMode\": \"Standard\", \"tanzu.sourceImage\": \"${REGISTRY_HOST}/spring-sensors-source\", \"tanzu.namespace\": \"${SESSION_NAMESPACE}\", \"redhat.telemetry.enabled\": false }" /home/eduk8s/.local/share/code-server/User/settings.json > /tmp/settings.json
+jq ". + { \"java.server.launchMode\": \"Standard\", \"tanzu.sourceImage\": \"${REGISTRY_HOST}/spring-sensors-source\", \"tanzu.namespace\": \"${SESSION_NAMESPACE}\", \"redhat.telemetry.enabled\": false, \"telemetry.enabled\": false, \"java.jdt.ls.java.home\": \"/opt/java\", \"maven.pomfile.autoUpdateEffectivePOM\": true}" /home/eduk8s/.local/share/code-server/User/settings.json > /tmp/settings.json
 mv /tmp/settings.json /home/eduk8s/.local/share/code-server/User/settings.json
 
 if [[ -z ${POLICY_ENGINE} ]]; then
