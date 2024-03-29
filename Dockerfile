@@ -23,7 +23,11 @@ RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/down
 
 # Requirements for Live Update
 COPY extensions/tanzu-vscode-extension-1.3.1.vsix extensions/tanzu-app-accelerator-1.0.4.vsix /tmp
-RUN code-server --install-extension vscjava.vscode-java-pack && \
+RUN code-server --install-extension redhat.java@1.24.0 && \
+  code-server --install-extension vscjava.vscode-java-debug && \
+  code-server --install-extension vscjava.vscode-java-test && \
+  code-server --install-extension vscjava.vscode-maven && \
+  code-server --install-extension vscjava.vscode-java-dependency && \
   code-server --install-extension /tmp/tanzu-vscode-extension-1.3.1.vsix && \
   code-server --install-extension /tmp/tanzu-app-accelerator-1.0.4.vsix
 
