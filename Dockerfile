@@ -22,14 +22,10 @@ RUN curl -L -o /usr/local/bin/kn https://github.com/knative/client/releases/down
     chmod 755 /usr/local/bin/kn
 
 # Requirements for Live Update
-COPY extensions/tanzu-vscode-extension-1.0.6.vsix extensions/tanzu-app-accelerator-0.1.6.vsix /tmp
-RUN code-server --install-extension redhat.java@1.24.0 && \
-  code-server --install-extension vscjava.vscode-java-debug && \
-  code-server --install-extension vscjava.vscode-java-test && \
-  code-server --install-extension vscjava.vscode-maven && \
-  code-server --install-extension vscjava.vscode-java-dependency && \
-  code-server --install-extension /tmp/tanzu-vscode-extension-1.0.6.vsix && \
-  code-server --install-extension /tmp/tanzu-app-accelerator-0.1.6.vsix
+COPY extensions/tanzu-vscode-extension-1.3.1.vsix extensions/tanzu-app-accelerator-1.0.4.vsix /tmp
+RUN code-server --install-extension vscjava.vscode-java-pack && \
+  code-server --install-extension /tmp/tanzu-vscode-extension-1.3.1.vsix && \
+  code-server --install-extension /tmp/tanzu-app-accelerator-1.0.4.vsix
 
 RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
 RUN echo -n 'export PATH=~/.local/bin:$PATH' >> /etc/profile
@@ -40,7 +36,7 @@ RUN fix-permissions /home/eduk8s
 RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | PATH=~/.local/bin:$PATH bash
 RUN tanzu config eula accept && \
  TANZU_CLI_CEIP_OPT_IN_PROMPT_ANSWER=no tanzu plugin install --group vmware-tanzucli/essentials:v1.0.0 && \
- TANZU_CLI_CEIP_OPT_IN_PROMPT_ANSWER=no tanzu plugin install --group vmware-tap/default:v1.6.7
+ TANZU_CLI_CEIP_OPT_IN_PROMPT_ANSWER=no tanzu plugin install --group vmware-tap/default:v1.7.5
 
 COPY --chown=1001:100 workload.yaml deliverable.yaml /home/eduk8s
 COPY --chown=1001:100 workshop/ /opt/workshop
