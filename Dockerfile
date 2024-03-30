@@ -40,7 +40,7 @@ RUN fix-permissions /home/eduk8s
 RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | PATH=~/.local/bin:$PATH bash
 RUN tanzu config eula accept && \
  TANZU_CLI_CEIP_OPT_IN_PROMPT_ANSWER=no tanzu plugin install --group vmware-tanzucli/essentials:v1.0.0 && \
- TANZU_CLI_CEIP_OPT_IN_PROMPT_ANSWER=no tanzu plugin install --group vmware-tap/default:v1.7.5
+ TANZU_CLI_CEIP_OPT_IN_PROMPT_ANSWER=no tanzu plugin install --group vmware-tap/default:v1.8
 
 COPY --chown=1001:100 workload.yaml deliverable.yaml /home/eduk8s
 COPY --chown=1001:100 workshop/ /opt/workshop
