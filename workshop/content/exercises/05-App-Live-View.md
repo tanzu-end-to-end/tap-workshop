@@ -27,3 +27,5 @@ Scroll down a little bit, and you'll find our Live View pane. It has a menu drop
 Explore for a little bit, there's a lot to see here. You can check out your application's environment variables, view thread stacktraces, see a graphical view of your memory consumption, see trace info on each HTTP request, and much more.
 
 Live View is currently compatible with Spring Boot Java applications, and Steeltoe .NET Core applications.
+
+Click on the button labelled "Submitting the Build" to continue to the next section of the workshop.
